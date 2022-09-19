@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -221,7 +224,7 @@
             </div>
             </div>
             <?php
-                include('templates/footer.php'); 
+                include('templates/footer.php');
                 include('modal/login.php');
                 include('modal/registration.php');
             ?>
@@ -234,6 +237,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
         <script src="vendors/js/authentication/auth_reg.js"></script>
         <script src="vendors/js/authentication/auth_login.js"></script>
+        <script src="vendors/js/authentication/auth_logout.js"></script>
         <script>
             var swiper = new Swiper(".swiper-image", {
                 spaceBetween: 30,

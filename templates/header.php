@@ -25,6 +25,10 @@
           <a class="nav-link me-2" href="contact.php">Contact</a>
         </li>
       </ul>
+
+      <?php
+        if(!isset($_SESSION['session_token'])){
+      ?>
       <div class="nav-flex">
         <button type="button" class="btn shadow-none me-lg-3 me-2 custom-bg" data-bs-toggle="modal" data-bs-target="#loginModal">
         Login
@@ -33,6 +37,17 @@
         Register
         </button>
       </div>
+      <?php
+        }else{
+      ?>
+      <div class="nav-flex">
+        <button type="button" class="btn shadow-none me-lg-3 me-2 custom-bg" id="logout">
+        Logout
+        </button>
+      </div>
+      <?php
+        }
+      ?>
     </div>
   </div>
 </nav>

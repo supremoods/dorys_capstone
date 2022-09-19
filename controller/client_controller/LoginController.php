@@ -15,12 +15,13 @@
                 $email,
                 $password
                )){
-                echo json_encode(true);
+                echo json_encode(array("status"=>true, "message"=>"success"));
                }else{
-                echo json_encode(false);
+                echo json_encode(array("status"=>false, "message"=>"failed"));
                }
             }
         }
+
 
         
     }
