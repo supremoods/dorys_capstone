@@ -1,11 +1,11 @@
-$('#logout').click(function () {
+$('#logout').click(() => {
     $.ajax({
         url: 'controller/client_controller/LogoutController.php',
         type: 'post',
-        success: function (data) {
+        success: (data) => {
             window.location.href = '/';
         },
-        error: function (request, status, error) {
+        error: (request, status, error) => {
             console.log(request.responseText);
         } 
     });

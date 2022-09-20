@@ -21,22 +21,15 @@
     transition: all 0.3s;
 }
 
-.custom-alert {
-    position: relative;
-}
-
 
 /* Chrome, Safari, Edge, Opera - to remove up-down arrow for type number field.*/
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-
 /* Firefox */
-
 input[type=number] {
     -moz-appearance: textfield;
 }
@@ -87,12 +80,14 @@ input[type=number] {
     display: inline-block;
     margin: 0 20px;
     position: relative;
+
 }
 
 .navbar-nav ul li a {
     text-decoration: none;
     color: #EB6A00;
     text-transform: uppercase;
+
 }
 
 .navbar-nav ul li::after {
@@ -109,6 +104,7 @@ input[type=number] {
 .navbar-nav ul li:hover::after {
     width: 100%;
     color: #EB6A00;
+
 }
 
 @media screen and (max-width: 575px) {
@@ -116,18 +112,15 @@ input[type=number] {
         margin-top: 25px;
         padding: 0 35px;
     }
+
 }
 
-
 /*--Steps--*/
-
 .inst-titl {
     font-family: 'Kaushan Script', cursive;
 }
 
-
 /*--Top Offers--*/
-
 .card-body {
     border: 2px;
 }
@@ -138,9 +131,7 @@ input[type=number] {
     transition: all 0.3s;
 }
 
-
 /*--Announcement--*/
-
 .ann-div {
     width: 100%;
     height: 350px;
@@ -153,6 +144,7 @@ input[type=number] {
     font-family: 'Kaushan Script', cursive;
     font-size: 60px;
     color: #EB6A00;
+
 }
 
 .announcement p {
@@ -170,4 +162,22 @@ h1 {
     margin: 0 auto;
     height: 2.7px;
     background-color: #EB6A00;
+}
+
+/*--dashboard--*/
+#dashboard-menu {
+    position: fixed;
+    height: 100%;
+    z-index: 11;
+}
+
+@media screen and (max-width: 993px) {
+    #dashboard-menu {
+        width: 100%;
+        height: auto;
+    }
+
+    #main-content {
+        margin-top: 60px;
+    }
 }
