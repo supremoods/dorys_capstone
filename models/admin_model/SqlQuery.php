@@ -15,6 +15,8 @@
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     if(strcmp($password, $row['password']) == 0){
+                        session_start();
+                        $_SESSION['admin_id'] = $row['admin_id'];
                         return true;
                     }
                 } else {

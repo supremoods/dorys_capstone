@@ -2,6 +2,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.bg-darky{
+    background-color: #EB6A00;
+}
+
 .h-font {
     font-family: 'Kaushan Script', cursive;
     color: #EB6A00;
@@ -46,7 +50,7 @@ input[type=number] {
     border: .5px solid #EB6A00;
 }
 
-.custom-bg-2 {
+.custom-bg-2{
     border-radius: 15px;
     background: white;
     color: #EB6A00;
@@ -121,12 +125,12 @@ input[type=number] {
 }
 
 /*--Top Offers--*/
-.card-body {
+.card {
     border: 2px;
 }
 
-.card-body:hover {
-    border: 2px solid #EB6A00;
+.card:hover {
+    border: 3px solid #EB6A00;
     transform: scale(1.03);
     transition: all 0.3s;
 }
