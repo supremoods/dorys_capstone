@@ -26,6 +26,39 @@
             }
         }    
 
+        public function fetchAnnouncement(){
+            $sql = "SELECT * FROM announcement";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function updateAnnouncement($announcement){
+            
+            $sql = "UPDATE announcement SET announcement = '$announcement'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
     }
 
 ?>

@@ -34,15 +34,18 @@
                             <div class="modal-header">
                                 <h5 class="modal-title">General Settings</h5>
                             </div>
+                            <div class="modal-message">
+
+                            </div>
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label class="form-label fw-bold">Announcement</label>
-                                    <textarea name="web_about" id="web_about_f" class="form-control shadow-none" rows="4" required></textarea>
+                                    <textarea name="web_about" id="announcement_text_area" class="form-control shadow-none" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn custom-bg shadow-none" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn custom-bg-2 shadow-none" data-bs-dismiss="modal">Save</button>
+                                <button type="submit" id="ann_sv_btn" class="btn custom-bg-2 shadow-none" >Save</button>
                             </div>
                         </div>
                     </div>
@@ -191,5 +194,6 @@
         </div>
     </div>
     <?php include_once($_SERVER['DOCUMENT_ROOT'].'/templates/footer_scripts.php')?>
+    <script src="/vendors/js/admin/settings.js"></script>
 </body>
 </html>
