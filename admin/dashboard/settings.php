@@ -24,29 +24,27 @@
                             </button>
                         </div>
                         <h6 class="card-subtitle mb-1 fw-bold p-2">Announcement</h6>
-                        <p class="card-text" id="web_about"></p>
+                        <p class="card-text" id="announcement_message"></p>
                     </div>
                 </div>
                 <!--- General Settings Form--->
                 <div class="modal fade" id="general-settings" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog mb-4">
-                        <form class="" id="general-settings-form">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">General Settings</h5>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label class="form-label fw-bold">Announcement</label>
-                                        <textarea name="web_about" id="web_about_f" class="form-control shadow-none" rows="4" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" onclick="web_title.value = general_data.web_title, web_about.value = general_data.web_about" class="btn custom-bg shadow-none" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn custom-bg-2 shadow-none" data-bs-dismiss="modal">Save</button>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">General Settings</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Announcement</label>
+                                    <textarea name="web_about" id="web_about_f" class="form-control shadow-none" rows="4" required></textarea>
                                 </div>
                             </div>
-                        </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn custom-bg shadow-none" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn custom-bg-2 shadow-none" data-bs-dismiss="modal">Save</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--- Shutdown Section--->

@@ -15,6 +15,8 @@
     $logoutController = new LogoutController;
 
     if($logoutController->logout()){
-        $essential->redirect("admin/");
+        echo json_encode([
+            'status' => true
+        ]);
     }
 ?>

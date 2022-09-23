@@ -18,7 +18,6 @@
                     window.location.href='$url';
                 </script>
             ";
-            
             exit;
         }
     }

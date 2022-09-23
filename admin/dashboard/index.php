@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['admin_id'])) {
-        header("Location: /admin/");
+        header("Location: /admin");
     }
 ?>
 <!DOCTYPE html>
@@ -25,6 +25,6 @@
     </div>
     <?php include_once($_SERVER['DOCUMENT_ROOT'].'/templates/footer_scripts.php')?>
     <script src="/vendors/js/admin/dashboard.js"></script>
-    <script src="/vendors/js/admin/auth_logout.js"></script>
+    <script src="/vendors/js/admin/authentication/auth_logout.js"></script>
 </body>
 </html>
