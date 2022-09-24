@@ -66,8 +66,9 @@
 
 
         public function login_stamp($token){
+            date_default_timezone_set("Asia/Manila");
             $session_token = $this->generate_token();
-            $date = date('d-m-y h:i:s');
+            $date = date('y-m-d h:i:s');
 
             $sql = "INSERT INTO client_log_history(
                 session_id,
@@ -86,9 +87,18 @@
                 session_start();
                 $_SESSION['user_token'] = $token;
                 $_SESSION['session_token'] = $session_token;
+                if($this->update_client_status($token, 'active')){
+                    return true;
+                }
+            }
+        }
+
+        public function update_client_status($token, $status){
+            $sql = "UPDATE client SET status = '$status' WHERE user_token = '$token'";
+            $result = $this->dbConnection()->query($sql);
+            if($result){
                 return true;
             }
-            
         }
 
         public function generate_token(){
@@ -99,18 +109,20 @@
         }
 
         public function logout_stamp($token){
-
-            $date = date('d-m-y h:i:s');
+            date_default_timezone_set("Asia/Manila");
+            $date = date('y-m-d h:i:s');
 
             $sql = "UPDATE client_log_history SET log_out_stamp = '$date' WHERE session_id = '$token'";
 
             $result = $this->dbConnection()->query($sql);
             
             if($result){
-                return true;
+                session_start();
+                $user_id = $_SESSION['user_token'];
+                if($this->update_client_status($user_id, 'inactive')){
+                    return true;
+                }
             }
-            
-
         }
     }
 

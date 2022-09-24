@@ -43,9 +43,8 @@
             }
         }
 
-        public function updateAnnouncement($announcement){
-            
-            $sql = "UPDATE announcement SET announcement = '$announcement'";
+        public function updateAnnouncement($admin_token, $announcement){
+            $sql = "UPDATE announcement SET message = '$announcement' WHERE admin_id = '$admin_token'";
 
             $result = $this->dbConnection()->query($sql);
 
@@ -56,6 +55,167 @@
                 } else {
                     // if the query is not successful, return false
                     return false;
+                }
+            }
+        }
+
+        public function insertAnnouncement($admin_token, $announcement){
+            $sql = "INSERT INTO announcement (admin_id, message) VALUES ('$admin_token', '$announcement')";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function updateShutdown($admin_token, $shutdown){
+            $sql = "UPDATE website_stats SET shutdown = '$shutdown' WHERE admin_id = '$admin_token'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function fetchWebStats(){
+            $sql  = "SELECT * FROM website_stats";
+
+            $result = $this->dbConnection()->query($sql);
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+
+        public function insertContactDetails($admin_token,
+                                $address, 
+                                $gmap, 
+                                $phone_number_1, 
+                                $phone_number_2, 
+                                $email, 
+                                $twitter, 
+                                $facebook, 
+                                $iframe){
+
+            $sql = "INSERT INTO contact_details (admin_id, address, gmap, phone_number_1, phone_number_2, email, twitter, facebook, iframe) VALUES ('$admin_token', '$address', '$gmap', '$phone_number_1', '$phone_number_2', '$email', '$twitter', '$facebook', '$iframe')";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function updateContactDetails($admin_token,
+                                    $address, 
+                                    $gmap, 
+                                    $phone_number_1, 
+                                    $phone_number_2, 
+                                    $email, 
+                                    $twitter, 
+                                    $facebook, 
+                                    $iframe){
+
+            $sql = "UPDATE contact_details SET address = '$address', gmap = '$gmap', phone_number_1 = '$phone_number_1', phone_number_2 = '$phone_number_2', email = '$email', twitter = '$twitter', facebook = '$facebook', iframe = '$iframe' WHERE admin_id = '$admin_token'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function fetchContactDetails(){
+            $sql = "SELECT * FROM contact_details";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function fetchClients(){
+            $sql = "SELECT * FROM client";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return $result;
+                }
+            }
+        }
+
+
+        public function fetchClientDetails($token){
+            $sql = "SELECT * FROM client WHERE user_token = '$token'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+
+        public function fetchClientLogs($token){
+            $sql = "SELECT * FROM client_log_history WHERE user_token = '$token'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return $result;
                 }
             }
         }

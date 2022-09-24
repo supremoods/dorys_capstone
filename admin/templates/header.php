@@ -16,7 +16,10 @@
                         <a class="nav-link text-white" href="/admin/dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Clients</a>
+                        <a class="nav-link text-white" href="/admin/dashboard/clients.php">Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/admin/dashboard/reservation.php">Reservation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="#">Services</a>

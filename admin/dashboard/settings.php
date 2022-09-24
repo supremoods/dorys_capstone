@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['admin_id'])) {
+        header("Location: /admin");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn custom-bg shadow-none" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" id="ann_cancel_btn" class="btn custom-bg shadow-none" data-bs-dismiss="modal">Cancel</button>
                                 <button type="submit" id="ann_sv_btn" class="btn custom-bg-2 shadow-none" >Save</button>
                             </div>
                         </div>
@@ -57,7 +63,7 @@
                             <h5 class="card-title mb-2 m-0">Shutdown Website</h5>
                             <div class="form-check form-switch">
                                 <form>
-                                    <input onchange="upd_shutdown(this.value)" class="form-check-input" type="checkbox" id="shutdown-toggle">
+                                    <input class="form-check-input" type="checkbox" id="shutdown-toggle">
                                 </form>
                             </div>
                         </div>
@@ -87,18 +93,18 @@
                                     <h6 class="card-subtitle mb-1 fw-bold p-2">Phone Number</h6>
                                     <p class="card-text mb-1">
                                         <i class="bi bi-telephone-fill"></i>
-                                        <span id="mn1"></span>
+                                        <span id="phone_number_1"></span>
                                     </p>
                                     <p class="card-text">
                                         <i class="bi bi-telephone-fill"></i>
-                                        <span id="mn2"></span>
+                                        <span id="phone_number_2"></span>
                                     </p>
                                 </div>
                                 <div class="mb-4">
                                     <h6 class="card-subtitle mb-1 fw-bold p-2">E-mail</h6>
                                     <p class="card-text" id="email">
                                         <i class=" bi bi-envelope-fill"></i>
-                                        <span id="mail"></span>
+                                        <span id="email"></span>
                                     </p>
                                 </div>
                             </div>
@@ -107,11 +113,11 @@
                                     <h6 class="card-subtitle mb-1 fw-bold p-2">Social Links</h6>
                                     <p class="card-text mb-1">
                                         <i class="bi bi-twitter me-1"></i>
-                                        <span id="tw"></span>
+                                        <span id="twitter"></span>
                                     </p>
                                     <p class="card-text">
                                         <i class="bi bi-facebook me-1"></i>
-                                        <span id="fb"></span>
+                                        <span id="facebook"></span>
                                     </p>
                                 </div>
                                 <div class="mb-4">
@@ -125,10 +131,12 @@
                 <!--- Contact Details Form--->
                 <div class="modal fade" id="contact-settings" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg mb-4">
-                        <form class="" method="post" id="contacts_s_form">
+                        <form method="post" id="contacts_s_form" enctype="multipart/form-data">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Contact Detail Settings</h5>
+                                </div>
+                                <div class="modal-message">
                                 </div>
                                 <div class="modal-body">
                                     <div class="container-fluid p-0">
@@ -146,18 +154,18 @@
                                                     <label class="form-label fw-bold">Mobile Number (with country code)</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="mn1" id="mn1_f" class="form-control shadow-none">
+                                                        <input type="text" name="phone_number_1" id="mn1_f" class="form-control shadow-none">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="mn2" id="mn2_f" class="form-control shadow-none">
+                                                        <input type="text" name="phone_number_2" id="mn2_f" class="form-control shadow-none">
                                                     </div>
                                                 </div>
                                                 <div class=" mb-3">
                                                     <label class="form-label fw-bold">E-mail</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                                                        <input type="email" name="mail" id="mail_f" class="form-control shadow-none">
+                                                        <input type="email" name="email" id="mail_f" class="form-control shadow-none">
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,15 +174,15 @@
                                                     <label class="form-label fw-bold">Social Links</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-twitter me-1"></i></span>
-                                                        <input type="text" name="tw" id="tw_f" class="form-control shadow-none" required>
+                                                        <input type="text" name="twitter" id="tw_f" class="form-control shadow-none" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-facebook me-1"></i></span>
-                                                        <input type="text" name="fb" id="fb_f" class="form-control shadow-none" required>
+                                                        <input type="text" name="facebook" id="fb_f" class="form-control shadow-none" required>
                                                     </div>
                                                     <div class=" mb-3">
                                                         <label class="form-label fw-bold">iFrame Src</label>
-                                                        <input name="iframe" id="iframe_f" type="text" class="form-control shadow-none" required>
+                                                        <input name="iframe" id="iframe-f" type="text" class="form-control shadow-none" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -183,8 +191,8 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" onclick="contacts_f(contacts_data)" class="btn custom-bg shadow-none" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn custom-bg-2 shadow-none" data-bs-dismiss="modal">Save</button>
+                                    <button type="button" class="btn custom-bg shadow-none" data-bs-dismiss="modal" id="cf-cancel-btn">Cancel</button>
+                                    <button type="submit" name="submit" class="btn custom-bg-2 shadow-none" id="save-contact">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -195,5 +203,6 @@
     </div>
     <?php include_once($_SERVER['DOCUMENT_ROOT'].'/templates/footer_scripts.php')?>
     <script src="/vendors/js/admin/settings.js"></script>
+    <script src="/vendors/js/admin/authentication/auth_logout.js"></script>
 </body>
 </html>

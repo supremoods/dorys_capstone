@@ -1,27 +1,28 @@
 <?php
+
     require_once($_SERVER['DOCUMENT_ROOT'].'/models/admin_model/SqlQuery.php');
 
-    class FetchAnnouncements extends SqlQuery{
+    class FetchWebStats extends SqlQuery{
         public function fetchRow(){
-            if(!$this->fetchAnnouncement()){
+            if(!$this->fetchWebStats()){
                 return false;
             }
-            $row = $this->fetchAnnouncement();
+            $row = $this->fetchWebStats();
             return $row;
         }
     }
 
-    $fetchAnnouncements = new FetchAnnouncements;
+    $fetchWebStats = new FetchWebStats;
 
-    if($fetchAnnouncements->fetchRow()){
-        $row = $fetchAnnouncements->fetchRow();
+    if($row = $fetchWebStats->fetchRow()){
         echo json_encode([
             'status' => true,
-            'announcement' => $row['message']
+            'toggle' => $row['shutdown'],
         ]);
     } else {
         echo json_encode([
             'status' => false
         ]);
     }
+
 ?>
