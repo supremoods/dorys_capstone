@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +81,6 @@
         include('../modal/registration.php');
         include_once('../templates/footer_scripts.php');
     ?>
-
 </body>
 
 </html>

@@ -159,7 +159,7 @@
                 <div class="announcement">
                     <h1>Announcement</h1>
                     <div class="">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        <p class="announcement-message">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                         when an unknown printer took a galley of type
                         and scrambled it to make a type specimen book.</p>
@@ -229,7 +229,8 @@
                 include('modal/registration.php');
             ?>
         </div>
-                    <!-- Bootstrap/SwiperJs -->
+
+        <!-- Bootstrap/SwiperJs -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -238,6 +239,7 @@
         <script src="vendors/js/authentication/auth_reg.js"></script>
         <script src="vendors/js/authentication/auth_login.js"></script>
         <script src="vendors/js/authentication/auth_logout.js"></script>
+        <script src="vendors/js/main.js"></script>
         <script>
             var swiper = new Swiper(".swiper-image", {
                 spaceBetween: 30,
@@ -247,10 +249,8 @@
                 delay:3500,
                 disableOnInteraction: false,
                 }
-
             });
         </script>
-
         <script>
             var swiper = new Swiper(".myServices-Swiper", {
                 watchSlidesProgress: true,
