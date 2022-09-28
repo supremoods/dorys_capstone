@@ -1,12 +1,12 @@
 $(document).ready(() => {
     if (!fetchAnnouncements()) {
-        $("#announcement_message").text("No announcements");    
+        $("#announcement_message").text("No announcements");
     }
     fetchContacts();
     fetchWebStats();
 });
 
-$(document).ready(function(){
+$(document).ready(function() {
     $("#contacts_s_form").on("submit", function(e) {
         e.preventDefault();
         console.log("hello");
@@ -27,7 +27,7 @@ $(document).ready(function(){
             },
             success: (data) => {
                 console.log(data);
-                if(data.status){
+                if (data.status) {
                     populateContactDetails(data.contact_details.address,
                         data.contact_details.gmap,
                         data.contact_details.phone_number_1,
@@ -36,7 +36,7 @@ $(document).ready(function(){
                         data.contact_details.twitter,
                         data.contact_details.facebook,
                         data.contact_details.iframe);
-                }else{
+                } else {
                     return false;
                 }
             },
@@ -51,10 +51,10 @@ $(document).ready(function(){
 // Update Announcement
 $("#ann_sv_btn").click(() => {
     const announcement = $("#announcement_text_area").val();
-    if(!announcement == ""){
-        $("#announcement_message").load("../../controller/admin_controller/SettingsController.php",{
+    if (!announcement == "") {
+        $("#announcement_message").load("../../controller/admin_controller/SettingsController.php", {
             message: announcement,
-            announcement: true, 
+            announcement: true,
         });
         setTimeout(() => {
             $("#ann_cancel_btn").click();
@@ -62,12 +62,12 @@ $("#ann_sv_btn").click(() => {
             $("#ann_sv_btn").html("Save");
         }, 1500);
         $("#ann_sv_btn").html(`${loadSuccessBtn()}`);
-    }else{
+    } else {
         $(".modal-message").html(`${alertMessage("alert-danger", "Please fill out the field!")}`);
     }
 });
 
-$("#shutdown-toggle").change(() => { 
+$("#shutdown-toggle").change(() => {
     const toggle = $("#shutdown-toggle").prop("checked");
     shutdownToggle(toggle);
 });
@@ -78,10 +78,10 @@ const fetchAnnouncements = () => {
         type: "GET",
         dataType: "JSON",
         success: (data) => {
-            if(data.status){
-                $("#announcement_message").text(`${data.announcement}`);  
-                $("#announcement_text_area").val(`${data.announcement}`);  
-            }else{
+            if (data.status) {
+                $("#announcement_message").text(`${data.announcement}`);
+                $("#announcement_text_area").val(`${data.announcement}`);
+            } else {
                 return false;
             }
         },
@@ -98,7 +98,7 @@ const alertMessage = (message, type) => {
             </div>`
 }
 
-const loadSuccessBtn = () =>{
+const loadSuccessBtn = () => {
     return `
     <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
     Saving...
@@ -114,8 +114,7 @@ const shutdownToggle = (toggle) => {
             shutdown: true,
             toggle: toggle
         },
-        success: (data) => {
-        },
+        success: (data) => {},
         error: (err) => {
             console.log(err);
         }
@@ -128,9 +127,9 @@ const fetchWebStats = () => {
         type: "GET",
         dataType: "JSON",
         success: (data) => {
-            if(data.toggle == "1"){
+            if (data.toggle == "1") {
                 $("#shutdown-toggle").prop('checked', true);
-            }else{
+            } else {
                 $("#shutdown-toggle").prop('checked', false);
             }
         }
@@ -143,7 +142,7 @@ const fetchContacts = () => {
         type: "GET",
         dataType: "JSON",
         success: (data) => {
-            if(data.status){
+            if (data.status) {
                 populateContactDetails(data.contact_details.address,
                     data.contact_details.gmap,
                     data.contact_details.phone_number_1,
@@ -152,7 +151,7 @@ const fetchContacts = () => {
                     data.contact_details.twitter,
                     data.contact_details.facebook,
                     data.contact_details.iframe);
-            }else{
+            } else {
                 return false;
             }
         },
@@ -170,7 +169,7 @@ const populateContactDetails = (address,
     twitter,
     facebook,
     iframe) => {
-    
+
     $("#address").text(`${address}`);
     $("#gmap").text(`${gmap}`);
     $("#phone_number_1").text(`${phone_number_1}`);
@@ -178,7 +177,7 @@ const populateContactDetails = (address,
     $("#email").text(`${email}`);
     $("#twitter").text(`${twitter}`);
     $("#facebook").text(`${facebook}`);
-    $("#iframe").attr('src',`${iframe}`);
+    $("#iframe").attr('src', `${iframe}`);
 
     $("#address_f").val(`${address}`);
     $("#gmap_f").val(`${gmap}`);
@@ -191,5 +190,5 @@ const populateContactDetails = (address,
 
 
 
-    
+
 }

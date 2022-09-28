@@ -89,11 +89,5 @@
                         $twitter, 
                         $facebook, 
                         $iframe);
-    }else{
-        echo json_encode([
-            'status' => false,
-            'message' => 'No data was sent'
-        ]);
     }
-
 ?>
