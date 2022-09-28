@@ -1,6 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     var calendarEl = document.getElementById('calendar');
-  
     var calendar = new FullCalendar.Calendar(calendarEl, {
       timeZone: 'UTC',
       themeSystem: 'bootstrap5',
@@ -15,3 +14,4 @@ document.addEventListener('DOMContentLoaded', function () {
   
     calendar.render();
   });
+
