@@ -31,6 +31,13 @@
   
 * {
     font-family: 'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+    text-decoration:none;
+    list-style:none;
+    
 }
 
 .bg-darky{
@@ -158,12 +165,6 @@ input[type=number] {
 /*--Top Offers--*/
 .card {
     border: 2px;
-}
-
-.card:hover {
-    border: 3px solid #EB6A00;
-    transform: scale(1.03);
-    transition: all 0.3s;
 }
 
 /*--Announcement--*/

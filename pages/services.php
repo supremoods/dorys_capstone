@@ -12,6 +12,7 @@
     <?php require('../templates/header_links.php'); ?>
     <link rel="stylesheet" href="../vendors/css/global.css">
     <link rel="stylesheet" href="../vendors/css/footer.css">
+
     <style>
         .item:hover {
             border-top-color: #EB6A00 !important;

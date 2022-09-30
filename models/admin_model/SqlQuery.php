@@ -219,6 +219,65 @@
                 }
             }
         }
+
+        public function InsertServices(
+                                    $token,
+                                    $service_name,
+                                    $service_features,
+                                    $service_description,
+                                    $service_images,
+                                    $service_price,){    
+
+            $sql = "INSERT INTO services (
+                            services_token, 
+                            name, 
+                            features, 
+                            description, 
+                            images,
+                            price) VALUES 
+                            ('$token', 
+                            '$service_name', 
+                            '$service_features', 
+                            '$service_description', 
+                            '$service_images',
+                            '$service_price')";
+
+            $result = $this->dbConnection()->query($sql);
+            if ($result) {
+                // if the query is successful, return true
+                if ($result) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+
+
+        public function fetchServices(){
+            $sql = "SELECT * FROM services";
+            $result = $this->dbConnection()->query($sql);
+            if($result){
+                return $result;
+            }
+        }
+
+        public function fetchServiceDetails($token){
+            $sql = "SELECT * FROM services WHERE services_token = '$token'";
+            $result = $this->dbConnection()->query($sql);
+            if($result){
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }   
+        
     }
 
 ?>

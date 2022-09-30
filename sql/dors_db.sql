@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2022 at 02:09 PM
+-- Generation Time: Sep 30, 2022 at 01:00 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -159,6 +159,44 @@ CREATE TABLE `reservation` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `services`
+--
+
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL,
+  `services_token` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `features` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `images` longtext NOT NULL,
+  `price` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `services_token`, `name`, `features`, `description`, `images`, `price`) VALUES
+(32, '2045db5295d25244', '121312', 'sdasda asd,asd,as,asdddd,dassd', 'asdasdasda', 'IMG_20210210_162558.jpg,IMG_20210210_162632.jpg,IMG_20210210_162645.jpg', '1900909'),
+(33, '0b4c45dee8051588', '23342342', 'asdassd,sdasdas,asdasd', 'asdasdd', 'DSC_2039.jpg', '2222'),
+(34, '5b7ac7e1019ea830', 'ppass', '2123 asdasdas,asdasd,asda asd,sdasdasd,asd', 'sdasdasd asdas  dasd asdsd', '222.png, 30739787_1588591967926106_7638881661316235264_n.jpg, 86971185_2680674678717824_4104365190093471744_n.jpg, 148263979_3603630946422188_8979318380598454207_n.jpg, 264165739_4501303539988253_4768271605685310825_n.jpg', '2000'),
+(35, 'fe1e1bd3353e43a7', 'poasoida', '2123 asdasdas,asdasd,asda asd,sdasdasd,asd,jk', 'sdasdasd', 'DSC_2039.jpg', '222');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services_gallery`
+--
+
+CREATE TABLE `services_gallery` (
+  `id` int(11) NOT NULL,
+  `reservation_token` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `website_stats`
 --
 
@@ -216,6 +254,18 @@ ALTER TABLE `reservation`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `services`
+--
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `services_gallery`
+--
+ALTER TABLE `services_gallery`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `website_stats`
 --
 ALTER TABLE `website_stats`
@@ -259,6 +309,18 @@ ALTER TABLE `contact_details`
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `services`
+--
+ALTER TABLE `services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `services_gallery`
+--
+ALTER TABLE `services_gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

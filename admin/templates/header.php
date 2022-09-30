@@ -22,7 +22,7 @@
                         <a class="nav-link text-white" href="/admin/dashboard/reservation.php">Reservation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Services</a>
+                        <a class="nav-link text-white" href="/admin/dashboard/services.php">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="/admin/dashboard/settings.php">Settings</a>

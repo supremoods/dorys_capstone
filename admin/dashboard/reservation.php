@@ -8,11 +8,10 @@
         <title>Admin | Reservations</title>
         <link rel="stylesheet" href="/vendors/css/admin/global.css">
         <?php include_once($_SERVER['DOCUMENT_ROOT'] . '/templates/header_links.php') ?>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
         <link rel="stylesheet" href="/vendors/css/admin/reservation.css">
         <link rel="stylesheet" href="/vendors/fullcalendar/lib/main.min.css">
-
-
     </head>
 
     <body>
@@ -23,7 +22,8 @@
                     <h3 class="mb-4">Reservations</h3>
                     <div class="row w-100 d-flex justify-content-center align-items-center">
                         <div class="col-md-9">
-                            <div id="calendar"></div>
+                            <div id="calendar">
+                            </div>
                         </div>
                     </div>
                 </div>
