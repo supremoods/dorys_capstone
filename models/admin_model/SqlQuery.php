@@ -277,6 +277,58 @@
                 }
             }
         }   
+
+        public function UpdateServiceDetails($service_name, 
+        $service_features,
+        $service_description,
+        $service_images,
+        $service_price,
+        $service_token){
+                $sql = "UPDATE services SET name = '$service_name', features = '$service_features', description = '$service_description', images = '$service_images', price = '$service_price' WHERE services_token = '$service_token'";
+    
+                $result = $this->dbConnection()->query($sql);
+    
+                if ($result) {
+                    // if the query is successful, return true
+                    if ($result) {
+                        return true;
+                    } else {
+                        // if the query is not successful, return false
+                        return false;
+                    }
+                }
+        }
+
+        public function DeleteService($token){
+
+            if($this->deleteServiceImages($token)){
+                $sql = "DELETE FROM services WHERE services_token = '$token'";
+                $result = $this->dbConnection()->query($sql);
+                if($result){
+                    return true;
+                }
+            }
+
+        }
+
+        public function deleteServiceImages($token){
+            $sql = "SELECT * FROM services WHERE services_token = '$token'";
+
+            $result = $this->dbConnection()->query($sql);
+            if($result){
+                // fetch row images
+                $row = $result->fetch_assoc();
+                $images = $row['images'];
+                $images = explode(",", $images);
+                foreach($images as $image){
+                   if(!unlink($_SERVER['DOCUMENT_ROOT']."/vendors/images/services/".trim($image))){
+                       return false;
+                   }
+                }
+
+                return true;
+            }
+        }
         
     }
 

@@ -49,7 +49,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn cancel-btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary" id="add-services-btn-m">Save</button>
+                    <button type="submit" class="btn btn-primary" id="edit-services-btn-m">Save</button>
                 </div>
             </form>
         </div>

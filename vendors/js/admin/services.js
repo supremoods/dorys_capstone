@@ -43,7 +43,7 @@ $(document).ready(function () {
 			data: form_data,
 			contentType: false,
 			beforeSend: () => {
-				$("#add-service").html(`${loadSuccessBtn()}`);
+				$("#add-service").html(`${loadSuccessBtn('adding...')}`);
 			},
 			complete: () => {
 				$(".cancel-btn").click();
@@ -67,10 +67,10 @@ $(document).ready(function () {
 });
 
 
-const loadSuccessBtn = () => {
+const loadSuccessBtn = (message) => {
 	return `
     <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-    Adding...
+    ${message}
     `;
 }
 
@@ -84,8 +84,6 @@ const emptyForm = () => {
 	$("#service-description-e").val("");
 	$("#service-features-e").val("");
 	$("#service-price-e").val("");
-
-	$('.bootstrap-tagsinput').find('span').remove()
 
 	$(".uploaded").empty()
 	$(".input-images").empty();
@@ -141,20 +139,11 @@ const populateServiceDetails = (data) => {
 	$("#service-description-e").val(`${data.description}`);
 	$("#service-features-e").tagsinput('add', `${data.features}`);
 	$("#service-token").val(`${data.services_token}`);
-
-	// render the tagsItems in bootstrap tagsinput
-
-	//$(".bootstrap-tagsinput").html(`${tagsItems(data.features.split(","))}`);
-	
 	$("#service-price-e").val(`${data.price}`);
 }
 
 
 const tagsItems = (tags) => {	
-	// return `
-	// 	<span class="tag label label-info">sdasda asd<span data-role="remove"></span></span>
-	// 	<input type="text" placeholder="">
-	// `
 	let tagsItems = "";
 	tags.forEach(tag => {
 		tagsItems += `
@@ -180,17 +169,13 @@ $(document).ready(function () {
 			data: form_data,
 			contentType: false,
 			beforeSend: () => {
-				// $("#add-service").html(`${loadSuccessBtn()}`);
+				$("#edit-services-btn-m").html(`${loadSuccessBtn('saving...')}`);
 			},
 			complete: () => {
-				// $(".cancel-btn").click();
-				// $("#add-services-btn-m").html("Add");
-				// emptyForm();
-				// $('.input-images').imageUploader({
-				// 	maxSize: 20 * 1024 * 1024,
-				// 	maxFiles: 20
-				// });
-				// loadService();
+				$(".cancel-btn").click();
+				$("#edit-services-btn-m").html("Save");
+				emptyForm();
+				loadService();
 			},
 			success: (data) => {
 				console.log(data);
@@ -202,3 +187,22 @@ $(document).ready(function () {
 	});
 
 });
+
+
+const deleteService = (service_token) => {
+	console.log(service_token);
+
+	$.ajax({
+		url: "../../controller/admin_controller/DeleteServiceController.php",
+		type: "POST",
+		data: {token: service_token},
+		success: (data) => {
+			console.log(data);
+			loadService();
+		},
+		error: (err) => {
+			console.log(err);
+		}
+	});
+
+}
