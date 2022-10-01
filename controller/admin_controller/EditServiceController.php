@@ -14,9 +14,8 @@
                         $service_token
                         ){
                             $updatedImages = array();
-
+                            
                             $fetchImages = $this->fetchOldImages($service_token);
-
 
                             for($i = 0; $i < count($old_images); $i++){
                                 if($old_images[$i] != ""){
