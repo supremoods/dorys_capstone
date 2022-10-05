@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,15 +58,31 @@ session_start();
         <h1 class="mt-5 pt-4 mb-5 text-center fw-bold h-font fs-32">Top Offers</h1>
         <div class="container ">
             <div class="row">
+            <?php
+                $services = new SqlQuery();
+
+                $result = $services->fetchServices();
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $images = explode(',', $row['images']);
+                        $features = explode(',', $row['features']);
+                ?>
                 <div class="col-lg-4 col-md-6 my-3">
                     <div class="card border-0 shadow " style="max-width: 350px; margin: auto;">
-                        <img src="vendors/images/carousel/car-2.jpg" class="card-img-top">
+                        <img src="vendors/images/services/<?=$images[0]?>" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title text-center mb-4 h-font mt-2">VIP</h5>
                             <div class="features mb-2 text-center">
-                                <h6 class="mb-1 ">Features</h6>
+                                <h6 class="mb-1">Features</h6>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 ">
-                                    Air Conditioned<br>Videoke<br>Barbecue Grill<br>Food Warmer<br>Water Dispenser
+                                            <?php
+                                                foreach ($features as $feature) {
+                                            ?>
+                                            <p><?=$feature?></p>
+                                            <?php
+                                                }
+                                            ?>
                                 </span>
                             </div>
                             <div class="rating mb-4">
@@ -79,68 +96,16 @@ session_start();
                                 </span>
                             </div>
                             <div class="d-flex justify-content-evenly mb-2">
-                                <a href="#" class="btn btn-sm custom-bg shadow-none">Book Now</a>
+                                <a href="/pages/reservation.php?token=<?=$row['services_token']?>" class="btn btn-sm custom-bg shadow-none">Book Now</a>
                                 <a href="#" class="btn btn-sm custom-bg shadow-none">More Details</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 my-3 ">
-                    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                        <img src="vendors/images/carousel/car-2.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title text-center mb-4 h-font mt-2">VIP</h5>
-                            <div class="features mb-2 text-center">
-                                <h6 class="mb-1 ">Features</h6>
-                                <span class="badge rounded-pill bg-light text-dark mb-3 ">
-                                    Air Conditioned<br>Videoke<br>Barbecue Grill<br>Food Warmer<br>Water Dispenser
-                                </span>
-                            </div>
-                            <div class="rating mb-4">
-                                <h6 class="mb-1 fw-bold">Rating</h6>
-                                <span class="badge rounded-pill">
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                </span>
-                            </div>
-                            <div class="d-flex justify-content-evenly mb-2">
-                                <a href="#" class="btn btn-sm custom-bg shadow-none">Book Now</a>
-                                <a href="#" class="btn btn-sm custom-bg shadow-none">More Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 my-3">
-                    <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                        <img src="vendors/images/carousel/car-2.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title text-center mb-4 h-font mt-2">VIP</h5>
-                            <div class="features mb-2 text-center">
-                                <h6 class="mb-1 ">Features</h6>
-                                <span class="badge rounded-pill bg-light text-dark mb-3 ">
-                                    Air Conditioned<br>Videoke<br>Barbecue Grill<br>Food Warmer<br>Water Dispenser
-                                </span>
-                            </div>
-                            <div class="rating mb-4">
-                                <h6 class="mb-1 fw-bold">Rating</h6>
-                                <span class="badge rounded-pill">
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                </span>
-                            </div>
-                            <div class="d-flex justify-content-evenly mb-2">
-                                <a href="#" class="btn btn-sm custom-bg shadow-none">Book Now</a>
-                                <a href="#" class="btn btn-sm custom-bg shadow-none">More Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <?php
+                }
+            }
+            ?>
             </div>
         </div>
 
