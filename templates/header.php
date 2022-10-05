@@ -1,3 +1,6 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/admin_controller/FetchClient.php');
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-lg-3 py-lg-2 shadow-sm sticky-top">
   <div class="container-fluid">
     <!-- <div>
@@ -25,33 +28,39 @@
           <a class="nav-link me-2" href="/pages/contact.php">Contact</a>
         </li>
       </ul>
-
       <?php
-        if(!isset($_SESSION['session_token'])){
+      if (!isset($_SESSION['session_token'])) {
       ?>
-      <div class="nav-flex">
-        <button type="button" class="btn shadow-none me-lg-3 me-2 custom-bg" data-bs-toggle="modal" data-bs-target="#loginModal">
-        Login
-        </button>
-        <button type="button" class="btn shadow-none custom-bg-2" data-bs-toggle="modal" data-bs-target="#registerModal">
-        Register
-        </button>
-      </div>
+        <div class="nav-flex">
+          <button type="button" class="btn shadow-none me-lg-3 me-2 custom-bg" data-bs-toggle="modal" data-bs-target="#loginModal">
+            Login
+          </button>
+          <button type="button" class="btn shadow-none custom-bg-2" data-bs-toggle="modal" data-bs-target="#registerModal">
+            Register
+          </button>
+        </div>
       <?php
-        }else{
+      } else {
       ?>
-      <div class="nav-flex">
-        <button type="button" class="btn shadow-none me-lg-3 me-2 custom-bg" id="logout">
-        Logout
-        </button>
-      </div>
+        <!-- create drop down logout -->
+        <?php
+        $fetchClient = new FetchClient();
+        $client = $fetchClient->fetchRow($_SESSION['user_token']);
+        ?>
+        <div class="dropdown">
+          <button class="btn-avatar" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- <img src="/vendors/images/clients/" alt="user" class="user-img">  -->
+            <img src="/vendors/images/clients/<?= $client['avatar'] ?>" alt="user" class="user-img">
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+            <li class="w-100 ps-3"><b><?=$client['fullname']?></b></li> 
+            <hr>
+            <li id="logout" class="dropdown-item">Logout</li>
+          </ul>
+        </div>
       <?php
-        }
+      }
       ?>
     </div>
   </div>
 </nav>
-
-
-
-

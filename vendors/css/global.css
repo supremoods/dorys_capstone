@@ -132,12 +132,6 @@ input[type=number] {
     border: 2px;
 }
 
-.card-body:hover {
-    border: 2px solid #EB6A00;
-    transform: scale(1.03);
-    transition: all 0.3s;
-}
-
 
 /*--Announcement--*/
 
@@ -170,4 +164,20 @@ h1 {
     margin: 0 auto;
     height: 2.7px;
     background-color: #EB6A00;
+}
+
+.btn-avatar{        
+    border-radius: 50%;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+    object-fit: cover;
+}
+
+
+.btn-avatar img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
 }
