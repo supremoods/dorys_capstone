@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2022 at 01:00 PM
+-- Generation Time: Oct 05, 2022 at 05:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -112,7 +112,10 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (60, '748f01bf3b8e899e', '6e59879b29a54e43', '2022-09-25 01:21:47', NULL),
 (61, 'b64b6d28002632fe', '6e59879b29a54e43', '2022-09-26 01:24:49', NULL),
 (62, 'b8f2bd61b302dfbc', '6e59879b29a54e43', '2022-09-27 10:05:55', '2022-09-27 10:05:57'),
-(63, '0d2187206460d5da', '6e59879b29a54e43', '2022-09-27 11:27:11', NULL);
+(63, '0d2187206460d5da', '6e59879b29a54e43', '2022-09-27 11:27:11', NULL),
+(64, 'b7725d067c526bba', '6e59879b29a54e43', '2022-10-03 07:18:50', NULL),
+(65, '3c76d72299e02d4a', '6e59879b29a54e43', '2022-10-04 10:15:17', '2022-10-04 10:50:00'),
+(66, 'f984608fa768e7e0', '6e59879b29a54e43', '2022-10-04 10:50:07', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,6 +142,18 @@ CREATE TABLE `contact_details` (
 
 INSERT INTO `contact_details` (`id`, `admin_id`, `address`, `gmap`, `phone_number_1`, `phone_number_2`, `email`, `twitter`, `facebook`, `iframe`) VALUES
 (3, '8de42f70f3bc82f1962b96cada', 'Longos, Malabon', 'https://goo.gl/maps/VZomZsNYu12ehXJT7', '09972114073', '09923124442', 'diakoisangrobot12@gmail.com', 'https://www.twitter.com/', 'https://www.facebook.com/', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.117569972251!2d120.95702681375505!3d14.649266879812126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5b6ba02957f:0x91b89c7caf3fb618!2s20 Hasa-Hasa!5e0!3m2!1sfil!2sph!4v1659932886552!5m2!1sfil!2sph');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_reservation`
+--
+
+CREATE TABLE `request_reservation` (
+  `id` int(11) NOT NULL,
+  `reservation_token` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -177,10 +192,7 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `services_token`, `name`, `features`, `description`, `images`, `price`) VALUES
-(32, '2045db5295d25244', '121312', 'sdasda asd,asd,as,asdddd,dassd', 'asdasdasda', 'IMG_20210210_162558.jpg,IMG_20210210_162632.jpg,IMG_20210210_162645.jpg', '1900909'),
-(33, '0b4c45dee8051588', '23342342', 'asdassd,sdasdas,asdasd', 'asdasdd', 'DSC_2039.jpg', '2222'),
-(34, '5b7ac7e1019ea830', 'ppass', '2123 asdasdas,asdasd,asda asd,sdasdasd,asd', 'sdasdasd asdas  dasd asdsd', '222.png, 30739787_1588591967926106_7638881661316235264_n.jpg, 86971185_2680674678717824_4104365190093471744_n.jpg, 148263979_3603630946422188_8979318380598454207_n.jpg, 264165739_4501303539988253_4768271605685310825_n.jpg', '2000'),
-(35, 'fe1e1bd3353e43a7', 'poasoida', '2123 asdasdas,asdasd,asda asd,sdasdasd,asd,jk', 'sdasdasd', 'DSC_2039.jpg', '222');
+(41, 'f2d5233d569bf1b0', 'Street Photography', 'traffic  lights,pedestrian', 'This is a sample description', 'IMG_20211210_160105.jpg, IMG_20211210_160144.jpg', '2500');
 
 -- --------------------------------------------------------
 
@@ -248,6 +260,12 @@ ALTER TABLE `contact_details`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `request_reservation`
+--
+ALTER TABLE `request_reservation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reservation`
 --
 ALTER TABLE `reservation`
@@ -297,13 +315,19 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
 --
 ALTER TABLE `contact_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `request_reservation`
+--
+ALTER TABLE `request_reservation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reservation`
@@ -315,7 +339,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `services_gallery`
