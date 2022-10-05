@@ -61,6 +61,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                                 <label for="phone">Phone</label>
                                 <input type="text" class="form-control" id="phone" name="phone" value="<?=$clientDetails['number']?>" placeholder="Enter your phone number" disabled>
                             </div>
+                            <div class="form-group">
+                                <label for="settlement_fee">Settlement Fee</label>
+                                <input type="text" class="form-control" id="settlement_fee" placeholder="Enter your settlement fee"  value="₱ <?=$fetchServiceDetails['price']?>" name="settlement_fee" disabled>
+                            </div>
+                            <hr class="my-4">
+                            <div class="form-group">
+                                <label for="payment_method">Payment Method</label>
+                                <select class="form-control" name="payment_method" id="payment_method">
+                                    <option value="cash">Cash</option>
+                                    <option value="card">Card</option>
+                                </select>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
@@ -75,17 +87,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="payment_method">Payment Method</label>
-                                <select class="form-control" name="payment_method" id="payment_method">
-                                    <option value="cash">Cash</option>
-                                    <option value="card">Card</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="settlement_fee">Settlement Fee</label>
-                                <input type="number" class="form-control" id="settlement_fee" placeholder="Enter your settlement fee" name="settlement_fee">
-                            </div>
+
                             <button type="submit" class="btn btn-primary w-100 my-3">Submit</button>
                         </form>
                     </div>
