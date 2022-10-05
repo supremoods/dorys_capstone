@@ -72,7 +72,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                     <div class="card border-0 shadow " style="max-width: 350px; margin: auto;">
                         <img src="vendors/images/services/<?=$images[0]?>" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title text-center mb-4 h-font mt-2">VIP</h5>
+                            <h5 class="card-title text-center mb-4 h-font mt-2"><?=$row['name']?></h5>
                             <div class="features mb-2 text-center">
                                 <h6 class="mb-1">Features</h6>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 ">
@@ -96,7 +96,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                                 </span>
                             </div>
                             <div class="d-flex justify-content-evenly mb-2">
+                                <?php
+                                    if(isset($_SESSION['session_token'])){
+                                ?>
                                 <a href="/pages/reservation.php?token=<?=$row['services_token']?>" class="btn btn-sm custom-bg shadow-none">Book Now</a>
+                                <?php       
+                                    }else{
+                    
+                                ?>
+                                 <button href="#" data-bs-toggle="modal" data-bs-target="#loginModal" class="btn btn-sm custom-bg shadow-none">Book Now</button>
+                                 <?php
+                                    }
+                                 ?>
                                 <a href="#" class="btn btn-sm custom-bg shadow-none">More Details</a>
                             </div>
                         </div>
