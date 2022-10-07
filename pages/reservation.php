@@ -49,6 +49,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                     <div class="card-body">
                         <!-- Reservation Form -->
                         <form method="POST" id="reservation_form">
+                            <input type="hidden" name="service_token" value="<?=$_GET['token']?>">  
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" value="<?=$clientDetails['fullname']?>" placeholder="Enter your name" disabled>
@@ -87,8 +88,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                                     </div>
                                 </div>
                             </div>
-
-                            <button type="submit" class="btn btn-primary w-100 my-3">Submit</button>
+                            <button type="submit" class="btn btn-primary w-100 my-3" id="reservation-btn">Submit</button>
                         </form>
                     </div>
                 </div>
