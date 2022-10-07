@@ -128,11 +128,12 @@
                                                                 <th scope="col">Payment Type</th>
                                                                 <th scope="col">Address</th>
                                                                 <th scope="col">Settlement Fee</th>
+                                                                <th scope="col">Status</th>
                                                                 <th scope="col">Action</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody class="load-clients">
-
+                                                        <tbody class="load-reservation">
+                                      
                                                         </tbody>
                                                     </table>
                                                 </div>

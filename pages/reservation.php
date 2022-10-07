@@ -64,7 +64,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                             </div>
                             <div class="form-group">
                                 <label for="settlement_fee">Settlement Fee</label>
-                                <input type="text" class="form-control" id="settlement_fee" placeholder="Enter your settlement fee"  value="₱ <?=$fetchServiceDetails['price']?>" name="settlement_fee" disabled>
+                                <input type="text" class="form-control"  id="settlement_fee" name="settlement_fee"placeholder="Enter your settlement fee"  value="<?=$fetchServiceDetails['price']?>" readonly  >
                             </div>
                             <hr class="my-4">
                             <div class="form-group">
@@ -102,7 +102,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
     include('../modal/registration.php');
     include_once('../templates/footer_scripts.php');
     ?>
-
+    <script src="../vendors/js/reservation.js"></script>
 </body>
 
 </html>

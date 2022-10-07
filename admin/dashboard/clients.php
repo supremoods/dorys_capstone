@@ -49,5 +49,4 @@
     <script src="/vendors/js/admin/client.js"></script>
     <script src="/vendors/js/admin/authentication/auth_logout.js"></script>
 </body>
-
 </html>

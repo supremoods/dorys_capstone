@@ -125,18 +125,20 @@
             }
         }
 
-        public function insertReservation($reservation_token, $user_token, $dateStart, $dateEnd, $payment_method, $settlement_fee){
+        public function insertReservation($user_token, $service_token, $reservation_token ,$dateStart, $dateEnd, $settlement_fee, $payment_method){
 
             $sql = "INSERT INTO reservation (
-                reservation_token,
                 user_token,
-                date_start,
-                date_end,
-                payment_method,
+                service_token,
+                reservation_token,
+                start_datetime,
+                end_datetime,
+                mode_of_payment,
                 settlement_fee
             ) VALUES (
-                '$reservation_token',
                 '$user_token',
+                '$service_token',
+                '$reservation_token',
                 '$dateStart',
                 '$dateEnd',
                 '$payment_method',
@@ -147,12 +149,16 @@
             
             if ($result) {
                 // if the query is successful, return true
-                
+                if($this->insertReservationStatus($reservation_token)){
+                    return true;
+                }else{
+                    return false;
+                }
             } else {
                 // if the query is not successful, return false
                 return false;
             }
-    
+
         }
 
 
@@ -161,6 +167,26 @@
             $result = $this->dbConnection()->query($sql);
             if($result){
                 return true;
+            }
+        }
+
+        public function insertReservationStatus($reservation_token){
+            $sql = "INSERT INTO request_reservation (
+                reservation_token,
+                status
+            ) VALUES (
+                '$reservation_token',
+                'pending'
+            )";
+                
+            $result = $this->dbConnection()->query($sql);
+            
+            if ($result) {
+                // if the query is successful, return true
+                return true;
+            } else {
+                // if the query is not successful, return false
+                return false;
             }
         }
     }
