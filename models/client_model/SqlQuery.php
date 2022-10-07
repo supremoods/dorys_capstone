@@ -125,7 +125,7 @@
             }
         }
 
-        public function insertReservation($reservation_token, $user_token, $name, $email, $phone, $dateStart, $dateEnd, $payment_method, $settlemen_fee){
+        public function insertReservation($reservation_token, $user_token, $dateStart, $dateEnd, $payment_method, $settlement_fee){
 
             $sql = "INSERT INTO reservation (
                 reservation_token,
@@ -135,15 +135,19 @@
                 payment_method,
                 settlement_fee
             ) VALUES (
-                
-                
+                '$reservation_token',
+                '$user_token',
+                '$dateStart',
+                '$dateEnd',
+                '$payment_method',
+                '$settlement_fee'
             )";
-
+                
             $result = $this->dbConnection()->query($sql);
             
             if ($result) {
                 // if the query is successful, return true
-                return true;
+                
             } else {
                 // if the query is not successful, return false
                 return false;
@@ -151,6 +155,14 @@
     
         }
 
+
+        public function setReservationStatus($reservation_token, $status){
+            $sql = "UPDATE reservation SET status = '$status' WHERE reservation_token = '$reservation_token'";
+            $result = $this->dbConnection()->query($sql);
+            if($result){
+                return true;
+            }
+        }
     }
 
 ?>

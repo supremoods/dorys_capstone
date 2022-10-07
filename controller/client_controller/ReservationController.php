@@ -11,7 +11,17 @@
             $settlement_fee,
             $payment_method
         ){
-            echo json_encode("sd");
+            $this->insertReservation(
+                $user_token,
+                $reservation_token,
+                $start_datetime,
+                $end_datetime,
+                $status,
+                $settlement_fee,
+                $payment_method
+            );
+
+            
         }
     }
 
