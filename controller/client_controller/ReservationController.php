@@ -2,10 +2,17 @@
     require_once($_SERVER['DOCUMENT_ROOT'].'/models/client_model/SqlQuery.php');
 
     class ReservationController extends SqlQuery{
-        public function insertReservation(
-            
-        )
-
+        public function registerReservation(
+            $user_token,
+            $reservation_token,
+            $start_datetime,
+            $end_datetime,
+            $status,
+            $settlement_fee,
+            $payment_method
+        ){
+            echo json_encode("sd");
+        }
     }
 
     $reservation = new ReservationController();
@@ -20,7 +27,7 @@
 
 
 
-    $reservation->insertReservation($reservation_token, $user_token, $start_datetime, $end_datetime, $status, $settlement_fee, $payment_method);
+    $reservation->registerReservation($reservation_token, $user_token, $start_datetime, $end_datetime, $status, $settlement_fee, $payment_method);
 
 
 

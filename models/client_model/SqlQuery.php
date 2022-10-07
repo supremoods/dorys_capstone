@@ -125,28 +125,18 @@
             }
         }
 
-        public function inserReservation($reservation_token, $user_token, $name, $email, $phone, $dateStart, $dateEnd, $payment_method, $settlemen_fee){
+        public function insertReservation($reservation_token, $user_token, $name, $email, $phone, $dateStart, $dateEnd, $payment_method, $settlemen_fee){
 
             $sql = "INSERT INTO reservation (
                 reservation_token,
                 user_token,
-                name,
-                email,
-                phone,
                 date_start,
                 date_end,
                 payment_method,
                 settlement_fee
             ) VALUES (
-                '$reservation_token',
-                '$user_token',
-                '$name',
-                '$email',
-                '$phone',
-                '$dateStart',
-                '$dateEnd',
-                '$payment_method',
-                '$settlemen_fee'
+                
+                
             )";
 
             $result = $this->dbConnection()->query($sql);
@@ -160,6 +150,7 @@
             }
     
         }
+
     }
 
 ?>
