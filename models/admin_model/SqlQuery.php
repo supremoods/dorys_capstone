@@ -329,6 +329,76 @@
                 return true;
             }
         }
+
+
+        public function fetchClientReservation($token){
+            $sql = "SELECT * FROM reservation WHERE user_token = '$token'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return $result;
+                }
+            }   
+        }
+
+
+        public function fetchReservationStatus($token){
+            $sql = "SELECT * FROM request_reservation WHERE reservation_token = '$token'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function updateRequestReservation($status, $token){
+            $sql = "UPDATE request_reservation SET status = '$status' WHERE reservation_token = '$token'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }   
+        }
+
+        public function fetchAllReservation(){
+            $sql = "SELECT reservation.user_token, 
+                        reservation.service_token, 
+                        reservation.reservation_token, 
+                        reservation.start_datetime, 
+                        reservation.end_datetime, 
+                        services.name 
+                        FROM reservation 
+                        LEFT JOIN request_reservation ON reservation.reservation_token = request_reservation.reservation_token 
+                        LEFT JOIN services ON services.services_token = resdervation.service_token;
+            ";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return $result;
+                }
+            }
+        }
         
     }
 

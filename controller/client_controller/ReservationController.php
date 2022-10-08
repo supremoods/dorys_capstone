@@ -44,14 +44,20 @@
          
     $reservation = new ReservationController();
     session_start();
+
     $user_token = $_SESSION['user_token'];
     $service_token = $_POST['service_token'];
     $start_datetime = $_POST['dateStart'];
     $end_datetime = $_POST['dateEnd'];
     $payment_method = $_POST['payment_method'];
     $settlement_fee = $_POST['settlement_fee'];
-    
 
-    $reservation->registerReservation($user_token, $service_token, $start_datetime, $end_datetime, $settlement_fee, $payment_method);
+    $reservation->registerReservation(
+                $user_token, 
+                $service_token, 
+                $start_datetime, 
+                $end_datetime, 
+                $settlement_fee, 
+                $payment_method);
 
 ?> 

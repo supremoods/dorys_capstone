@@ -26,7 +26,45 @@
                 $logsHistory = $fetch_client->fetchRowLogs($client_token);
                 ?>
                 <section style="background-color: #eee;">
-                    <div class="container py-5">
+                    <div class="container-fluid py-3" id="client-token" data-token="<?= $client_token ?>">
+                        <div class="container-fluid mb-3 p-0 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#log-history">
+                                Log History
+                            </button>
+                        </div>
+                        <div class="modal fade mb-4 mb-lg-0" id="log-history" tabindex="-1" role="dialog" aria-labelledby="log-history" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="font-bold me-1 p-3">Log History</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="table-responsive-lg w-100">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Login</th>
+                                                        <th scope="col">Logout</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="load-log-history">
+                                                    <?php
+                                                    while ($logs = $logsHistory->fetch_assoc()) {
+                                                    ?>
+                                                        <tr>
+                                                            <td><?= $logs['log_in_stamp'] ?></td>
+                                                            <td><?= $logs['log_out_stamp'] ?></td>
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-lg-3">
                                 <div class="card mb-4">
@@ -46,31 +84,6 @@
                                             }
                                             ?>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="card mb-4 mb-lg-0">
-                                    <h5 class="font-bold me-1 p-3">Log History</h5>
-                                    <div class="table-responsive-lg w-100">
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Login</th>
-                                                    <th scope="col">Logout</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="load-log-history">
-                                                <?php
-                                                while ($logs = $logsHistory->fetch_assoc()) {
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $logs['log_in_stamp'] ?></td>
-                                                        <td><?= $logs['log_out_stamp'] ?></td>
-                                                    </tr>
-                                                <?php
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -114,6 +127,9 @@
                                         </div>
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="col-lg-12">
                                 <div class="row ">
                                     <div class="col-mb-4">
                                         <div class="card mb-4 mb-md-0">
@@ -123,7 +139,7 @@
                                                     <table class="table table-hover">
                                                         <thead>
                                                             <tr>
-                                                                <th scope="col">Type of Services</th>
+                                                                <th scope="col">Name of Service</th>
                                                                 <th scope="col">Date and Time</th>
                                                                 <th scope="col">Payment Type</th>
                                                                 <th scope="col">Address</th>
@@ -133,7 +149,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody class="load-reservation">
-                                      
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -143,6 +159,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </section>
             </div>
@@ -150,6 +167,7 @@
     </div>
     <?php include_once($_SERVER['DOCUMENT_ROOT'] . '/templates/footer_scripts.php') ?>
     <script src="/vendors/js/admin/authentication/auth_logout.js"></script>
+    <script src="/vendors/js/admin/details.js"></script>
 </body>
 
 </html>

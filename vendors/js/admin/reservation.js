@@ -1,3 +1,7 @@
+$(document).ready(() => {
+	populateCalendar();
+}); 
+
 document.addEventListener('DOMContentLoaded', () => {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -16,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             {
               title: 'Long Event',
-              start: '2022-10-09T10:00:00',
-              end: '2022-10-10T12:00:00',
+              start: '2022-10-09 10:00:00',
+              end: '2022-10-10 12:00:00',
             },
             {
               groupId: 999,
@@ -34,5 +38,34 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     calendar.render();
 });
+
+
+const populateCalendar = () => {
+    // $.ajax({
+    //     url: "../../../controller/admin_controller/PopulateCalendarController.php",
+    //     type: "POST",
+    //     beforeSend: () => {
+    //       // $("#add-service").html(`${loadSuccessBtn('adding...')}`);
+    //   },
+    //   complete: () => {
+    //     alert('sd');
+    //   },
+    //     success: (data) => {
+    //         alert('sd');
+    //         console.log(data);
+    //     },
+    //     error:  (request, status, error) => {
+    //       console.log(request.responseText);
+    //   } 
+    // });
+
+    fetch('../../../controller/admin_controller/PopulateCalendarController.php').then((res) => res.json()).then(response =>{
+        console.log(response);  
+    }).catch((error)=>{
+        console.log(error);
+    });
+
+
+}
 
 

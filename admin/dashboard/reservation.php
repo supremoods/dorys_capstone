@@ -61,9 +61,6 @@
             </div>
         </div>
         <?php include_once($_SERVER['DOCUMENT_ROOT'] . '/templates/footer_scripts.php') ?>
-        <script>  
-            var scheds = $.parseJSON('<?= json_encode($sched_res) ?>') 
-        </script>
         <script src="/vendors/fullcalendar/lib/main.min.js"></script>
         <script src="/vendors/js/admin/reservation.js"></script>
         <script src="/vendors/js/admin/authentication/auth_logout.js"></script>
