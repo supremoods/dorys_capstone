@@ -16,6 +16,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
     <link rel="stylesheet" href="../vendors/css/global.css">
     <link rel="stylesheet" href="../vendors/css/footer.css">
     <link rel="stylesheet" href="../vendors/css/reservation.css">
+    <link href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
     <style>
         .item:hover {
             border-top-color: #EB6A00 !important;
@@ -34,7 +35,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
             
             <!-- Create Table  -->
             <div class="table-responsive py-5">
-                <table class="table table-striped table-hover">
+                <table class="tb-transaction-list table table-striped table bordered table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Reservation ID</th>
