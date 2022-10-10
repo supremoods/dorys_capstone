@@ -330,7 +330,6 @@
             }
         }
 
-
         public function fetchClientReservation($token){
             $sql = "SELECT * FROM reservation WHERE user_token = '$token'";
 
@@ -387,8 +386,10 @@
                         services.name 
                         FROM reservation 
                         LEFT JOIN request_reservation ON reservation.reservation_token = request_reservation.reservation_token 
-                        LEFT JOIN services ON services.services_token = resdervation.service_token;
+                        LEFT JOIN services ON services.services_token = reservation.service_token;
             ";
+
+            // $sql = "SELECT * FROM reservation";
 
             $result = $this->dbConnection()->query($sql);
 

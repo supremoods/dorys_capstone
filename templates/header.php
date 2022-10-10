@@ -55,6 +55,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/admin_controller/FetchClie
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
             <li class="w-100 ps-3"><b><?=$client['fullname']?></b></li> 
             <hr>
+            <li id="transaction-list" class="dropdown-item">Transaction List</li>
             <li id="logout" class="dropdown-item">Logout</li>
           </ul>
         </div>

@@ -161,7 +161,6 @@
 
         }
 
-
         public function setReservationStatus($reservation_token, $status){
             $sql = "UPDATE reservation SET status = '$status' WHERE reservation_token = '$reservation_token'";
             $result = $this->dbConnection()->query($sql);
@@ -189,6 +188,32 @@
                 return false;
             }
         }
+
+        public function trackReservation($client_token){
+            $sql = "SELECT reservation.reservation_token,  
+                        services.name, 
+                        reservation.start_datetime, 
+                        reservation.end_datetime, 
+                        reservation.mode_of_payment, 
+                        reservation.settlement_fee, 
+                        request_reservation.status 
+                    FROM reservation 
+                    LEFT JOIN request_reservation ON 
+                        reservation.reservation_token = request_reservation.reservation_token 
+                    LEFT JOIN services ON 
+                        services.services_token = reservation.service_token
+                        WHERE reservation.user_token = '$client_token'";
+
+            $result = $this->dbConnection()->query($sql);
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return $result;
+                } 
+            }
+        }
+
+        
     }
 
 ?>

@@ -181,3 +181,8 @@ h1 {
     height: 50px;
     border-radius: 50%; 
 }
+
+
+.dropdown-item{
+    cursor: pointer;
+}
