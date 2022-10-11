@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2022 at 08:53 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Oct 11, 2022 at 04:40 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -117,7 +117,9 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (65, '3c76d72299e02d4a', '6e59879b29a54e43', '2022-10-04 10:15:17', '2022-10-04 10:50:00'),
 (66, 'f984608fa768e7e0', '6e59879b29a54e43', '2022-10-04 10:50:07', NULL),
 (67, '6a7799d3b2139684', '6e59879b29a54e43', '2022-10-08 12:29:13', NULL),
-(68, '55b187f9e22316ad', '6e59879b29a54e43', '2022-10-08 01:12:01', NULL);
+(68, '55b187f9e22316ad', '6e59879b29a54e43', '2022-10-08 01:12:01', NULL),
+(69, '142faa1a5aafe2b0', '6e59879b29a54e43', '2022-10-08 09:31:05', NULL),
+(70, 'ac1cc4aff6b4cff5', '6e59879b29a54e43', '2022-10-10 11:31:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -162,8 +164,7 @@ CREATE TABLE `request_reservation` (
 --
 
 INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`) VALUES
-(24, '3e20174f6f87dde1', 'pending'),
-(25, '98b879f1f046a306', 'pending');
+(27, '60b7f650dcbd4b6f', 'confirmed');
 
 -- --------------------------------------------------------
 
@@ -187,8 +188,7 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_token`, `start_datetime`, `end_datetime`, `mode_of_payment`, `settlement_fee`) VALUES
-(25, '6e59879b29a54e43', 'f2d5233d569bf1b0', '3e20174f6f87dde1', '2022-10-10 10:00:00', '2022-10-10 22:00:00', 'cash', 2500),
-(26, '6e59879b29a54e43', 'f2d5233d569bf1b0', '98b879f1f046a306', '2022-10-10 10:10:00', '2022-10-08 22:10:00', 'cash', 2500);
+(28, '6e59879b29a54e43', 'f2d5233d569bf1b0', '60b7f650dcbd4b6f', '2022-10-10 09:31:00', '2022-10-10 21:31:00', 'cash', 2500);
 
 -- --------------------------------------------------------
 
@@ -334,7 +334,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -346,13 +346,13 @@ ALTER TABLE `contact_details`
 -- AUTO_INCREMENT for table `request_reservation`
 --
 ALTER TABLE `request_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `services`
