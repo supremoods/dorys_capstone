@@ -39,7 +39,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
 
             $clientDetails = $services->fetchClientDetails($_SESSION['user_token']);
         ?>
-        <div class="card mb-3" style="max-width: 100%">
+        <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-md-5">
                     <h3><?=$fetchServiceDetails['name']?></h3>
@@ -62,10 +62,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                                 <label for="phone">Phone</label>
                                 <input type="text" class="form-control" id="phone" name="phone" value="<?=$clientDetails['number']?>" placeholder="Enter your phone number" disabled>
                             </div>
-                            <div class="form-group">
-                                <label for="settlement_fee">Settlement Fee</label>
-                                <input type="text" class="form-control"  id="settlement_fee" name="settlement_fee"placeholder="Enter your settlement fee"  value="<?=$fetchServiceDetails['price']?>" readonly  >
-                            </div>
+    
                             <hr class="my-4">
                             <div class="form-group">
                                 <label for="payment_method">Payment Method</label>
@@ -87,6 +84,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
                                         <input type="datetime-local" class="form-control" name="dateEnd" id="dateEnd">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="settlement_fee">Reservation Per Hour Fee</label>
+                                <input type="text" class="form-control"  id="settlement_fee" name="settlement_fee"placeholder="Enter your settlement fee"  value="<?=$fetchServiceDetails['price']?>" readonly  >
                             </div>
                             <button type="submit" class="btn btn-primary w-100 my-3" id="reservation-btn">Submit</button>
                         </form>

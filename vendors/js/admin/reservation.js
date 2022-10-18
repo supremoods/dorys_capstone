@@ -24,29 +24,29 @@ const calendar  = () => {
 
 const reservation = [];
 
-// const populateCalendar = async () => {
-//   try{
-//     const res = await fetch('../../../controller/admin_controller/PopulateCalendarController.php',{
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-//     const data = await res.json();
-//     console.log(data);
+const populateCalendar = async () => {
+  try{
+    const res = await fetch('../../../controller/admin_controller/PopulateCalendarController.php',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await res.json();
+    console.log(data);
 
-//     data.forEach((item) => {
-//       reservation.push({
-//         title: item.name,
-//         start: item.start_datetime,
-//         end: item.end_datetime
-//       });
-//     });
-//     return data;
-//   } catch(error){
-//     console.log(error);
-//   }
-// }
+    data.forEach((item) => {
+      reservation.push({
+        title: item.name,
+        start: item.start_datetime,
+        end: item.end_datetime
+      });
+    });
+    return data;
+  } catch(error){
+    console.log(error);
+  }
+}
 
 calendar();
 

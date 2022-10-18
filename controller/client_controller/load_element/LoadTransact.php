@@ -19,7 +19,12 @@
                                 <td><?=$row['settlement_fee']?></td>
                                 <td><?=$row['status']?></td>
                                 <td>
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-warning">
+                                                <span class="material-symbols-outlined">edit_note</span>
+                                        </button>
+                                        <button class="btn btn-danger">
+                                                <span class="material-symbols-outlined">delete</span>
+                                        </button>
                                 </td>
                         </tr>
                     <?php
