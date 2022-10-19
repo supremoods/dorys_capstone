@@ -95,6 +95,18 @@
     display: flex;
     background: #333;
     height: 60px;
+    transition: all 0.5s ease;
+}
+
+.header-bottom.active {
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    width: 100%;
+
 }
 
 .header-bottom .inner-wrapper{
@@ -123,6 +135,7 @@
     height:40px;
     width: 100px;
     color: #333;
+    cursor: pointer;
 }
 .header-account .btn-item a{
     color: rgb(58, 58, 58);
@@ -132,8 +145,18 @@
     background: rgb(250, 172, 56);
 }
 
+.header-account .btn-item.login:hover{
+    background: rgb(255, 140, 32);
+    transition: all 0.3s ease-in-out;
+}
+
 .header-account .btn-item.register{
     background: rgb(255, 255, 255);
+}
+
+.header-account .btn-item.register:hover{
+    background: rgb(252, 244, 228);
+    transition: all 0.3s ease-in-out;                           
 }
 /*======= Media queries (max-width: 1440px) =======*/
 @media screen and (max-width: 1440px) {
@@ -161,8 +184,56 @@
 
 
 @media screen and (max-width: 600px) {
+
+
+    .site-header .header-bottom {
+        padding-top: 1em;
+    }
+
+    .site-header .header-bottom .wrapper{
+        height: 100%;
+    }
+    .site-header .header-bottom .inner-wrapper.active{
+        display: flex;
+        flex-direction: column;
+    }
+
     .site-header .header-bottom .inner-wrapper{
         display: none;
+        height: 100%;
+    }
+
+    .site-header .header-bottom .inner-wrapper .main-navigation{
+        flex-grow: 1;
+    }
+
+    .header-bottom .wrapper{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .site-header .header-bottom .inner-wrapper .header-account{
+        display: flex;
+        gap: 20px;
+    }
+
+    .site-header .header-bottom .inner-wrapper .header-account .btn-item span{
+        font-weight: 700;
+    }
+    .site-header .header-bottom .inner-wrapper .nav-menu{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .site-header .header-bottom .inner-wrapper .nav-menu .menu-item a{
+        font-size: 2em;
+        font-weight: 900;
+        transition: all 0.3s ease-in-out;
+    }
+    .site-header .header-bottom .inner-wrapper .nav-menu .menu-item a:hover{
+        color: rgb(250, 172, 56);
+
     }
 
     .menu-btn{
@@ -172,12 +243,12 @@
         cursor: pointer;
     }
 
-    .menu-btn .menu-toogle i:hover{
+    .menu-btn .menu-toggle i:hover{
         color: rgb(250, 172, 56);
         transition: all 0.5s ease;
     }
 
-    .menu-btn .menu-toogle i{
+    .menu-btn .menu-toggle i{
         color: #fff;
         font-size: 1.5rem;
     }

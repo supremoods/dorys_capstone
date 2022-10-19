@@ -1,109 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/f9a9e859ec.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div id="page" class="site">
-        <div class="container">
-            <div class="wrapper">
-                <!-- login form -->
-                <div class="login">
-                    <div class="content-heading">
-                        <div class="y-style">
-                            <div class="logo"><a href="#"><span></span></a></div>
-                            <div class="welcome">
-                                <h2>Welcome<br>Back!</h2>
-                                <p>Get start to be creative.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-form">
-                        <div class="y-style">
-                            <form action="">
-                                <div>
-                                    <label for="Email">Email</label>
-                                    <input type="text" placeholder="Enter your email">
-                                </div>
-                                <div>
-                                    <label for="Password">Password</label>
-                                    <input type="password" placeholder="Enter your email">
-                                </div>
-                                <div class="check">
-                                    <label for="remember">Remember me</label>
-                                    <input type="checkbox" placeholder="Enter your email">
-                                </div>
-                                <div class="forgot">
-                                    <a href="#">Forgot password</a>
-                                </div>
-                                <div>
-                                    <button type="submit">Login</button>
-                                </div>
-                            </form>
-                            <div class="afterform">
-                                <p>Don't have an account?</p>
-                                <a href="" class="t-signup">Register</a>
-                            </div>
-                        </div>
-                    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in & Sign up Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="modal-auth">
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <form action="index.html" autocomplete="off" class="sign-in-form">
+              <div class="logo">
+                <img src="./img/logo.png" alt="easyclass" />
+                <h4>easyclass</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Welcome Back</h2>
+                <h6>Not registred yet?</h6>
+                <a href="#" class="toggle">Sign up</a>
+              </div>
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Name</label>
                 </div>
 
-                <!-- signup form -->
-                <div class="signup">
-                    <div class="content-heading">
-                        <div class="y-style">
-                            <div class="logo"><a href="#"><span></span></a></div>
-                            <div class="welcome">
-                                <h2>Sign Up<br>Now</h2>
-                                <p>Ready to be creative<span>We can help you</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-form">
-                        <div class="y-style">
-                            <form action="">
-                                <div>
-                                    <label for="name">Full Name</label>
-                                    <input type="text" placeholder="Enter your email">
-                                </div>
-                                <div>
-                                    <label for="email">Email</label>
-                                    <input type="email" placeholder="Enter your email">
-                                </div>
-                                <div>
-                                    <label for="password">Password</label>
-                                    <input type="password" placeholder="Enter your email">
-                                </div>
-                                <div class="check">
-                                    <label for="terms">I agree to all statements include in <a href="#">Terms of Use</a></label>
-                                    <input type="checkbox" placeholder="Enter your email">
-                                </div>
-                                <div>
-                                    <button type="submit">Sign up</button>
-                                </div>
-                            </form>
-                            <div class="social">
-                                <p><span>Or sign up with</span></p>
-                                <ul>
-                                    <li><a href="#" class="google"><i class="fa-brands fa-google"></i></a></li>
-                                    <li><a href="#" class="facebook"><i class="fa-brands fa-facebook"></i></a></li>
-                                    <li><a href="#" class="twitter "><i class="fa-brands fa-twitter"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="afterform">
-                                <p>Already have an account?</p>
-                                <a href="" class="t-signup">Login here</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Password</label>
                 </div>
+
+                <input type="submit" value="Sign In" class="sign-btn" />
+
+                <p class="text">
+                  Forgotten your password or you login datails?
+                  <a href="#">Get help</a> signing in
+                </p>
+              </div>
+            </form>
+
+            <form action="index.html" autocomplete="off" class="sign-up-form">
+              <div class="logo">
+                <img src="./img/logo.png" alt="easyclass" />
+                <h4>easyclass</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Get Started</h2>
+                <h6>Already have an account?</h6>
+                <a href="#" class="toggle">Sign in</a>
+              </div>
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Name</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="email"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Email</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                  />
+                  <label>Password</label>
+                </div>
+
+                <input type="submit" value="Sign Up" class="sign-btn" />
+
+                <p class="text">
+                  By signing up, I agree to the
+                  <a href="#">Terms of Services</a> and
+                  <a href="#">Privacy Policy</a>
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img src="./img/image1.png" class="image img-1 show" alt="" />
+              <img src="./img/image2.png" class="image img-2" alt="" />
+              <img src="./img/image3.png" class="image img-3" alt="" />
             </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Create your own courses</h2>
+                  <h2>Customize as you like</h2>
+                  <h2>Invite students to your class</h2>
+                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active" data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+
+    <!-- Javascript file -->
+
+    <script src="app.js"></script>
+  </body>
 </html>
