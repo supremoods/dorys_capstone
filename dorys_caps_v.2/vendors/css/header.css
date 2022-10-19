@@ -1,0 +1,210 @@
+/* .site-header{
+
+} */
+.menu-btn{
+    display: none;
+}
+
+.site-header .wrapper {
+    display: flex;
+	max-width: 1480px;
+    width: 100%;
+	padding: 1.5625rem;
+	margin: 0 auto;
+	position: relative;
+    align-items: center;
+}
+
+.site-branding{
+    position: relative;
+    flex-grow: 1;
+}
+
+.header-additional-info-block{
+    display: flex;
+    -webkit-box-align: center;
+    padding:0 1.5625rem;
+    gap: 10px;
+    border-left: rgb(173, 173, 173) 1px solid;
+}
+
+.header-additional-info-block i{
+    color: rgb(250, 172, 56);
+    font-size: 1.1rem;
+}
+
+.header-additional-info{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.block-content{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    gap: 5px;
+}
+
+.block-content .title{
+    color: rgb(173, 173, 173);
+}
+
+.block-content .value{
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(59, 59, 59);
+}
+
+.logo-link img{
+    bottom:-30px;
+    position: absolute;
+    height: 70px;
+}
+
+.button-book-now{
+    background: rgb(250, 172, 56);
+    border: 1px solid;
+    border-top-color: currentcolor;
+    border-right-color: currentcolor;
+    border-bottom-color: currentcolor;
+    border-left-color: currentcolor;
+    border-color: #ffd900;
+    border-radius: 0;
+    color: #333;
+    font-size: 14px;
+    font-size: .875rem;
+    line-height: 1;
+    padding: 1.063rem 2.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+}
+
+.site-header .header-bottom .inner-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* nav bar */
+
+.header-bottom {
+    display: flex;
+    background: #333;
+    height: 60px;
+}
+
+.header-bottom .inner-wrapper{
+    gap:10px;
+ }
+
+.header-bottom .nav-menu,
+.header-account{
+    display: flex;
+    gap:10px;
+}
+
+.header-bottom .nav-menu .menu-item a{
+    color:rgb(255, 252, 244); 
+}
+
+.main-navigation{
+    flex-grow: 1;
+}
+
+.header-account .btn-item{
+    background: rgb(153, 153, 153);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:40px;
+    width: 100px;
+    color: #333;
+}
+.header-account .btn-item a{
+    color: rgb(58, 58, 58);
+    font-weight: 600;
+}
+.header-account .btn-item.login{
+    background: rgb(250, 172, 56);
+}
+
+.header-account .btn-item.register{
+    background: rgb(255, 255, 255);
+}
+/*======= Media queries (max-width: 1440px) =======*/
+@media screen and (max-width: 1440px) {
+    .site-header .wrapper {
+        max-width: 1200px;
+    }
+}
+/*======= Media queries (max-width: 1280px) =======*/
+@media screen and (max-width: 1280px) {
+    .site-header .wrapper {
+        max-width: 1100px;
+    }
+}
+
+/*======= Media queries (max-width: 800px) =======*/
+@media screen and (max-width: 880px) {
+    .site-header .wrapper {
+        max-width: 700px;
+    }
+
+    .header-additional-info-block{
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .site-header .header-bottom .inner-wrapper{
+        display: none;
+    }
+
+    .menu-btn{
+        display: flex;
+        width: 100%;
+        justify-content: end;
+        cursor: pointer;
+    }
+
+    .menu-btn .menu-toogle i:hover{
+        color: rgb(250, 172, 56);
+        transition: all 0.5s ease;
+    }
+
+    .menu-btn .menu-toogle i{
+        color: #fff;
+        font-size: 1.5rem;
+    }
+    
+}
+/*======= Media queries (max-width: 375px) =======*/
+@media screen and (max-width: 375px) {
+    .main-navigation{
+        flex-grow: 0;
+    }
+    .site-header .wrapper{
+        padding: 2em;
+    }
+
+    .header-additional-info-block{
+        display: none;
+    }
+
+    .header-bottom .wrapper .inner-wrapper{
+        display: none;
+    }
+    
+    .menu-btn{
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+
+}
