@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2022 at 04:40 AM
+-- Generation Time: Oct 19, 2022 at 03:06 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -83,7 +83,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `user_token`, `fullname`, `email`, `address`, `number`, `password`, `avatar`, `status`) VALUES
-(2, '6e59879b29a54e43', 'john lappay', 'lappayjohn@gmail.com', 'asdk qoiwd ', '09972114073', '$2y$10$mpFfEVmzf4NkG4svMRjpEuHCxuc5LSgNFBG4p17.G7Ax8TqMK6pEi', 'oreo.png', 'active');
+(2, '6e59879b29a54e43', 'john lappay', 'lappayjohn@gmail.com', 'asdk qoiwd ', '09972114073', '$2y$10$mpFfEVmzf4NkG4svMRjpEuHCxuc5LSgNFBG4p17.G7Ax8TqMK6pEi', 'oreo.png', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -118,8 +118,9 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (66, 'f984608fa768e7e0', '6e59879b29a54e43', '2022-10-04 10:50:07', NULL),
 (67, '6a7799d3b2139684', '6e59879b29a54e43', '2022-10-08 12:29:13', NULL),
 (68, '55b187f9e22316ad', '6e59879b29a54e43', '2022-10-08 01:12:01', NULL),
-(69, '142faa1a5aafe2b0', '6e59879b29a54e43', '2022-10-08 09:31:05', NULL),
-(70, 'ac1cc4aff6b4cff5', '6e59879b29a54e43', '2022-10-10 11:31:49', NULL);
+(69, '142faa1a5aafe2b0', '6e59879b29a54e43', '2022-10-08 09:31:05', '2022-10-19 12:47:22'),
+(70, 'ac1cc4aff6b4cff5', '6e59879b29a54e43', '2022-10-10 11:31:49', NULL),
+(71, 'e4667dd354d552f4', '6e59879b29a54e43', '2022-10-18 02:26:58', '2022-10-19 01:00:29');
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,8 @@ CREATE TABLE `request_reservation` (
 --
 
 INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`) VALUES
-(27, '60b7f650dcbd4b6f', 'confirmed');
+(27, '60b7f650dcbd4b6f', 'confirmed'),
+(28, '3d33ff16f6211482', 'pending');
 
 -- --------------------------------------------------------
 
@@ -188,7 +190,7 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_token`, `start_datetime`, `end_datetime`, `mode_of_payment`, `settlement_fee`) VALUES
-(28, '6e59879b29a54e43', 'f2d5233d569bf1b0', '60b7f650dcbd4b6f', '2022-10-10 09:31:00', '2022-10-10 21:31:00', 'cash', 2500);
+(29, '6e59879b29a54e43', '459daba73a28dd8b', '3d33ff16f6211482', '2022-10-20 08:44:00', '2022-10-20 20:44:00', 'cash', 6000);
 
 -- --------------------------------------------------------
 
@@ -211,7 +213,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `services_token`, `name`, `features`, `description`, `images`, `price`) VALUES
-(41, 'f2d5233d569bf1b0', 'Street Photography', 'traffic  lights,pedestrian', 'This is a sample description', 'IMG_20211210_160105.jpg, IMG_20211210_160144.jpg', '2500');
+(42, '459daba73a28dd8b', 'VIP', 'fully air conditioned,videoke,bbq grill,water dispenser,food warmer', 'Capacity: 12 persons', 'slide1.jpg', '500'),
+(43, 'f375ebf2b8154017', 'Alfresco', 'videoke,bbq grill,water dispenser,food warmer', 'Capacity: 30 persons', 'slide2.jpg', '500'),
+(44, '916c696fa61a769c', 'Gazebo', 'videoke,water dispenser,food warmer', 'Capacity: 8 persons', 'slide5.jpg', '200');
 
 -- --------------------------------------------------------
 
@@ -334,7 +338,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -346,19 +350,19 @@ ALTER TABLE `contact_details`
 -- AUTO_INCREMENT for table `request_reservation`
 --
 ALTER TABLE `request_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `services_gallery`
