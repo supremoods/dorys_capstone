@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dory's Resort</title>
 
+    <link rel="icon" href="vendors/images/logo/dorys_logo.png" type="image/png" sizes="16x16">
+
     <link rel="stylesheet" href="vendors/css/style.css">
     <link rel="stylesheet" href="vendors/css/media.css">
 
     <?php include 'links/header/header_links.php'; ?>
+
 </head>
 
 <body>
