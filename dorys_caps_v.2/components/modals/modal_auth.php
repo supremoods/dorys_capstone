@@ -1,31 +1,30 @@
 <div class="modal-auth">
     <div class="box">
+        <div class="close-modal">
+            <i class="fas fa-times"></i>
+        </div>
         <div class="inner-box">
             <div class="forms-wrap">
-                <form action="index.html" autocomplete="off" class="sign-in-form">
+                <form method="post" autocomplete="off" class="sign-in-form" id="sign-in-form">
                     <div class="logo">
                         <img src="vendors/images/logo/dorys_logo.png" alt="easyclass" />
                     </div>
 
                     <div class="heading">
                         <h2>Welcome Back</h2>
-                        <h6>Not registred yet?</h6>
-                        <a href="#" class="toggle">Sign up</a>
+                        <h6>Not registred yet? <span class="toggle">Sign up</span></h6>
                     </div>
 
                     <div class="actual-form">
                         <div class="input-wrap">
-                            <input type="text" minlength="4" class="input-field" autocomplete="off" required />
-                            <label>Name</label>
+                            <input type="email" name="email" minlength="4" class="input-field" autocomplete="off" required />
+                            <label>Email</label>
                         </div>
-
                         <div class="input-wrap">
-                            <input type="password" minlength="4" class="input-field" autocomplete="off" required />
+                            <input type="password" name="password" minlength="4" class="input-field" autocomplete="off" required />
                             <label>Password</label>
                         </div>
-
                         <input type="submit" value="Sign In" class="sign-btn" />
-
                         <p class="text">
                             Forgotten your password or you login datails?
                             <a href="#">Get help</a> signing in
@@ -33,30 +32,34 @@
                     </div>
                 </form>
 
-                <form action="index.html" autocomplete="off" class="sign-up-form">
+                <form method="post" autocomplete="off" class="sign-up-form" id="sign-up-form">
                     <div class="logo">
                         <img src="vendors/images/logo/dorys_logo.png" alt="easyclass" />
                     </div>
 
                     <div class="heading">
                         <h2>Get Started</h2>
-                        <h6>Already have an account?</h6>
-                        <a href="#" class="toggle">Sign in</a>
+                        <h6>Already have an account? <span class="toggle">Sign in</span></h6>
                     </div>
 
                     <div class="actual-form">
                         <div class="input-wrap">
-                            <input type="text" minlength="4" class="input-field" autocomplete="off" required />
+                            <input type="text" minlength="4" name="name" class="input-field" autocomplete="off" required />
                             <label>Name</label>
                         </div>
 
                         <div class="input-wrap">
-                            <input type="email" class="input-field" autocomplete="off" required />
+                            <input type="email" class="input-field" name="email" autocomplete="off" required />
                             <label>Email</label>
                         </div>
 
                         <div class="input-wrap">
                             <input type="password" minlength="4" class="input-field" autocomplete="off" required />
+                            <label>Confirm Password</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="password" minlength="4" name="password" class="input-field" autocomplete="off" required />
                             <label>Password</label>
                         </div>
 
@@ -81,9 +84,9 @@
                 <div class="text-slider">
                     <div class="text-wrap">
                         <div class="text-group">
-                            <h2>Create your own courses</h2>
-                            <h2>Customize as you like</h2>
-                            <h2>Invite students to your class</h2>
+                            <h2>Lorem ipsum dolor </h2>
+                            <h2>Lorem ipsum dolor sit</h2>
+                            <h2>Lorem ipsum dolor sit amet </h2>
                         </div>
                     </div>
 
@@ -97,3 +100,5 @@
         </div>
     </div>
 </div>
+
+<?php include_once 'components/modals/modalAlert.php'; ?>

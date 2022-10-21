@@ -1,6 +1,3 @@
-/* .site-header{
-
-} */
 .menu-btn{
     display: none;
 }
@@ -98,16 +95,6 @@
     transition: all 0.5s ease;
 }
 
-.header-bottom.active {
-    flex-direction: column;
-    height: 100vh;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    right: 0;
-    width: 100%;
-
-}
 
 .header-bottom .inner-wrapper{
     gap:10px;
@@ -137,10 +124,12 @@
     color: #333;
     cursor: pointer;
 }
+
 .header-account .btn-item a{
     color: rgb(58, 58, 58);
     font-weight: 600;
 }
+
 .header-account .btn-item.login{
     background: rgb(250, 172, 56);
 }
@@ -158,12 +147,62 @@
     background: rgb(252, 244, 228);
     transition: all 0.3s ease-in-out;                           
 }
+
+.header-account .avatar .avatar-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:45px;
+    width:45px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.header-account .avatar .avatar-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;   
+    border-radius: 50%;
+}
+
+.header-account .avatar .avatar-dropdown.active{
+    display: flex;
+}
+
+.header-account .avatar .avatar-dropdown{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    top: 60px;
+    right: 0;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 5px;
+    padding: 20px;
+    width: 180px;
+    z-index: 10000;
+    gap: 10px;
+}
+
+
+.header-account .avatar .avatar-dropdown .links a:hover{
+    color:#ffae00;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-account .avatar .avatar-dropdown hr{
+    border: 1px solid rgb(173, 173, 173);
+    margin: 10px 0;
+}
+
 /*======= Media queries (max-width: 1440px) =======*/
 @media screen and (max-width: 1440px) {
     .site-header .wrapper {
         max-width: 1200px;
     }
 }
+
 /*======= Media queries (max-width: 1280px) =======*/
 @media screen and (max-width: 1280px) {
     .site-header .wrapper {
@@ -185,7 +224,16 @@
 
 @media screen and (max-width: 600px) {
 
-
+    .header-bottom.active {
+        flex-direction: column;
+        height: 100vh;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+    
     .site-header .header-bottom {
         padding-top: 1em;
     }
@@ -254,6 +302,7 @@
     }
     
 }
+
 /*======= Media queries (max-width: 375px) =======*/
 @media screen and (max-width: 375px) {
     .main-navigation{

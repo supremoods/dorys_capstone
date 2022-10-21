@@ -1,6 +1,6 @@
 <footer class="footer-distributed">
     <div class="footer-left">
-        <img src="vendors/images/logo/dorys_logo.png" alt="logo" class="logo">
+        <img src="/vendors/images/logo/dorys_logo.png" alt="logo" class="logo">
         <p class="footer-links">
             <a href="#" class="link-1">Home</a>
             <a href="#">Amenities</a>

@@ -9,7 +9,6 @@
         public function fetchRowLogs($token){
             return $this->fetchClientLogs($token);
         }
-
     }
 
 ?>

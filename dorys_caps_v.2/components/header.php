@@ -1,9 +1,12 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/client/FetchClientController.php');
+?>
 <header class="site-header">
     <div class="header-top">
         <div class="wrapper">
             <div class="site-branding">
                 <a href="" class="logo-link">
-                    <img src="vendors/images/logo/dorys_logo.png" alt="logo" class="logo">
+                    <img src="/vendors/images/logo/dorys_logo.png" alt="logo" class="logo">
                 </a>
             </div>
             <div class="header-additional-info">
@@ -40,27 +43,59 @@
                     <div class="main-navigation-container">
                         <div id="primary-nav" class="menu nav-menu">
                             <div class="menu-item">
-                                <a href="">Home</a>
+                                <a href="/">Home</a>
                             </div>
                             <div class="menu-item">
-                                <a href="">Amenities</a>
+                                <a href="/">Amenities</a>
                             </div>
                             <div class="menu-item">
-                                <a href="">About</a>
+                                <a href="/">About</a>
                             </div>
                             <div class="menu-item">
-                                <a href="">Contact</a>
+                                <a href="/">Contact</a>
                             </div>
                         </div>
                     </div>
                 </nav>
                 <div class="header-account">
-                    <div class="btn-item login">
-                        <span class="button-login">Login</span>
-                    </div>
-                    <div class="btn-item register">
-                        <span class="button-register">Register</span>
-                    </div>
+                    <?php
+                    if (!isset($_SESSION['session_token'])) {
+                    ?>
+                        <div class="btn-item login">
+                            <span class="button-login">Login</span>
+                        </div>
+                        <div class="btn-item register">
+                            <span class="button-register">Register</span>
+                        </div>
+                    <?php
+                    } else {
+                        $fetchClient = new FetchClient();
+                        $client = $fetchClient->fetchRow($_SESSION['user_token']);
+                    ?>
+
+                        <div class="avatar">
+                            <div class="avatar-container">
+                                <img src="/vendors/images/client/<?= is_null($client['avatar']) ? "avatar.png" : $client['avatar'] ?>" alt="avatar" class="avatar">
+                            </div>
+                            <div class="avatar-dropdown">
+                                <div class="avatar-dropdown-item">
+                                    <p><?=$client['fullname']?></p>
+                                </div>
+                                <hr>
+                                <div class="avatar-dropdown-item links">
+                                    <a href="/pages/profile.php">Profile</a>
+                                </div>
+                                <div class="avatar-dropdown-item links">
+                                    <a href="">Transaction List</a>
+                                </div>
+                                <div class="avatar-dropdown-item links">
+                                    <a href="/controller/client/LogoutController.php">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div class="menu-btn">

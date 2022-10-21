@@ -26,7 +26,6 @@ window.addEventListener("scroll", () => {
 });
 
 // select all card
-
 const images = [
   '/vendors/images/carousel/slide1.jpg',
   '/vendors/images/carousel/slide2.jpg',
@@ -40,15 +39,16 @@ cards.forEach((card, index) => {
   card.style.setProperty('--card-image',`url(${images[index]})`);
 });
 
+// contact components
 
-const inputs = document.querySelectorAll(".input");
+const inputs = document.querySelectorAll(".input-c-items");
 
-const focusFunc = () => {
+function focusFunc() {
   let parent = this.parentNode;
   parent.classList.add("focus");
 }
 
-const blurFunc = () =>{
+function blurFunc() {
   let parent = this.parentNode;
   if (this.value == "") {
     parent.classList.remove("focus");
@@ -59,6 +59,9 @@ inputs.forEach((input) => {
   input.addEventListener("focus", focusFunc);
   input.addEventListener("blur", blurFunc);
 });
+
+
+// auth form
 
 const input_field = document.querySelectorAll(".input-field");
 const toggle_btn = document.querySelectorAll(".toggle");
@@ -101,46 +104,43 @@ bullets.forEach((bullet) => {
 });
 
 
-const btn_login = document.querySelector(".login");
-const btn_register = document.querySelector(".register");
-const body = document.querySelector("body");
+// navbar
+try {
+  const btn_login = document.querySelector(".login");
+  const btn_register = document.querySelector(".register");
+  const body = document.querySelector("body");
+  const close_modal = document.querySelector(".close-modal");
 
-const menu_toggle = document.querySelector(".menu-toggle");
-const toggle_icon = document.querySelector(".menu-toggle i");
-const header_bottom = document.querySelector(".header-bottom");
-const inner_wrapper = document.querySelector(".inner-wrapper");
+  close_modal.addEventListener("click", () => {
+      body.classList.remove("show");
+      main.classList.remove("show");
+      toggle_icon.classList.remove("fa-times");
+  });
 
-btn_login.addEventListener("click", () => {
-  body.classList.toggle("show");
-  main.classList.toggle("show");
-  header_bottom.classList.toggle("active");
-  inner_wrapper.classList.toggle("active");
-});
+  btn_login.addEventListener("click", () => {
+    body.classList.toggle("show");
+    main.classList.toggle("show");
+    main.classList.remove("sign-up-mode");
+    header_bottom.classList.remove("active");
+    inner_wrapper.classList.remove("active");
+  });
 
-btn_register.addEventListener("click", () => {
-  body.classList.toggle("show");
-  main.classList.toggle("show","sign-up-mode");
-  header_bottom.classList.toggle("active");
-  inner_wrapper.classList.toggle("active");
-});
+  btn_register.addEventListener("click", () => {
+    body.classList.toggle("show");
+    main.classList.add("show","sign-up-mode");
+    header_bottom.classList.remove("active");
+    inner_wrapper.classList.remove("active");
+  });
 
-// esc key events
 
-document.addEventListener("keydown", (e) => {
-  if (e.key == "Escape") {
-    body.classList.remove("show");
-    main.classList.remove("show");
-    toggle_icon.classList.toggle("fa-times");
-  }
-});
 
-menu_toggle.addEventListener("click", () => {
-  // alert("hello");
-  header_bottom.classList.toggle("active");
-  inner_wrapper.classList.toggle("active");
-  toggle_icon.classList.toggle("fa-times");
-  // document.querySelector(".nav").classList.toggle("active");
-});
+} catch (error) {
+
+}
+
+// header-account dropdown
+
+
 
 
 

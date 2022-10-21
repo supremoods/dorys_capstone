@@ -1,0 +1,63 @@
+.modal-alert {
+    width: 320px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    border-radius: 20px;
+    padding: 30px 30px 70px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index: 999;
+}
+
+.modal-alert.active{
+    display: flex;
+}
+
+.modal-alert button.close {
+    width: 30px;
+    font-size: 20px;
+    color: #c0c5cb;
+    align-self: flex-end;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.modal-alert img {
+    width: 82px;
+    margin-bottom: 15px;
+}
+
+.modal-alert p {
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.modal-alert button.accept {
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    padding: 14px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+  
+}
+
+.modal-alert button.success{
+    background-color: #42d867;
+    box-shadow: 0px 6px 18px -5px #42d867;
+}
+
+.modal-alert button.danger{
+    background-color: #ff4b5c;
+    box-shadow: 0px 6px 18px -5px #ff4b5c;
+}
