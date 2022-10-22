@@ -2,23 +2,36 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    background: #f5f5f5;
+    background: #ffffff;
+    padding: 3em 5em;
 }
 
 .profile .wrapper{
-    width:70%;
+    width:100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 3fr;
+    gap: 20px;
+}
+
+.profile-card .inner-wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #f5f5f5;
+    gap:40px;
+    padding: 50px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);   
 }
 
 .profile .profile-card .profile-card__image{
-    width: 100px;
-    height: 100px;
-    background: #fff;
+    width: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .profile .profile-card .profile-card__image img{
@@ -35,10 +48,119 @@
 
 }
 
-
 .profile-settings__form-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;    
     width: 100%;
 }
+
+.profile-card__info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-card__name{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.profile-card__info .update-prof-pic{
+    padding: 10px;
+    border:none;
+    background: rgb(250, 172, 56);
+    font-weight: 700;
+    border-radius: 5px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-card__info .update-prof-pic:hover{
+    background: rgb(250, 172, 56,0.8);  
+}
+
+.profile-card__email{
+    margin-bottom: 20px;
+}
+
+.profile-settings{
+    background: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    gap:30px;
+    padding: 20px;
+}
+
+.profile-settings__form .password-label{
+    margin-bottom: 25px;
+}
+
+.profile-settings__form .password-label .icon-toggle{
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: all 0.3s ease;
+}
+
+.profile-settings__form .password-label .icon-toggle.active{
+    cursor: pointer;
+    transform: rotate(180deg);
+    transition: all 0.3s ease;
+
+}
+
+.profile-settings__form .profile-settings__form-btn{
+    width: 100%;
+    padding: 10px 0;
+    border:none;
+    background: rgb(250, 172, 56);
+    font-weight: 700;
+}
+.profile-settings .profile-settings__body .profile-settings__form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap:0px;
+
+}
+
+.profile-settings .profile-settings__body{
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+}
+.profile-settings .profile-settings__body .profile-settings__form .password-label{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profile-settings .profile-settings__body hr{
+    width: 100%;
+    color: #c2c2c2;
+}
+
+.profile .wrapper input{
+    padding: 10px;
+    border: 1px solid #c2c2c2;
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.profile .wrapper label{
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #5a5959;
+}
+
+#update-password{
+    display: none;
+    flex-direction: column;
+}
+
+#update-password.active{
+    display:flex;
+}
+

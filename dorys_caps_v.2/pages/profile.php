@@ -29,6 +29,7 @@
     <?php include $_SERVER['DOCUMENT_ROOT'].'/links/footer/footer_links.php'; ?>
 
     <script src="/vendors/js/header.js"></script>
+    <script src="/vendors/js/profile.js"></script>
 </body>
 
 </html>

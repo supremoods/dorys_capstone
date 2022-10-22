@@ -1,17 +1,24 @@
+<?php
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/client/FetchClientController.php');
+    $fetchClient = new FetchClient();
+    $client = $fetchClient->fetchRow($_SESSION['user_token']);
+?>
 <div class="profile">
     <div class="wrapper">
         <div class="profile-card">
-            <div class="profile-card__image">
-                <img src="/vendors/images/client/oreo.png" alt="profile">
-            </div>
-            <div class="profile-card__info">
-                <h2 class="profile-card__name">Dory's Resort</h2s>
-                <p class="profile-card__email">
-                    john.doe@gmail.com
-                </p>
-                <button class="update-prof-pic">
-                    Update Profile Picture
-                </button>
+            <div class="inner-wrapper">
+                <div class="profile-card__image">
+                    <img src="/vendors/images/client/<?= is_null($client['avatar']) ? "avatar.png" : $client['avatar'] ?>" alt="profile">
+                </div>
+                <div class="profile-card__info">
+                    <h2 class="profile-card__name"><?=$client['fullname']?></h2>
+                    <p class="profile-card__email">
+                        <?=$client['email']?>
+                    </p>
+                    <button class="update-prof-pic">
+                        Update Profile Picture
+                    </button>
+                </div>
             </div>
         </div>
         <div class="profile-settings">
@@ -23,15 +30,16 @@
                     <form action="" method="POST">
                         <div class="profile-settings__form-group">
                             <label for="name" class="profile-settings__form-label">Name</label>
-                            <input type="text" name="name" id="name" class="profile-settings__form-input" placeholder="John Doe">
+                            <input type="text" name="name" id="name" class="profile-settings__form-input" value="<?=$client['fullname']?>">
                         </div>
                         <div class="profile-settings__form-group">
                             <label for="email" class="profile-settings__form-label">Email</label>
-                            <input type="email" name="email" id="email" class="profile-settings__form-input" placeholder="John Doe">
+                            <input type="email" name="email" id="email" class="profile-settings__form-input" value="<?=$client['email']?>
+">
                         </div>
                         <div class="profile-settings__form-group">
                             <label for="number" class="profile-settings__form-label">Phone Number</label>
-                            <input type="text" name="number" id="number" class="profile-settings__form-input" placeholder="John Doe">
+                            <input type="text" name="number" id="number" class="profile-settings__form-input" placeholder="Enter you phone number">
                         </div>
                         <div class="profile-settings__form-group">
                             <label for="address-line-1" class="profile-settings__form-label">Address Line 1</label>
@@ -53,7 +61,7 @@
                             <i class="fas fa-chevron-down"></i>
                         </div>
                     </div>
-                    <form action="" method="POST">
+                    <form action="" method="POST" id="update-password">
                         <div class="profile-settings__form-group">
                             <label for="old-password" class="profile-settings__form-label">Old Password</label>
                             <input type="password" name="old-password" id="old-password" class="profile-settings__form-input" placeholder="John Doe">
@@ -67,7 +75,7 @@
                             <input type="password" name="confirm-password" id="confirm-password" class="profile-settings__form-input" placeholder="John Doe">
                         </div>
                         <button class="profile-settings__form-btn">
-                            Update
+                            Save Changes
                         </button>
                     </form>
                 </div>
