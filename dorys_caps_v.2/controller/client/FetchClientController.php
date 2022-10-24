@@ -7,4 +7,8 @@
         }
     }
 
+    $fetchClient = new FetchClient();
+    session_start();
+    echo json_encode($fetchClient->fetchRow($_SESSION['user_token']));  
+
 ?>

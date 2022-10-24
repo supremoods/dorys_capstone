@@ -1,3 +1,11 @@
+<?php
+
+$contactDetails = new SqlClientQuery();
+
+$fetch = $contactDetails->fetchContactDetails();
+
+?>
+
 <footer class="footer-distributed">
     <div class="footer-left">
         <img src="/vendors/images/logo/dorys_logo.png" alt="logo" class="logo">
@@ -7,20 +15,20 @@
             <a href="#">About</a>
             <a href="#">Contact</a>
         </p>
-        <p class="footer-company-name">Company Name © 2015</p>
+        <p class="footer-company-name">Dory's Private Resort © 2022</p>
     </div>
     <div class="footer-center">
         <div>
             <i class="fa fa-map-marker"></i>
-            <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
+            <p><span><?=$fetch['address']?></span></p>
         </div>
         <div>
             <i class="fa fa-phone"></i>
-            <p>+1.555.555.5555</p>
+            <p><span><?=$fetch['phone_number_1']?></span><span><?=$fetch['phone_number_2']?></span></p>
         </div>
         <div>
             <i class="fa fa-envelope"></i>
-            <p><a href="mailto:support@company.com">support@company.com</a></p>
+            <p><a href="mailto:support@company.com"><?=$fetch['email']?></a></p>
         </div>
     </div>
     <div class="footer-right">
@@ -30,10 +38,8 @@
             vehicula sit amet.
         </p>
         <div class="footer-icons">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-github"></i></a>
+            <a href="<?=$fetch['facebook']?>"><i class="fa fa-facebook"></i></a>
+            <a href="<?=$fetch['twitter']?>"><i class="fa fa-twitter"></i></a>
         </div>
     </div>
 </footer>

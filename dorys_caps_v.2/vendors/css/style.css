@@ -163,7 +163,7 @@ body.show{
 }
 
 .bg-slider-thumbs {
-    z-index: 777;
+    z-index: 100;
     position: absolute;
     bottom: 12em;
     left: 80%;
@@ -265,11 +265,11 @@ body.show{
 }
 
 .announcement .wrapper {
-    display: flex;
-    padding: 1em 10em;
-    justify-content: center;
-    align-items: center;
-    color: rgb(126, 68, 29)
+	display: flex;
+	padding: 1em 10em;
+	justify-content: space-between;
+	align-items: center;
+	color: rgb(126, 68, 29);
 }
 
 .announcement-content p {

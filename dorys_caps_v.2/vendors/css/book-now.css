@@ -1,0 +1,143 @@
+:root{
+    --bg-image:url(../images/services/slide1.jpg);
+}
+.transact-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    background: var(--bg-image);
+    background-position: center;
+    background-repeat: no-repeat;   
+    background-size: cover;
+    transition: all 0.5s ease;
+}
+
+.elem-form {
+    background: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 2em;  
+    display: flex;
+    flex-direction: column;
+    gap:1em; 
+}
+
+.transact-form .elem-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:10px;
+}
+
+.elem-item{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.elem-item label{
+    font-size: 1em;
+    font-weight: 600;
+    color: #3f3f3f;
+}
+
+
+.elem-group button{
+    background: rgb(250, 172, 56);
+    color: #3f3f3f;
+    padding: 0.5em 1em;
+    border: none;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.elem-group button.cancel-book-btn{
+    background: #ffffff;
+    color: #3f3f3f;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+
+}
+
+.elem-group button:hover{
+    background: rgb(255, 208, 137);
+}
+
+
+.elem-group input, select, textarea{
+    width: 100%;
+    padding: 1em;
+    border: none;
+
+    font-size: 1em;
+    font-weight: 600;
+    color: #3f3f3f;
+    background: #ffffff;
+}
+
+.elem-group textarea{
+    height: 150px;
+    resize: none;
+}
+
+.container {
+    width: 100%;
+    background: linear-gradient(90deg, #FFD8CB 0%, #F9D29D 50% 100%);
+    justify-content: center;
+    display: flex;
+}
+
+/* Gallery Section */
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap:5px;
+    max-width: 93.5rem;
+    padding: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    flex: 1 0 22rem;
+    color: #fff;
+    cursor: pointer;
+    max-height: 500px;
+    max-width: 500px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+
+@supports (display: grid) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+        grid-gap: 2rem;
+    }
+
+
+    .gallery {
+        width: auto;
+        margin: 0;
+    }
+
+   
+}
+
+
+@media screen and (max-width: 1200px) {
+    .container {
+        display: block;
+        background: linear-gradient(90deg, #FFD8CB 0%, #F9D29D 50% 100%);
+
+    }
+}

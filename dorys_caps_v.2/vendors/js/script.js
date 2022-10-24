@@ -19,46 +19,6 @@ var swiper2 = new Swiper(".bg-slider", {
   },
 });
 
-//Navigation bar effects on scroll
-window.addEventListener("scroll", () => {
-  const header = document.querySelector("header");
-  header.classList.toggle("sticky", window.scrollY > 0);
-});
-
-// select all card
-const images = [
-  '/vendors/images/carousel/slide1.jpg',
-  '/vendors/images/carousel/slide2.jpg',
-  '/vendors/images/carousel/slide3.jpg'
-]
-
-const cards = document.querySelectorAll(".card");
-
-// add event listener to each card with image
-cards.forEach((card, index) => {
-  card.style.setProperty('--card-image',`url(${images[index]})`);
-});
-
-// contact components
-
-const inputs = document.querySelectorAll(".input-c-items");
-
-function focusFunc() {
-  let parent = this.parentNode;
-  parent.classList.add("focus");
-}
-
-function blurFunc() {
-  let parent = this.parentNode;
-  if (this.value == "") {
-    parent.classList.remove("focus");
-  }
-}
-
-inputs.forEach((input) => {
-  input.addEventListener("focus", focusFunc);
-  input.addEventListener("blur", blurFunc);
-});
 
 
 // auth form
@@ -132,16 +92,64 @@ try {
     inner_wrapper.classList.remove("active");
   });
 
-
-
 } catch (error) {
-
+  console.log(error);
 }
 
-// header-account dropdown
+const contactForm = document.getElementById("contact-form");
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(contactForm);
+
+  try {
+      const res = await fetch('/controller/client/ContactQueries.php', {
+          method: 'POST',
+          body: JSON.stringify(Object.fromEntries(formData)),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+
+      const data = await res.json();
+
+      const success = "https://cdn-icons-png.flaticon.com/512/190/190411.png";
+      const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
+
+      if (data.status === 'success') {
+          Swal.fire({
+              title: "Success!",
+              text: "Your message has been sent.",
+              imageUrl: success,
+              imageWidth: 150,
+              imageHeight: 150,
+              imageAlt: "Success",
+          });
+
+          contactForm.reset();
+      } else {
+          Swal.fire({
+              title: "Failed!",
+              text: "Your message has not been sent.",
+              imageUrl: failed,
+              imageWidth: 150,
+              imageHeight: 150,
+              imageAlt: "Failed",
+          });
+
+          contactForm.reset();
+      }
+
+  }
+  catch (err) {
+      console.log(err);
+  }
+});
 
 
-
+const bookNow = (service_token) => {
+  window.location.href = `/pages/book-now.php?service_token=${service_token}`;
+}
 
 
 

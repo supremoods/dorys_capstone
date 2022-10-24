@@ -1,4 +1,4 @@
-.profile{
+.profile {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -6,42 +6,42 @@
     padding: 3em 5em;
 }
 
-.profile .wrapper{
-    width:100%;
+.profile .wrapper {
+    width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 20px;
 }
 
-.profile-card .inner-wrapper{
+.profile-card .inner-wrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
     background: #f5f5f5;
-    gap:40px;
+    gap: 40px;
     padding: 50px 0;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.profile .profile-card .profile-card__image{
+.profile .profile-card .profile-card__image {
     width: 200px;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-.profile .profile-card .profile-card__image img{
+.profile .profile-card .profile-card__image img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.profile .wrapper .profile-settings{
+.profile .wrapper .profile-settings {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -51,97 +51,99 @@
 .profile-settings__form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;
     width: 100%;
 }
 
-.profile-card__info{
+.profile-card__info {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.profile-card__name{
+.profile-card__name {
     font-size: 1.5rem;
     font-weight: 600;
 }
 
-.profile-card__info .update-prof-pic{
+.profile-card__info .update-prof-pic {
     padding: 10px;
-    border:none;
+    border: none;
     background: rgb(250, 172, 56);
     font-weight: 700;
     border-radius: 5px;
-    cursor:pointer;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.profile-card__info .update-prof-pic:hover{
-    background: rgb(250, 172, 56,0.8);  
+.profile-card__info .update-prof-pic:hover {
+    background: rgb(250, 172, 56, 0.8);
 }
 
-.profile-card__email{
+.profile-card__email {
     margin-bottom: 20px;
 }
 
-.profile-settings{
+.profile-settings {
     background: #f5f5f5;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    gap:30px;
+    gap: 30px;
     padding: 20px;
 }
 
-.profile-settings__form .password-label{
+.profile-settings__form .password-label {
     margin-bottom: 25px;
 }
 
-.profile-settings__form .password-label .icon-toggle{
+.profile-settings__form .password-label .icon-toggle {
     cursor: pointer;
     transform: rotate(0deg);
     transition: all 0.3s ease;
 }
 
-.profile-settings__form .password-label .icon-toggle.active{
+.profile-settings__form .password-label .icon-toggle.active {
     cursor: pointer;
     transform: rotate(180deg);
     transition: all 0.3s ease;
 
 }
 
-.profile-settings__form .profile-settings__form-btn{
+.profile-settings__form .profile-settings__form-btn {
     width: 100%;
     padding: 10px 0;
-    border:none;
+    border: none;
     background: rgb(250, 172, 56);
     font-weight: 700;
 }
-.profile-settings .profile-settings__body .profile-settings__form{
+
+.profile-settings .profile-settings__body .profile-settings__form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap:0px;
+    gap: 0px;
 
 }
 
-.profile-settings .profile-settings__body{
+.profile-settings .profile-settings__body {
     display: flex;
-    gap:20px;
+    gap: 20px;
     flex-direction: column;
 }
-.profile-settings .profile-settings__body .profile-settings__form .password-label{
+
+.profile-settings .profile-settings__body .profile-settings__form .password-label {
     display: flex;
     width: 100%;
     justify-content: space-between;
 }
 
-.profile-settings .profile-settings__body hr{
+.profile-settings .profile-settings__body hr {
     width: 100%;
     color: #c2c2c2;
 }
 
-.profile .wrapper input{
+.profile .wrapper input {
     padding: 10px;
     border: 1px solid #c2c2c2;
     border-radius: 5px;
@@ -149,18 +151,324 @@
     transition: all 0.3s ease;
 }
 
-.profile .wrapper label{
+.profile .wrapper label {
     margin-bottom: 5px;
     font-size: 13px;
     color: #5a5959;
 }
 
-#update-password{
+#update-password {
     display: none;
     flex-direction: column;
 }
 
-#update-password.active{
-    display:flex;
+#update-password.active {
+    display: flex;
 }
 
+.profile-settings__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-toggle {
+    padding: 0 2em;
+}
+
+.switch {
+    height: 24px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.switch input {
+    display: none;
+}
+
+.switch input+span {
+    padding-left: 50px;
+    min-height: 24px;
+    line-height: 24px;
+    display: block;
+    color: #99A3BA;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.switch input+span:before,
+.switch input+span:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 12px;
+}
+
+.switch input+span:before {
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 24px;
+    background: #E4ECFA;
+    transition: all 0.3s ease;
+}
+
+.switch input+span:after {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    top: 3px;
+    left: 3px;
+    box-shadow: 0 1px 3px rgba(18, 22, 33, 0.1);
+    transition: all 0.45s ease;
+}
+
+.switch input+span em {
+    width: 8px;
+    height: 7px;
+    background: #99A3BA;
+    position: absolute;
+    left: 8px;
+    bottom: 7px;
+    border-radius: 2px;
+    display: block;
+    z-index: 1;
+    transition: all 0.45s ease;
+}
+
+.switch input+span em:before {
+    content: "";
+    width: 2px;
+    height: 2px;
+    border-radius: 1px;
+    background: #fff;
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 50%;
+    margin: -1px 0 0 -1px;
+}
+
+.switch input+span em:after {
+    content: "";
+    display: block;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #99A3BA;
+    border-bottom: 0;
+    width: 6px;
+    height: 4px;
+    left: 1px;
+    bottom: 6px;
+    position: absolute;
+    z-index: 1;
+    transform-origin: 0 100%;
+    transition: all 0.45s ease;
+    transform: rotate(-35deg) translate(0, 1px);
+}
+
+.switch input+span strong {
+    font-weight: normal;
+    position: relative;
+    display: block;
+    top: 1px;
+}
+
+.switch input+span strong:before,
+.switch input+span strong:after {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+}
+
+.switch input+span strong:before {
+    content: "Edit Profile";
+    transition: all 0.3s ease 0.2s;
+}
+
+.switch input+span strong:after {
+    content: "Edit Profile";
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgb(250, 172, 56);
+    transition: all 0.3s ease;
+    transform: translate(2px, 0);
+}
+
+.switch input:checked+span:before {
+    background: rgba(238, 169, 40, 0.35);
+}
+
+.switch input:checked+span:after {
+    background: #fff;
+    transform: translate(18px, 0);
+}
+
+.switch input:checked+span em {
+    transform: translate(18px, 0);
+    background: rgb(250, 172, 56);
+}
+
+.switch input:checked+span em:after {
+    border-color: rgb(250, 172, 56);
+    transform: rotate(0deg) translate(0, 0);
+}
+
+.switch input:checked+span strong:before {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    transform: translate(-2px, 0);
+}
+
+.switch input:checked+span strong:after {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0);
+    transition: all 0.3s ease 0.2s;
+}
+
+.profile-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+    width: 315px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.card-header {
+    position: relative;
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-header:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(228, 142, 14, 0.623), rgba(181, 181, 181, 0.1));
+}
+
+.card-header-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    width: 100%;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+    border: none;
+    overflow: hidden;
+}
+
+
+svg .polygon {
+    fill: #f5f5f5;
+}
+
+.card-header-slanted-edge {
+    position: absolute;
+    bottom: -3px;
+    z-index: 1;
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+.btn-update {
+    position: absolute;
+    top: -15px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(to left, #e7a957, #ff9137);
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+.btn-update:after {
+    content: '';
+    position: absolute;
+    background: url(https://res.cloudinary.com/dj14cmwoz/image/upload/v1491077480/profile-card/images/add.svg) no-repeat;
+    width: 17px;
+    height: 17px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-body {
+    text-align: center;
+    padding: 2em;
+}
+.card-body a{
+    text-decoration: none;
+    color: #000;
+    background: rgb(250, 172, 56);
+    padding: 10px 5em;
+    width: 100%;
+}
+.name {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+.prof-email {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 5px;
+    color: #919191;
+    margin-bottom: 3em;
+}
+
+.old-pass-grp .message.success{
+    color: green;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+.old-pass-grp .message.error{
+    color: red;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+
+.confirm-pass-grp .message.success{
+    color: green;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+.confirm-pass-grp .message.error{
+    color: red;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+
+input[type="submit"]{
+    cursor: pointer;
+}

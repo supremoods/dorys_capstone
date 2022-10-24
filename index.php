@@ -190,10 +190,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/models/admin_model/SqlQuery.php');
             </div>
         </div>
         <?php
-        include('templates/footer.php');
-        include('modal/login.php');
-        include('modal/registration.php');
-   
+            include('templates/footer.php');
+            include('modal/login.php');
+            include('modal/registration.php');
         ?>
     </div>
 

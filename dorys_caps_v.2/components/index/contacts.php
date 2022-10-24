@@ -1,4 +1,11 @@
-<div class="contacts">
+<?php
+
+$contactDetails = new SqlClientQuery();
+
+$fetch = $contactDetails->fetchContactDetails();
+
+?>
+<div class="contacts" id="contacts">
     <div class="wrapper">
         <span class="big-circle"></span>
         <div class="form">
@@ -12,32 +19,30 @@
                 <div class="info">
                     <div class="information">
                         <i class="fa-solid fa-location-dot"></i>
-                        <p>92 Cherry Drive Uniondale, NY 11553</p>
+                        <p><?=$fetch['address']?></p>
                     </div>
                     <div class="information">
                         <i class="fa-solid fa-envelope"></i>
-                        <p>lorem@ipsum.com</p>
+                        <p><?=$fetch['email']?></p>
                     </div>
                     <div class="information">
                         <i class="fa-solid fa-phone"></i>
-                        <p>123-456-789</p>
+                        <p><?=$fetch['phone_number_1']?></p>
+                    </div>
+                    <div class="information">
+                        <i class="fa-solid fa-phone"></i>
+                        <p><?=$fetch['phone_number_2']?></p>
                     </div>
                 </div>
 
                 <div class="social-media">
                     <p>Connect with us :</p>
                     <div class="social-icons">
-                        <a href="#">
+                        <a href="<?=$fetch['facebook']?>">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#">
+                        <a href="<?=$fetch['twitter']?>">
                             <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
@@ -48,13 +53,8 @@
                 <span class="circle one"></span>
                 <span class="circle two"></span>
 
-                <form action="index.html" autocomplete="off">
+                <form method="POST" id="contact-form" autocomplete="off">
                     <h3 class="title">Contact us</h3>
-                    <div class="input-container">
-                        <input type="text" name="name" class="input-c-items" />
-                        <label for="">Username</label>
-                        <span>Username</span>
-                    </div>
                     <div class="input-container">
                         <input type="email" name="email" class="input-c-items" />
                         <label for="">Email</label>

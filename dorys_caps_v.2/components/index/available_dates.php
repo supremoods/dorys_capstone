@@ -1,6 +1,6 @@
 <div class="check-available-dates">
     <div class="wrapper">
-        <form method="post">
+        <div>
             <div class="form-group-container">
                 <div class="form-group">
                     <label for="amenity">Amenity</label>
@@ -15,8 +15,8 @@
                     <label for="available-dates">Date</label>
                     <input class="form-item" type="date" id="available-dates" name="available-dates" class="form-control">
                 </div>
-                <button class="submit-btn">Check Available Dates</button>
+                <button id="check-dates-btn" class="submit-btn">Check Available Dates</button>
             </div>
-        </form>
+        </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/client/FetchClientController.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/model/client/SqlClientQuery.php');
 ?>
 <header class="site-header">
     <div class="header-top">
@@ -46,13 +46,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/client/FetchClientControll
                                 <a href="/">Home</a>
                             </div>
                             <div class="menu-item">
-                                <a href="/">Amenities</a>
+                                <a href="#ammenities">Amenities</a>
+                                <div class="dropdown-items">
+                                    <div class="item">
+                                        <a href="/pages/ammenities.php">Offers</a>
+                                    </div>
+        
+                                </div>
                             </div>
                             <div class="menu-item">
                                 <a href="/">About</a>
                             </div>
                             <div class="menu-item">
-                                <a href="/">Contact</a>
+                                <a href="#contacts">Contact</a>
                             </div>
                         </div>
                     </div>
@@ -69,8 +75,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/client/FetchClientControll
                         </div>
                     <?php
                     } else {
-                        $fetchClient = new FetchClient();
-                        $client = $fetchClient->fetchRow($_SESSION['user_token']);
+                        $fetchClient = new SqlClientQuery();
+                        $client = $fetchClient->fetchClientDetails($_SESSION['user_token']);
                     ?>
 
                         <div class="avatar">
@@ -86,7 +92,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/client/FetchClientControll
                                     <a href="/pages/profile.php">Profile</a>
                                 </div>
                                 <div class="avatar-dropdown-item links">
-                                    <a href="">Transaction List</a>
+                                    <a href="/pages/transactionList.php">Transaction List</a>
                                 </div>
                                 <div class="avatar-dropdown-item links">
                                     <a href="/controller/client/LogoutController.php">Logout</a>

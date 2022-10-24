@@ -1,4 +1,4 @@
-const signUpForm = document.getElementById('sign-up-form');
+  const signUpForm = document.getElementById('sign-up-form');
 const modalAlert = document.getElementById('alert-message');
 
 signUpForm.addEventListener('submit', async (e) => {
@@ -19,13 +19,30 @@ signUpForm.addEventListener('submit', async (e) => {
         const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
 
         if(data.status === 'success'){
-            modalAlert.innerHTML += alertMessage("You have successfully registered", "success", success);
-            modalAlert.classList.add('active');
+            Swal.fire({
+                title: "Success!",
+                text: "You have successfully registered",
+                imageUrl: success,
+                imageWidth: 150,
+                imageHeight: 150,
+                imageAlt: "Success",
+            });
+
             main.classList.toggle("sign-up-mode");
             signUpForm.reset();
         }else{
-            modalAlert.innerHTML += alertMessage("Something went wrong", "danger", failed);
-            modalAlert.classList.add('active');
+
+            Swal.fire({
+                title: "Failed!",
+                text: "Registration failed",
+                imageUrl: failed,
+                imageWidth: 150,
+                imageHeight: 150,
+                imageAlt: "Failed",
+            });
+
+            signUpForm.reset();
+
         }
 
     }catch(err){
@@ -45,10 +62,6 @@ const alertMessage = (message, status, img) =>{
     `
 }
 
-const closeAlert = () =>{
-    modalAlert.innerHTML = "";
-    modalAlert.classList.remove('active');
-}
 
 
 const loginForm = document.getElementById('sign-in-form');
@@ -73,8 +86,14 @@ loginForm.addEventListener('submit', async (e) => {
         if(data.status === 'success'){
             window.location.href = "/";
         }else{
-            modalAlert.innerHTML += alertMessage("Login Failed, Please check your username or password", "danger", failed);
-            modalAlert.classList.add('active');
+            Swal.fire({
+                title: "Failed!",
+                text: "Login failed, please try again, or register if you don't have an account",
+                imageUrl: failed,
+                imageWidth: 150,
+                imageHeight: 150,
+                imageAlt: "Failed",
+            });
         }
 
     }catch(err){
@@ -83,3 +102,17 @@ loginForm.addEventListener('submit', async (e) => {
     
 });
 
+
+
+const validatePassword = (password, confirmPassword) => {
+    if(password === confirmPassword){
+        return true;
+    }else{
+        return false;
+    }
+}   
+
+const closeAlert = () => {
+    modalAlert.innerHTML = "";
+    modalAlert.classList.remove('active');
+}

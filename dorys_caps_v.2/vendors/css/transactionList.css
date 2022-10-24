@@ -1,0 +1,47 @@
+.transaction{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top:5em;
+    padding-bottom:10em;
+}
+
+.transaction .wrapper{
+    width: 100%;
+    background: #fff;
+    max-width: 80%;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 2em;
+}
+
+#edit-transact{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: rgb(255, 153, 0);
+}
+
+#edit-transact i,
+#delete-transact i{
+    font-size: 1.5em;
+    color: rgb(241, 241, 241);    
+}
+
+
+#delete-transact{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: rgb(255, 0, 0);
+}
+
+#edit-transact,
+#delete-transact{
+    border-radius: 50%;
+    cursor: pointer;    
+}
+
