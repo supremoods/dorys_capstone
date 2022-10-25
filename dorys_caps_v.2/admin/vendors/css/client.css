@@ -1,0 +1,53 @@
+.clients{
+    background: #f5f5f5;
+    width: 100%;
+}
+
+.wrapper{
+    margin-left: 240px;
+    padding:2em;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.wrapper-header h1{
+    color: #181818;
+}
+
+
+.wrapper hr{
+    border: 1px solid rgb(197, 197, 197);
+}
+
+
+.client-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wrapper-body .action-btn{
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border: none;
+    background: #fdba00;
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+
+.wrapper-body #view-client i{
+    color: #272727;
+    font-size: 20px;
+}
+
+.wrapper-body #delete-client{
+    background: #f00;
+    color: #fff;
+}
+.wrapper-body #delete-client i{
+    font-size: 20px;
+    color: #ffffff;
+}
+

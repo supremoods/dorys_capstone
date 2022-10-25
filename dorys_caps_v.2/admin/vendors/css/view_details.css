@@ -1,0 +1,229 @@
+.profile .wrapper{
+    margin-left: 240px;
+    padding:2em;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    object-fit: fill;
+}
+
+.profile .wrapper {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: 1fr 4fr;
+    gap: 20px;
+}
+
+.profile-card .inner-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #f5f5f5;
+    gap: 40px;
+    padding: 50px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile .profile-card .profile-card__image {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.profile .profile-card .profile-card__image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card {
+    position: relative;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.card-header {
+    position: relative;
+    height: 320px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-header:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(228, 142, 14, 0.623), rgba(181, 181, 181, 0.1));
+}
+
+.card-header-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    width: 100%;
+}
+
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
+    border: none;
+    overflow: hidden;
+}
+
+
+svg .polygon {
+    fill: #f5f5f5;
+}
+
+.card-header-slanted-edge {
+    position: absolute;
+    bottom: -5px;
+    z-index: 1;
+    width: 100%;
+    right: 0;
+    left: 0;
+}
+
+
+.card-body {
+    text-align: center;
+}
+.card-body a{
+    text-decoration: none;
+    color: #000;
+    background: rgb(250, 172, 56);
+    padding: 10px 5em;
+    width: 100%;
+}
+.name {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+.prof-email {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 5px;
+    color: #919191;
+    margin-bottom: 1em;
+}
+
+
+.card-footer{
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: center;
+}
+
+.card-footer p{
+    font-size: 14px;
+    font-weight: 600;
+    background: #28dd6e;
+    padding: 10px;
+    color: #fff;
+}
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.profile-info .profile-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+
+.profile-info__header .profile-title{
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+.profile-info__header .profile-title h2{
+    color: #2b2b2b;
+}
+
+.profile-info__body .info-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.view-msg{
+    background: #ffb10a;
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.view-msg:hover{
+    background: #f3f3f3;
+    color: #ffb10a;
+}
+
+#confirm-transact{
+    background: #28dd6e;
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+
+#cancel-transact{
+    background: #ff0000;
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+
+@media screen and (max-width: 1300px){
+    .profile .wrapper {
+        display: flex;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .profile .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .profile .profile-card {
+        width: 100%;
+    }
+    .profile .profile-info {
+        width: 100%;
+    }
+}

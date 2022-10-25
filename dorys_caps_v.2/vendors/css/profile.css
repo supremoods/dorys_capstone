@@ -472,3 +472,17 @@ svg .polygon {
 input[type="submit"]{
     cursor: pointer;
 }
+
+@media (max-width: 850px){
+    .profile{
+        padding: 3em 0;
+
+    }
+    .profile .wrapper{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+}

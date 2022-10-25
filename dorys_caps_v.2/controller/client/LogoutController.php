@@ -9,6 +9,7 @@
                 $token = $_SESSION['session_token'];
                 if($this->logout_stamp($token)){
                     unset($_SESSION['session_token']);
+                    unset($_SESSION['user_token']);
                     return true;
                 }
             }

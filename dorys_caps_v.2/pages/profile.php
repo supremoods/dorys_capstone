@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if(!isset($_SESSION['session_token'])){
+        header ('Location: /');
+    }   
 ?>
 
 <!DOCTYPE html>
