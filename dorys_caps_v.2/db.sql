@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 02:49 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Oct 25, 2022 at 11:10 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -144,7 +144,9 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (91, '363244918a0feb5e', '6e59879b29a54e43', '2022-10-25 09:50:55', '2022-10-25 09:53:28'),
 (92, '5a2b966ab705fc78', '635193d692d0d', '2022-10-25 09:53:49', '2022-10-25 10:23:21'),
 (93, 'ed9055cd0551e7b9', '635193d692d0d', '2022-10-25 10:33:17', '2022-10-25 10:33:26'),
-(94, 'eba684d158ed0610', '635193d692d0d', '2022-10-25 11:51:54', NULL);
+(94, 'eba684d158ed0610', '635193d692d0d', '2022-10-25 11:51:54', NULL),
+(95, '664b9aa9ef391539', '635193d692d0d', '2022-10-25 10:51:20', '2022-10-26 12:57:56'),
+(96, 'e90fba96469e44e3', '635193d692d0d', '2022-10-26 04:57:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -212,8 +214,9 @@ CREATE TABLE `request_reservation` (
 
 INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`) VALUES
 (28, '3d33ff16f6211482', 'pending'),
-(29, '32cb8fcee9341d07', 'pending'),
-(34, 'daf72bbe5255b430', 'pending');
+(35, '863949e37315dc90', 'confirmed'),
+(36, 'bbb7343e45296717', 'pending'),
+(37, '26beb1ef360c8be9', 'pending');
 
 -- --------------------------------------------------------
 
@@ -239,8 +242,9 @@ CREATE TABLE `reservation` (
 
 INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_token`, `start_datetime`, `end_datetime`, `mode_of_payment`, `settlement_fee`, `message`) VALUES
 (30, '6e59879b29a54e43', '916c696fa61a769c', '3d33ff16f6211482', '2022-10-27 08:44:00', '2022-10-27 18:25:00', 'cash', 2000, 'asdasdlkajnn asasas daskjasd  askjbnasdasdaasdasjkbasd'),
-(31, '635193d692d0d', 'f375ebf2b8154017', '32cb8fcee9341d07', '2022-10-24 10:20:00', '2022-10-24 22:20:00', 'cash', 1500, 'asdasdasdasdasd'),
-(36, '635193d692d0d', '916c696fa61a769c', 'daf72bbe5255b430', '2022-10-24 10:32:00', '2022-10-24 22:32:00', 'cash', 2400, 'sdasdasd asd assads dasas dsasa');
+(37, '635193d692d0d', '916c696fa61a769c', '863949e37315dc90', '2022-10-26 04:57:00', '2022-10-26 16:57:00', 'cash', 6000, 'asdasdsdasd'),
+(38, '635193d692d0d', '459daba73a28dd8b', 'bbb7343e45296717', '2022-10-26 05:00:00', '2022-10-26 17:00:00', 'cash', 6000, 'dfsdfsdfsdfsdf'),
+(39, '635193d692d0d', '459daba73a28dd8b', '26beb1ef360c8be9', '2022-10-27 05:00:00', '2022-10-27 17:00:00', 'cash', 6000, 'asdasdasda');
 
 -- --------------------------------------------------------
 
@@ -394,7 +398,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -412,13 +416,13 @@ ALTER TABLE `queries`
 -- AUTO_INCREMENT for table `request_reservation`
 --
 ALTER TABLE `request_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `services`

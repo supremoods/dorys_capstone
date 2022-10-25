@@ -149,9 +149,6 @@ const viewProfile = async (token) => {
 
 }
 
-
-
-
 const confirmTransactionFunc = async (token) => {
     const response = await fetch('/admin/controller/ConfirmTransaction.php',{
         method: 'POST',
