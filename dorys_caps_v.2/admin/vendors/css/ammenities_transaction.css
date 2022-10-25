@@ -1,0 +1,107 @@
+.ammenity-trans-list .wrapper{
+    margin-left: 240px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wrapper-header{
+    display:flex;
+    align-items: center;
+}
+
+.wrapper-header .left-header{
+    flex-grow:1;
+}
+
+.price-ammenity{
+    display: flex;
+    gap:10px;
+}
+
+
+.view-msg{
+    display: flex;
+    padding: 8px;
+    background: #ffb000;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.view-msg:hover{
+    background: #ff9f00;
+}
+
+.action-btns{
+    display: flex;
+    gap: 10px;
+}
+.action-btn{
+    height: 30px;
+    cursor: pointer;
+    padding: 0 2em;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.action-btn.view-profile{
+    background: #ffb000;
+}
+
+.action-btn.confirm-transact{
+    background: #fdfdfd;
+}
+
+.action-btn.cancel-transact{
+    background: #ff0000;
+    color: #fdfdfd;
+}
+.client-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.client-details__label,
+.client-details__value,
+.client-details__info,
+.client-details__item
+{
+    display: flex;
+}
+
+.client-details__avatar img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.client-details__info,
+.client-details__info .client-details__item{
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.client-details__info{
+    gap: 20px;
+}
+
+
+.client-details__label{
+    font-weight: 600;
+    color: rgb(88, 88, 88);
+    font-size: 14px;
+}
+
+.client-details__value{
+    border: 1px solid rgb(88, 88, 88);
+    padding: 10px;
+}
+
+.swal2-button{
+    width: 100%;
+}

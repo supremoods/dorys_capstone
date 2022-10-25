@@ -5,6 +5,8 @@
     $user_token = $_GET['client_id'];
 
     $res = $fetchClientDetails->fetchClientDetails($user_token);
+
+    $res = $res->fetch_assoc();
 ?>
 
 <div class="profile">
