@@ -1,7 +1,8 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'].'/model/client/SqlClientQuery.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/admin/model/admin/SqlAdminQuery.php');
 
-    class PopulateCalendar extends SqlClientQuery{
+
+    class PopulateCalendar extends SqlAdminQuery{
         public function populate(){
             $result = $this->fetchAllReservation();
             $data = array();
@@ -24,7 +25,6 @@
                 ));
             }
 
-            
 
             echo json_encode($data);
         }

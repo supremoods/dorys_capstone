@@ -304,6 +304,19 @@
             }
         }
 
+        public function fetchEvents(){
+            $sql = "SELECT * FROM events";
+    
+            $result = $this->dbConnection()->query($sql);
+    
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return $result;
+                }
+            }
+        }
+
         public function TransactDetails($reservation_token){
             $sql = "SELECT reservation.reservation_token,  
                         services.name,

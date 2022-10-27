@@ -1,0 +1,7 @@
+.event-calendar .wrapper {
+    margin-left: 240px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

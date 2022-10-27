@@ -336,4 +336,57 @@ class SqlAdminQuery extends ConfigDB
             return true;
         }
     }
+
+    
+    public function fetchAllReservation(){
+        $sql = "SELECT reservation.user_token, 
+                    reservation.service_token, 
+                    reservation.reservation_token, 
+                    reservation.start_datetime, 
+                    reservation.end_datetime, 
+                    services.name 
+                    FROM reservation 
+                    LEFT JOIN request_reservation ON reservation.reservation_token = request_reservation.reservation_token 
+                    LEFT JOIN services ON services.services_token = reservation.service_token;
+        ";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result->num_rows > 0) {
+                return $result;
+            }
+        }
+    }
+
+
+    public function fetchEvents(){
+        $sql = "SELECT * FROM events";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result->num_rows > 0) {
+                return $result;
+            }
+        }
+    }
+
+    public function deleteEvent($token){
+        $sql = "DELETE FROM events WHERE id = '$token'";
+        $result = $this->dbConnection()->query($sql);
+        if($result){
+            return true;
+        }
+    }
+
+    public function DisableAppoint($start_datetime){
+        $sql = "INSERT INTO events (title, start) VALUES ('Unavailable','$start_datetime')";
+        $result = $this->dbConnection()->query($sql);
+        if($result){
+            return true;
+        }
+    }
 }
