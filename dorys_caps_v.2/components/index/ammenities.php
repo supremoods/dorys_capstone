@@ -7,12 +7,13 @@ $fetchAmmenities = $ammenities->FetchAmmenities();
     </div>
     <div class="wrapper">
     <?php
-
+    $count = 0;
     if ($fetchAmmenities->num_rows > 0) {
-
         while ($row = $fetchAmmenities->fetch_assoc()) {
+            if($count < 3){
             $images = explode(",", $row['images']);
             $features = explode(",", $row['features']);
+
     ?>
         <div class="card">
             <div class="content">
@@ -22,8 +23,13 @@ $fetchAmmenities = $ammenities->FetchAmmenities();
             </div>
         </div>
     <?php
+            }
+            $count++;
         }
     }
     ?>
+    </div>
+    <div class="view-more">
+        <button class="btn" onclick="viewMore()">View More</button>
     </div>
 </div>

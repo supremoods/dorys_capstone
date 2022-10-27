@@ -22,7 +22,7 @@
                     $features = explode(",", $row['features']);
             ?>
             <div class="swiper-slide dark-layer">
-                <img src="vendors/images/carousel/<?= trim($images[0]) ?>" alt="">
+                <img src="vendors/images/services/<?= trim($images[0]) ?>" alt="">
                 <div class="text-content">
                     <h2 class="title"><?= $row['name'] ?></h2>
                     <p><?= $row['description'] ?></p>
@@ -45,7 +45,7 @@
                 $images = explode(",", $row['images']);
                 $features = explode(",", $row['features']);
         ?>
-            <img src="vendors/images/carousel/<?= trim($images[0]) ?>" class="swiper-slide" alt="">
+            <img src="vendors/images/services/<?= trim($images[0]) ?>" class="swiper-slide" alt="">
         <?php
             }
         }

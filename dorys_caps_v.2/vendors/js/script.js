@@ -19,8 +19,6 @@ var swiper2 = new Swiper(".bg-slider", {
   },
 });
 
-
-
 // auth form
 
 const input_field = document.querySelectorAll(".input-field");
@@ -93,7 +91,6 @@ try {
   });
 
 } catch (error) {
-  console.log(error);
 }
 
 const contactForm = document.getElementById("contact-form");
@@ -150,6 +147,4 @@ contactForm.addEventListener('submit', async (e) => {
 const bookNow = (service_token) => {
   window.location.href = `/pages/book-now.php?service_token=${service_token}`;
 }
-
-
 

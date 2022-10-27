@@ -320,13 +320,18 @@
                 $row = $result->fetch_assoc();
                 $images = $row['images'];
                 $images = explode(",", $images);
-                foreach($images as $image){
-                   if(!unlink($_SERVER['DOCUMENT_ROOT']."/vendors/images/services/".trim($image))){
-                       return false;
-                   }
-                }
 
-                return true;
+                echo json_encode($images);
+                // // check if the images are not empty
+                // if(!empty($images)){
+                //     foreach($images as $image){
+                //         if(!unlink($_SERVER['DOCUMENT_ROOT']."/vendors/images/services/".trim($image))){
+                //             return false;
+                //         }
+                //      }
+                // }
+
+                // return true;
             }
         }
 

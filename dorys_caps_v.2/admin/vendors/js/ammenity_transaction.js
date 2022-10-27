@@ -36,13 +36,11 @@ const loadAmmenityTransaction = async (token) => {
             if(transaction.status === 'pending'){
                 actionBtns = `
                 <button type="button" class="confirm-transact action-btn" onclick="confirmTransactionFunc(this.dataset.reservation_token)" title="Confirm" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Confirm</button>
-                
                 <button type="button" class="cancel-transact action-btn" onclick="cancelTransactionFunc(this.dataset.reservation_token)" title="Cancel" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Decline</button>
                 `;
             }else if(transaction.status === 'cancelled'){
                 actionBtns = `
                 <button type="button" class="confirm-transact action-btn" onclick="undoTransactionFunc(this.dataset.reservation_token)" title="Revert" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Revert</button>
-                
                 <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Delete</button>
                 `
             }else if(transaction.status === 'confirmed'){

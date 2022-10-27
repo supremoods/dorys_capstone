@@ -7,7 +7,7 @@ $client = $fetchClient->fetchClientDetails($_SESSION['user_token']);
     <div class="wrapper">
         <div class="profile-card">
             <div class="card">
-                <div class="card-header" style="background-image: url(/vendors/images/client/<?= is_null($client['avatar']) ? "oreo.png" : $client['avatar'] ?>)">
+                <div class="card-header" style="background-image: url(/vendors/images/client/<?= is_null($client['avatar']) ? "avatar.png" : $client['avatar'] ?>)">
                     <div class="card-header-slanted-edge">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200">
                             <path class="polygon" d="M-20,200,1000,0V200Z" />

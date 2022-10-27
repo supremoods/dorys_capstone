@@ -12,12 +12,14 @@
     --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
     --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
 
+    --index: 1;
+
     --scroll-bar-color: #fff;
     --scroll-thumb-color: #282f4e;
     --scroll-thumb-hover-color: #454f6b;
     --d: 700ms;
     --e: cubic-bezier(0.19, 1, 0.22, 1);
-    --card-image: url(../images/carousel/slide1.jpg);
+    --card-image: url(../images/services/slide1.jpg);
 }
 
 /*======= Scroll bar =======*/
@@ -370,6 +372,7 @@ body.show{
 .card:nth-child(3):before {
     background-image: var(--card-image);
 }
+
 
 .content {
     position: relative;
