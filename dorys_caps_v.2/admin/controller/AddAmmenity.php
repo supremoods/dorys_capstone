@@ -15,7 +15,7 @@
                                 $token,
                                 $service_name,
                                 $service_description,
-                                implode(", ",$service_images),
+                                implode(",",$service_images),
                                 $service_price
                             )){
                                 $path = $this->path($service_images);

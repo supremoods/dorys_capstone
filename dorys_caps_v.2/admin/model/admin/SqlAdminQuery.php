@@ -389,4 +389,36 @@ class SqlAdminQuery extends ConfigDB
             return true;
         }
     }
+
+    public function UpdateAmmmenityImages($token, $images){
+        $sql = "UPDATE services SET images = '$images' WHERE services_token = '$token'";
+
+        $result = $this->dbConnection()->query($sql);
+        if($result){
+            return true;
+        }
+    }
+    
+    public function fetchMessages(){
+        $sql = "SELECT * FROM queries";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result->num_rows > 0) {
+                return $result;
+            }else{
+                return false;
+            }
+        }
+    }
+
+    public function deleteMessageClient($token){
+        $sql = "DELETE FROM queries WHERE id = '$token'";
+        $result = $this->dbConnection()->query($sql);
+        if($result){
+            return true;
+        }
+    }
 }

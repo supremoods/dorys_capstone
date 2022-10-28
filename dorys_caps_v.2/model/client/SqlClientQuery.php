@@ -211,16 +211,19 @@
         public function InsertClientQueries(
             $email,
             $phone,
-            $message
+            $message,
+            $date
         ){
             $sql = "INSERT INTO queries(
                 email,
                 phone,
-                message
+                message,
+                timeStamp
                 ) VALUES (
                     '$email',
                     '$phone',
-                    '$message'
+                    '$message',
+                    '$date'
                     )";
             
             $result = $this->dbConnection()->query($sql);

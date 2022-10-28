@@ -9,14 +9,22 @@
     <link rel="icon" href="/vendors/images/logo/dorys_logo.png" type="image/png" sizes="16x16">
     <?php include $_SERVER['DOCUMENT_ROOT'].'/admin/links/header/header_links.php'; ?>
     <link rel="stylesheet" href="/admin/vendors/css/ammenity_detail.css">
+    <link rel="stylesheet" href="/admin/vendors/image_uploader/image-uploader.min.css">
+
 </head>
 
 <body>
     <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/sidebar.php'; ?>
 
-    <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/ammenities/details/slider.php'; ?>
+    <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/ammenities/details/viewDetails.php'; ?>
+
+    <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/ammenities/details/addImage.php'; ?>
+
 
     <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/links/footer/footer_links.php'; ?>
+    
+    <script src="/admin/vendors/image_uploader/image-uploader.min.js"></script>
+   
     <script src="/admin/vendors/js/script.js"></script>
     <script src="/admin/vendors/js/ammenity_details.js"></script>
 </body>

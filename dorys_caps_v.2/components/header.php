@@ -78,7 +78,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/model/client/SqlClientQuery.php');
                         $fetchClient = new SqlClientQuery();
                         $client = $fetchClient->fetchClientDetails($_SESSION['user_token']);
                     ?>
-
                         <div class="avatar">
                             <div class="avatar-container">
                                 <img src="/vendors/images/client/<?= is_null($client['avatar']) ? "avatar.png" : $client['avatar'] ?>" alt="avatar" class="avatar">

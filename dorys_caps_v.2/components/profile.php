@@ -106,7 +106,7 @@ $client = $fetchClient->fetchClientDetails($_SESSION['user_token']);
                     <form method="POST" id="update-password" autocomplete="off">
                         <div class="profile-settings__form-group old-pass-grp">
                             <label for="old-password" class="profile-settings__form-label">Old Password</label>
-                            <input type="password" name="old-password" id="old-password" class="profile-settings__form-input" placeholder="Enter your old password" >
+                            <input type="password" name="old-password" title="Press -Enter- to verify" id="old-password" class="profile-settings__form-input" placeholder="Enter your old password" >
                             <p class="message"></p>
                         </div>
                         <div class="profile-settings__form-group new-pass-grp">

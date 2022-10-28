@@ -33,6 +33,14 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
+                    <a href="javascript:void(0);"><i class="fa fa-table"></i><span>Messages</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+                    <ul>
+                        <li>
+                            <a href="/admin/dashboard/messages.php">Manage Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
                     <a href="javascript:void(0);"><i class="fa fa fa-tasks"></i><span>Settings</span><i class="arrow fa fa-angle-right pull-right"></i></a>
                     <ul>
                         <li>

@@ -34,7 +34,7 @@ const loadBackgroundImage = (e) => {
             const root = document.querySelector(":root");
 
             // change the background image of the form
-            root.style.setProperty(`--bg-image`,`url(../images/services/${ammenities[0].images})`);
+            root.style.setProperty(`--bg-image`,`url(../images/services/${ammenities[0].images.split(",")[0]})`);
 
         }else{
             console.log(data);
@@ -68,7 +68,7 @@ ammenitiesSelection.addEventListener("change", (e) => {
 
                 console.log(index);
                 // change the background image of the form
-                root.style.setProperty(`--bg-image`,`url(../images/services/${ammenities[index].images})`);
+                root.style.setProperty(`--bg-image`,`url(../images/services/${ammenities[index].images.split(",")[0]})`);
 
                 // split the images into an array 
                 const images = ammenities[index].images.split(",");

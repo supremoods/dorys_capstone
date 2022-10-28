@@ -22,8 +22,16 @@ editProfForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(editProfForm);
 
-    console.log(Object.fromEntries(formData));
     try {
+        Swal.fire({
+            title: 'Please wait...',
+            html: 'We are processing your request',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+        });
         const res = await fetch('/controller/client/EditProfile.php', {
             method: 'POST',
             body: JSON.stringify(Object.fromEntries(formData)),
@@ -38,6 +46,7 @@ editProfForm.addEventListener('submit', async (e) => {
         const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
 
         if (data.status === 'success') {
+            Swal.close();
             Swal.fire({
                 title: "Success!",
                 text: "Your message has been sent.",
@@ -48,6 +57,7 @@ editProfForm.addEventListener('submit', async (e) => {
             });
             toggleEdit.click();
         } else {
+            Swal.close();
             Swal.fire({
                 title: "Failed!",
                 text: "Your message has not been sent.",
@@ -104,7 +114,15 @@ formAvatar.addEventListener('submit', async (e) => {
 
         const success = "https://cdn-icons-png.flaticon.com/512/190/190411.png";
         const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
-
+        Swal.fire({
+            title: 'Please wait...',
+            html: 'We are processing your request',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+        });
 
         fetch("/controller/client/UpdateAvatar.php", {
             method: "POST",
@@ -113,6 +131,7 @@ formAvatar.addEventListener('submit', async (e) => {
             return response.json();
         }).then(function (responseData) {
             if (responseData.status === 'success') {
+                Swal.close();
                 Swal.fire({
                     title: "Success!",
                     text: "Your message has been sent.",
@@ -122,6 +141,7 @@ formAvatar.addEventListener('submit', async (e) => {
                     imageAlt: "Success",
                 });
             } else {
+                Swal.close();
                 Swal.fire({
                     title: "Failed!",
                     text: "Your message has not been sent.",
@@ -168,7 +188,15 @@ updatePasswordForm.addEventListener('submit', async (e) => {
     try {
         const success = "https://cdn-icons-png.flaticon.com/512/190/190411.png";
         const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
-
+        Swal.fire({
+            title: 'Please wait...',
+            html: 'We are processing your request',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+        });
         fetch("/controller/client/UpdatePassword.php", {
             method: "POST",
             body: formData
@@ -176,6 +204,7 @@ updatePasswordForm.addEventListener('submit', async (e) => {
             return response.json();
         }).then(function (responseData) {
             if (responseData.status === 'success') {
+                Swal.close();
                 Swal.fire({
                     title: "Success!",
                     text: "Your message has been sent.",
@@ -188,6 +217,7 @@ updatePasswordForm.addEventListener('submit', async (e) => {
                 formResetPassword();
 
             } else {
+                Swal.close();
                 Swal.fire({
                     title: "Failed!",
                     text: "Your message has not been sent.",
@@ -223,6 +253,15 @@ oldPassword.addEventListener('keypress', async (e) => {
         formData.append('old-password', oldPassword.value);
 
         try {
+            Swal.fire({
+                title: 'Please wait...',
+                html: 'We are processing your request',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                },
+            });
             const res = await fetch('/controller/client/VerifyOldPassword.php', {
                 method: 'POST',
                 body: formData
@@ -231,7 +270,7 @@ oldPassword.addEventListener('keypress', async (e) => {
             const data = await res.json();
 
             if (data.status === 'success') {
-
+                Swal.close();
                 oldPassMsg.innerHTML = "Password Matched";
                 oldPassMsg.classList.add('success');
                 oldPassMsg.classList.remove('error');
@@ -241,9 +280,8 @@ oldPassword.addEventListener('keypress', async (e) => {
                 newPassword.disabled = false;
                 confirmPassword.disabled = false;
 
-
             } else {
-
+                Swal.close();
                 oldPassMsg.innerHTML = "Password not Matched";
                 oldPassMsg.classList.add('error');
                 oldPassMsg.classList.remove('success');

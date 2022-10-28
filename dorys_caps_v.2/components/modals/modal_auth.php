@@ -52,15 +52,15 @@
                             <input type="email" class="input-field" name="email" autocomplete="off" required />
                             <label>Email</label>
                         </div>
-
-                        <div class="input-wrap">
-                            <input type="password" minlength="4" class="input-field" autocomplete="off" required />
-                            <label>Confirm Password</label>
-                        </div>
-
+             
                         <div class="input-wrap">
                             <input type="password" minlength="4" name="password" class="input-field" autocomplete="off" required />
                             <label>Password</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input type="password" minlength="4" name="confirm-password" class="input-field" autocomplete="off" required />
+                            <label>Confirm Password</label>
                         </div>
 
                         <input type="submit" value="Sign Up" class="sign-btn" />

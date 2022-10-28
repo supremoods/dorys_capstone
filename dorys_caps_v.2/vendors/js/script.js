@@ -97,9 +97,18 @@ const contactForm = document.getElementById("contact-form");
 
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const formData = new FormData(contactForm);
 
+  const formData = new FormData(contactForm);
   try {
+        Swal.fire({
+            title: 'Please wait...',
+            html: 'We are processing your request',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            onBeforeOpen: () => {
+                Swal.showLoading()
+            },
+        });
       const res = await fetch('/controller/client/ContactQueries.php', {
           method: 'POST',
           body: JSON.stringify(Object.fromEntries(formData)),
@@ -114,6 +123,9 @@ contactForm.addEventListener('submit', async (e) => {
       const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
 
       if (data.status === 'success') {
+        //hide loader in sweetalert
+        Swal.close();
+
           Swal.fire({
               title: "Success!",
               text: "Your message has been sent.",
@@ -125,6 +137,7 @@ contactForm.addEventListener('submit', async (e) => {
 
           contactForm.reset();
       } else {
+          Swal.close();
           Swal.fire({
               title: "Failed!",
               text: "Your message has not been sent.",
@@ -141,6 +154,7 @@ contactForm.addEventListener('submit', async (e) => {
   catch (err) {
       console.log(err);
   }
+
 });
 
 
@@ -148,3 +162,42 @@ const bookNow = (service_token) => {
   window.location.href = `/pages/book-now.php?service_token=${service_token}`;
 }
 
+const inputs = document.querySelectorAll(".input-c-items");
+
+function focusFunc(){
+  let parent = this.parentNode;
+  parent.classList.add("focus");
+}
+
+function blurFunc(){
+  let parent = this.parentNode;
+  if (this.value == "") {
+    parent.classList.remove("focus");
+  }
+}
+
+inputs.forEach((input) => {
+  input.addEventListener("focus", focusFunc);
+  input.addEventListener("blur", blurFunc);
+});
+
+
+// check inputs if empty
+const email = document.querySelector(".email");
+const phone = document.querySelector(".phone");
+
+
+const checkInputs = () => {
+  const emailValue = email.value.trim();
+  const phoneValue = phone.value.trim();
+
+  if (emailValue !== "" && phoneValue !== "") {
+    let emailParent = email.parentNode;
+    emailParent.classList.add("focus");
+    let phoneParent = phone.parentNode;
+    phoneParent.classList.add("focus");
+  }
+
+}
+
+checkInputs();

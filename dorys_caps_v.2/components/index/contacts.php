@@ -52,19 +52,41 @@ $fetch = $contactDetails->fetchContactDetails();
             <div class="contact-form">
                 <span class="circle one"></span>
                 <span class="circle two"></span>
-
+    
                 <form method="POST" id="contact-form" autocomplete="off">
                     <h3 class="title">Contact us</h3>
+                    <?php
+                    if (!isset($_SESSION['session_token'])) {
+                    ?>  
                     <div class="input-container">
-                        <input type="email" name="email" class="input-c-items" />
+                        <input type="email" name="email" class="input-c-items email" required>
                         <label for="">Email</label>
                         <span>Email</span>
                     </div>
                     <div class="input-container">
-                        <input type="tel" name="phone" class="input-c-items" />
+                        <input type="tel" name="phone" class="input-c-items phone" required>
                         <label for="">Phone</label>
                         <span>Phone</span>
                     </div>
+                    <?php
+                    }else{
+                        $fetchClient = new SqlClientQuery();
+                        $client = $fetchClient->fetchClientDetails($_SESSION['user_token']);
+                    ?>
+                    <div class="input-container">
+                        <input type="email" name="email" class="input-c-items email" value="<?=$client['email']?>" readonly required>
+                        <label for="">Email</label>
+                        <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="phone" class="input-c-items phone" value="<?=$client['number']?>" readonly required>
+                        <label for="">Phone</label>
+                        <span>Phone</span>
+                    </div>
+
+                    <?php
+                    }
+                    ?>
                     <div class="input-container textarea">
                         <textarea name="message" class="input-c-items"></textarea>
                         <label for="">Message</label>

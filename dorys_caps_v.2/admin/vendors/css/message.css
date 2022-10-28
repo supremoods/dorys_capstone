@@ -1,0 +1,42 @@
+
+.message-list .wrapper {
+    margin-left: 240px;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wrapper .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 50vh;
+    position: relative;
+
+}
+
+.header-title{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.delete-btn{
+    display: flex;
+    border:none;
+    background: #fff;
+    color: rgb(253, 67, 67);
+    padding: 10px;
+    box-shadow: 0 0 1px 0 rgb(31, 31, 31);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-btn:hover{
+    background: rgb(253, 67, 67);
+    color: #fff;
+}
+

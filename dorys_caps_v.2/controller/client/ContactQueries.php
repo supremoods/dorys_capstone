@@ -4,10 +4,12 @@
     class ContactQueries extends SqlClientQuery{
         public function insertQueries($email,
         $phone,
-        $message){
+        $message,
+        $date){
             if($this->InsertClientQueries($email,
             $phone,
-            $message)){
+            $message,
+            $date)){
                 echo json_encode(array(
                     'status' => 'success',
                     'message' => 'Query submitted successfully'
@@ -20,17 +22,23 @@
             }
         }
     }
+    
     $input=file_get_contents("php://input");
     $decode=json_decode($input,true);
     
     $email = $decode['email'];
     $phone = $decode['phone'];
     $message = $decode['message'];
+    
+    // get current date
+    $date = date('Y-m-d H:i:s');
 
     $contactQueries = new ContactQueries();
 
     $contactQueries->insertQueries($email,  
-    $phone,
-    $message);
+        $phone,
+        $message,
+        $date
+    );
 
 ?>

@@ -25,13 +25,23 @@ $('.input-images').imageUploader({
 ammenitySubmit.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(ammenitySubmit);
-
+    Swal.fire({
+        title: 'Please wait...',
+        html: 'We are processing your request',
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        onBeforeOpen: () => {
+            Swal.showLoading()
+        },
+    });
 
     fetch('/admin/controller/AddAmmenity.php', {
         method: 'POST',
         body: formData
     }).then(res => res.json())
         .then(data => {
+            Swal.close();
+
             if (data) {
                 Swal.fire({
                     title: 'Success',
