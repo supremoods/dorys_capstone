@@ -10,8 +10,12 @@
 </head>
 
 <body>
+    <!-- <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/sidebar.php'; ?> -->
+
 
     <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/links/footer/footer_links.php'; ?>
+
+    <script src="/admin/vendors/js/script.js"></script>
 </body>
 
 </html>

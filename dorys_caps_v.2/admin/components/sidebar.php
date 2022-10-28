@@ -40,16 +40,16 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sub-menu">
+                <li class="sub-menu manage-settings">
                     <a href="javascript:void(0);"><i class="fa fa fa-tasks"></i><span>Settings</span><i class="arrow fa fa-angle-right pull-right"></i></a>
                     <ul>
                         <li>
-                            <a href="forms-components.html">Components</a>
-                        </li>
-                        <li>
-                            <a href="forms-validation.html">Validation</a>
+                            <a href="/admin/dashboard/settings.php">Manage Settings</a>
                         </li>
                     </ul>
+                </li>
+                <li class="sub-menu logout">
+                    <a href="javascript:void(0);"><span>Logout</span></a>
                 </li>
             </ul>
         </div>

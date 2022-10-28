@@ -37,6 +37,14 @@
     z-index: 100;
 }
 
+.sidebar #leftside-navigation {
+    height: 100%;
+}
+.sidebar #leftside-navigation ul{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .sidebar #leftside-navigation ul,
 .sidebar #leftside-navigation ul ul {
     margin: -2px 0 0;
@@ -106,3 +114,11 @@
     color: #aeb2b7;
 }
 
+.sub-menu.manage-settings{
+    flex-grow: 1;
+}
+
+.sub-menu.logout a span{
+    font-size: 16px;
+    font-weight: 700;
+}
