@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 11:10 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Oct 31, 2022 at 05:17 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,7 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `admin_id`, `message`) VALUES
-(3, '8de42f70f3bc82f1962b96cada', 'This is a test');
+(7, '8de42f70f3bc82f1962b96cada', 'asdasdasm askjsajklsaklj sasakljksajklasd');
 
 -- --------------------------------------------------------
 
@@ -83,8 +83,9 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `user_token`, `fullname`, `email`, `address`, `number`, `password`, `avatar`, `status`) VALUES
-(2, '6e59879b29a54e43', 'John Lappay', 'lappay.john@gmail.com', 'Phase 3 Blk 3, Lot 20, Tanigue St./Kaunlaran Village, Caloocan City', '0992114073', '$2y$10$mpFfEVmzf4NkG4svMRjpEuHCxuc5LSgNFBG4p17.G7Ax8TqMK6pEi', 'oreo.png', 'inactive'),
-(9, '635193d692d0d', 'John Doe', 'john.doe@gmail.com', 'this is a sample address/this is a sample address 2', '09972114073', '$2y$10$whIypU4JdWT3tHhTG.vMn.41GGFWuG.hyyGasbHa.ZY0XkSBney/a', '1663308169880.jpg', 'active');
+(2, '6e59879b29a54e43', 'John Lappay', 'lappay.john@gmail.com', 'Phase 3 Blk 3, Lot 20, Tanigue St. Kaunlaran Village, Caloocan City', '0992114073', '$2y$10$mpFfEVmzf4NkG4svMRjpEuHCxuc5LSgNFBG4p17.G7Ax8TqMK6pEi', 'oreo.png', 'inactive'),
+(9, '635193d692d0d', 'John Doe', 'john.doe@gmail.com', 'this is a sample address/this is a sample address 2', '09972114073', '$2y$10$whIypU4JdWT3tHhTG.vMn.41GGFWuG.hyyGasbHa.ZY0XkSBney/a', '273575017_437110681498089_4936485817346125140_n.png', 'active'),
+(15, '635aa86ac7fe2', 'Jerico Victoria', 'jerico.victoria@gmail.com', 'Los Santos City/', '09972114073', '$2y$10$HJ0gNkwM/.PbppwLGZGhUOglhN.eJBluTIOH2vQDbMY14yL4uu9IS', 'a.jpg', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,14 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (93, 'ed9055cd0551e7b9', '635193d692d0d', '2022-10-25 10:33:17', '2022-10-25 10:33:26'),
 (94, 'eba684d158ed0610', '635193d692d0d', '2022-10-25 11:51:54', NULL),
 (95, '664b9aa9ef391539', '635193d692d0d', '2022-10-25 10:51:20', '2022-10-26 12:57:56'),
-(96, 'e90fba96469e44e3', '635193d692d0d', '2022-10-26 04:57:35', NULL);
+(96, 'e90fba96469e44e3', '635193d692d0d', '2022-10-26 04:57:35', NULL),
+(97, '894be9cc29d7454b', '635193d692d0d', '2022-10-27 10:47:26', '2022-10-27 11:30:06'),
+(98, '1b419f7b3154c2cb', '635aa86ac7fe2', '2022-10-27 11:49:18', '2022-10-30 03:03:47'),
+(99, '788f403ca588572e', '635193d692d0d', '2022-10-28 09:22:04', '2022-10-28 11:14:13'),
+(100, 'f6e32802d19be239', '635193d692d0d', '2022-10-28 11:46:09', '2022-10-29 12:11:30'),
+(101, '615a2b6f94935e56', '635193d692d0d', '2022-10-29 01:25:33', NULL),
+(102, '70b36a8f8b08bef5', '635193d692d0d', '2022-10-29 05:32:05', NULL),
+(103, 'c64e93dab629cd1c', '635193d692d0d', '2022-10-31 01:07:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -164,6 +172,7 @@ CREATE TABLE `contact_details` (
   `email` varchar(255) NOT NULL,
   `twitter` varchar(255) NOT NULL,
   `facebook` varchar(255) NOT NULL,
+  `instagram` varchar(255) NOT NULL,
   `iframe` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -171,8 +180,28 @@ CREATE TABLE `contact_details` (
 -- Dumping data for table `contact_details`
 --
 
-INSERT INTO `contact_details` (`id`, `admin_id`, `address`, `gmap`, `phone_number_1`, `phone_number_2`, `email`, `twitter`, `facebook`, `iframe`) VALUES
-(3, '8de42f70f3bc82f1962b96cada', 'Longos, Malabon', 'https://goo.gl/maps/VZomZsNYu12ehXJT7', '09972114073', '09923124442', 'dorysresort@gmail.com', 'https://www.twitter.com/', 'https://www.facebook.com/', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.117569972251!2d120.95702681375505!3d14.649266879812126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5b6ba02957f:0x91b89c7caf3fb618!2s20 Hasa-Hasa!5e0!3m2!1sfil!2sph!4v1659932886552!5m2!1sfil!2sph');
+INSERT INTO `contact_details` (`id`, `admin_id`, `address`, `gmap`, `phone_number_1`, `phone_number_2`, `email`, `twitter`, `facebook`, `instagram`, `iframe`) VALUES
+(4, '', 'Longos, Malabon', 'https://goo.gl/maps/VZomZsNYu12ehXJT7', '09972114073', '09923124442', 'dorysresort@gmail.com', 'https://www.twitter.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.117569972251!2d120.95702681375505!3d14.649266879812126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b5b6ba02957f:0x91b89c7caf3fb618!2s20 Hasa-Hasa!5e0!3m2!1sfil!2sph!4v1659932886552!5m2!1sfil!2sph');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `start` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `title`, `start`) VALUES
+(3, 'Unavailable', '2022-11-07 00:00:00'),
+(5, 'Unavailable', '2022-11-24 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -184,17 +213,16 @@ CREATE TABLE `queries` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `message` longtext NOT NULL
+  `message` longtext NOT NULL,
+  `timeStamp` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `queries`
 --
 
-INSERT INTO `queries` (`id`, `email`, `phone`, `message`) VALUES
-(2, 'lappay.john@gmail.com', '09972114073', 'this is a sample test message for contact us section'),
-(3, 'lappay.john@gmail.com', '09972114073', 'supreasdasdoi asjdas asjsjsjs asasdkjasdjkasdasd'),
-(4, 'john.doe@gmail.com', '0997211403', 'supremoasd askjdja as dajkd basd a \nasdasdasdasda');
+INSERT INTO `queries` (`id`, `email`, `phone`, `message`, `timeStamp`) VALUES
+(30, 'jerico.victoria@gmail.com', '09972114073', 'sdsdssss', '2022-10-29');
 
 -- --------------------------------------------------------
 
@@ -216,7 +244,8 @@ INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`) VALUES
 (28, '3d33ff16f6211482', 'pending'),
 (35, '863949e37315dc90', 'confirmed'),
 (36, 'bbb7343e45296717', 'pending'),
-(37, '26beb1ef360c8be9', 'pending');
+(37, '26beb1ef360c8be9', 'pending'),
+(38, '8d7f611900f3d26d', 'pending');
 
 -- --------------------------------------------------------
 
@@ -244,7 +273,8 @@ INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_tok
 (30, '6e59879b29a54e43', '916c696fa61a769c', '3d33ff16f6211482', '2022-10-27 08:44:00', '2022-10-27 18:25:00', 'cash', 2000, 'asdasdlkajnn asasas daskjasd  askjbnasdasdaasdasjkbasd'),
 (37, '635193d692d0d', '916c696fa61a769c', '863949e37315dc90', '2022-10-26 04:57:00', '2022-10-26 16:57:00', 'cash', 6000, 'asdasdsdasd'),
 (38, '635193d692d0d', '459daba73a28dd8b', 'bbb7343e45296717', '2022-10-26 05:00:00', '2022-10-26 17:00:00', 'cash', 6000, 'dfsdfsdfsdfsdf'),
-(39, '635193d692d0d', '459daba73a28dd8b', '26beb1ef360c8be9', '2022-10-27 05:00:00', '2022-10-27 17:00:00', 'cash', 6000, 'asdasdasda');
+(39, '635193d692d0d', '459daba73a28dd8b', '26beb1ef360c8be9', '2022-10-27 05:00:00', '2022-10-27 17:00:00', 'cash', 6000, 'asdasdasda'),
+(40, '635aa86ac7fe2', 'ef18c21ade651dc7', '8d7f611900f3d26d', '2022-11-04 08:36:00', '2022-11-04 14:36:00', 'cash', 1200, 'sdgddsfdfsdfdfs sdfdsdfdfssdfsdfsdf');
 
 -- --------------------------------------------------------
 
@@ -256,7 +286,7 @@ CREATE TABLE `services` (
   `id` int(11) NOT NULL,
   `services_token` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `features` varchar(255) NOT NULL,
+  `features` varchar(255) DEFAULT NULL,
   `description` varchar(255) NOT NULL,
   `images` longtext NOT NULL,
   `price` varchar(255) NOT NULL
@@ -269,7 +299,8 @@ CREATE TABLE `services` (
 INSERT INTO `services` (`id`, `services_token`, `name`, `features`, `description`, `images`, `price`) VALUES
 (42, '459daba73a28dd8b', 'VIP', 'fully air conditioned,videoke,bbq grill,water dispenser,food warmer', 'Capacity: 12 persons', 'slide1.jpg', '500'),
 (43, 'f375ebf2b8154017', 'Alfresco', 'videoke,bbq grill,water dispenser,food warmer', 'Capacity: 30 persons', 'slide2.jpg', '500'),
-(44, '916c696fa61a769c', 'Gazebo', 'videoke,water dispenser,food warmer', 'Capacity: 8 persons', 'slide5.jpg', '200');
+(44, '916c696fa61a769c', 'Gazebo', 'videoke,water dispenser,food warmer', 'Capacity: 8 persons', 'slide5.jpg', '200'),
+(60, 'ef18c21ade651dc7', 'Test', NULL, 'asdasdasdasdasd', '30739787_1588591967926106_7638881661316235264_n.jpg', '200');
 
 -- --------------------------------------------------------
 
@@ -292,15 +323,15 @@ CREATE TABLE `services_gallery` (
 CREATE TABLE `website_stats` (
   `id` int(11) NOT NULL,
   `admin_id` varchar(255) NOT NULL,
-  `shutdown` tinyint(1) NOT NULL
+  `mode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `website_stats`
 --
 
-INSERT INTO `website_stats` (`id`, `admin_id`, `shutdown`) VALUES
-(1, '8de42f70f3bc82f1962b96cada', 0);
+INSERT INTO `website_stats` (`id`, `admin_id`, `mode`) VALUES
+(1, '8de42f70f3bc82f1962b96cada', 'Disabled');
 
 --
 -- Indexes for dumped tables
@@ -334,6 +365,12 @@ ALTER TABLE `client_log_history`
 -- Indexes for table `contact_details`
 --
 ALTER TABLE `contact_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -386,49 +423,55 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
 --
 ALTER TABLE `contact_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `queries`
 --
 ALTER TABLE `queries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `request_reservation`
 --
 ALTER TABLE `request_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `services_gallery`
