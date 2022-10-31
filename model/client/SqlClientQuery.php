@@ -484,6 +484,38 @@
             }
         }
 
+        public function fetchOccupiedTime($date, $ammenity){
+            $sql = "SELECT * FROM reservation WHERE start_datetime LIKE '%$date%' AND service_token = '$ammenity'";
+    
+            $result = $this->dbConnection()->query($sql);
+    
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return $result;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
+
+        public function fetchServiceTokenAmmenity($ammenity){
+            $sql = "SELECT * FROM services WHERE name = '$ammenity'";
+    
+            $result = $this->dbConnection()->query($sql);
+    
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row['services_token'];
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
 
     }
 

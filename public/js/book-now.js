@@ -226,3 +226,6 @@ checkoutElem.addEventListener("change", (e) => {
     }
     checkinElem.max = e.target.value;
 });
+
+
+checkDateifEmpty(checkinDate.value, checkoutDate.value);

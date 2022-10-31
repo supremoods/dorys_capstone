@@ -746,3 +746,19 @@ textarea.input-c-items {
     background: rgb(255, 255, 255);
     height: 60vh;
 }
+
+
+.time-list{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 10px;
+}
+
+.time-group{
+    display:flex;
+}
+
+.breaker{
+    margin: 10px 0;
+}
