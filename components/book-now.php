@@ -27,9 +27,7 @@ if ($ammenitiesDetails->num_rows > 0) {
             <div class="inner-wrapper">
                 <h3>Occupied Time</h3>
                 <div class="occupied-time-container">
-                    <div class="list-item">
-                        This date is free for booking
-                    </div>
+       
                 </div>
             </div>
     

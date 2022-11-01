@@ -11,14 +11,20 @@
             
             $data = array();
 
-            while($row = $occupiedTime->fetch_assoc()){
-                array_push($data, array(
-                    'start' => $row['start_datetime'],
-                    'end' => $row['end_datetime']
-                ));
+            if(!$occupiedTime){
+                echo json_encode(array('status' => 'failed'));
+            }else{
+                while($row = $occupiedTime->fetch_assoc()){
+                    array_push($data, array(
+                        'reservation_token' => $row['reservation_token'],
+                        'start' => $row['start_datetime'],
+                        'end' => $row['end_datetime']
+                    ));
+                }
+    
+                echo json_encode($data);
             }
-
-            echo json_encode($data);
+       
 
         }
     }

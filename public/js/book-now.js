@@ -7,6 +7,8 @@ const cancelBooking = document.querySelector(".cancel-book-btn");
 const bookNowForm = document.getElementById("booking-form");
 const transactForm = document.getElementById("transact-form");
 
+const OccupiedTimeContainer = document.querySelector(".occupied-time-container");
+
 cancelBooking.addEventListener("click", () => {
   window.location.href = "/";
 });
@@ -49,6 +51,9 @@ loadBackgroundImage();
 const ammenitiesSelection = document.getElementById("ammenities-selection");
 
 ammenitiesSelection.addEventListener("change", (e) => {
+
+  loadOccupiedTime();
+
   // fetch the ammenities
   fetch("/controller/client/FetchAmmenities.php", {
     method: "GET",
@@ -201,12 +206,14 @@ bookNowForm.addEventListener("submit", (e) => {
     });
 });
 
-const checkinElem = document.querySelector("#checkin-date");
+ const checkinElem = document.querySelector("#checkin-date");
 const checkoutElem = document.querySelector("#checkout-date");
 
 // disable past dates in checkin datetimepicker
 
 checkinElem.addEventListener("change", (e) => {
+  loadOccupiedTime();
+
   const checkinDate = new Date(e.target.value);
   const checkoutDate = new Date(checkoutElem.value);
 
@@ -230,34 +237,66 @@ checkoutElem.addEventListener("change", (e) => {
 checkDateifEmpty(checkinDate.value, checkoutDate.value);
 
 const loadOccupiedTime = () => {
-  fetch("/controller/client/fetchOccupiedTime.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      date: info.dateStr,
-      ammenity: result.value,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.status === "success") {
-        const occupiedTime = [];
-        data.data.forEach((item) => {
-          occupiedTime.push({
-            start: item.checkin_date,
-            end: item.checkout_date,
+
+  if(checkinDate.value != ""){
+    fetch("/controller/client/fetchOccupiedTime.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date: new Date(checkinDate.value).toISOString().split("T")[0],
+        ammenity: ammenitiesSelection.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "failed") {
+          console.log(data);
+          OccupiedTimeContainer.innerHTML = `
+                <div class="list-item">
+                  This date is free for booking
+                </div>
+          `
+        } else {
+          const occupiedTime = [];
+          data.forEach((item) => {
+            occupiedTime.push({
+              token: `item__${item.reservation_token}`,
+              start: item.start,
+              end: item.end,
+            });
           });
-        });
-        info.setOption("businessHours", occupiedTime);
-      } else {
-        Swal.fire({
-          title: "Failed!",
-          text: "Failed to fetch occupied time",
-          icon: "error",
-          confirmButtonText: "Okay",
-        });
-      }
-    });
+          OccupiedTimeContainer.innerHTML = `
+                  ${occupiedTime.map((item) => {
+                    return `
+                      <div class="list-item ${item.token}">
+                       <p> ${new Date(item.start).toLocaleTimeString()} - ${new Date(item.end).toLocaleTimeString()}</p>
+                      </div>
+                  `
+                    })}
+          `;
+          occupiedTime.forEach((item) => {
+            const time = new Date(checkinDate.value).getTime();
+            const startTime = new Date(item.start).getTime();
+            const endTime = new Date(item.end).getTime();
+
+            if(time > startTime && time < endTime){
+             document.querySelector(`.${item.token}`).style.color = "red";
+            }else{
+              document.querySelector(`.${item.token}`).style.color = "black";
+            }
+          })
+        }
+      });
+  }else{
+    OccupiedTimeContainer.innerHTML = `
+    <div class="list-item">
+      Please select a date first
+    </div>
+`
+  }
 };
+
+
+loadOccupiedTime();
