@@ -23,6 +23,18 @@ if ($ammenitiesDetails->num_rows > 0) {
     $images = explode(',', $row['images']);
 ?>
     <div class="transact-form" id="transact-form" data-token="<?=$row['services_token']?>">
+        <div class="occupied-time">
+            <div class="inner-wrapper">
+                <h3>Occupied Time</h3>
+                <div class="occupied-time-container">
+                    <div class="list-item">
+                        This date is free for booking
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
         <form class="elem-form" id="booking-form" method="post">
             <div class="elem-group">
                 <input type="text" name="service-token" value="<?=$row['services_token']?>" hidden>

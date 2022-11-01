@@ -5,13 +5,13 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 2em;
     background: var(--bg-image);
     background-position: center;
     background-repeat: no-repeat;   
     background-size: cover;
     transition: all 0.5s ease;
+    gap: 10px;
 }
 
 .elem-form {
@@ -114,6 +114,18 @@
     height: 100%;
     object-fit: cover;
     transition: all 0.5s ease;
+}
+
+.occupied-time .inner-wrapper{
+    display: flex;
+    justify-content: flex-start;
+    background: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    min-height: 400px; 
+    overflow: hidden;
+    padding: 2em;
+    flex-direction: column;
+    gap:1em;
 }
 
 

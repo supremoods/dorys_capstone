@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const indexReservation = reservation.findIndex(item => new Date(item.start).toDateString()  === new Date(info.dateStr).toDateString());
                     /// check if index is not -1
                     if(indexReservation !== -1){
-
                         if(reservation[indexReservation].title === 'Unavailable'){
                             Swal.fire({
                                 title: 'Unavailable',
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 let service_token;
                                 // select ammenities and time from the fetched ammenities
                                 Swal.fire({
-                                    title: 'Select Ammenities',
+                                    title: 'Select Ammenity',
                                     input: 'select',
                                     inputOptions: ammenities.reduce((acc, amenity) => {
                                         acc[amenity.name] = amenity.name;
@@ -184,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         .then(data => {
                             const ammenities = data.ammenities;
                             Swal.fire({
-                                title: 'Select Ammenities',
+                                title: 'Select Ammenity',
                                 input: 'select',
                                 inputOptions: ammenities.reduce((acc, amenity) => {
                                     acc[amenity.name] = amenity.name;
