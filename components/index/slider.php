@@ -25,7 +25,7 @@
                 <img src="public/images/services/<?= trim($images[0]) ?>" alt="">
                 <div class="text-content">
                     <h2 class="title"><?= $row['name'] ?></h2>
-                    <p><?= $row['description'] ?></p>
+                    <pre><?= $row['description'] ?></pre>
                     <button data-amemnities="<?= $row['services_token']?>" class="book-now-btn" onclick="bookNow('<?= $row['services_token']?>')">Book Now <i class="uil uil-arrow-right"></i></button>
                 </div>
             </div>

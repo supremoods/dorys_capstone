@@ -20,7 +20,6 @@
 
     <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/ammenities/details/addImage.php'; ?>
 
-
     <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/links/footer/footer_links.php'; ?>
     
     <script src="/admin/public/image_uploader/image-uploader.min.js"></script>

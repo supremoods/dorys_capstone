@@ -88,7 +88,7 @@ const loadAmmenities = async () => {
                 </div>
             </div>
             <div class="card-body">
-                <p>${ammenity.description}</p>
+                <pre>${ammenity.description}</pre>
             </div>
             <div class="card-footer">
                 <a href="/admin/dashboard/ammenity_detail.php?ammenity=${ammenity.name}&service_token=${ammenity.services_token}" data-service_token="">View Full Details</a>

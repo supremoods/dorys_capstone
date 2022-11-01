@@ -180,10 +180,8 @@ rateAmmenity.addEventListener("keypress", (e) => {
     }
 });
 
-descriptionAmmenity.addEventListener("keypress", (e) => {
-    if(e.key === "Enter"){
+descriptionAmmenity.addEventListener("change", (e) => {
         updateAmmenity();
-    }
 });
 
 const addImageBtn = document.querySelector(".add-image-btn");
