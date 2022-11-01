@@ -316,6 +316,8 @@
                 // if the query is successful, return true
                 if ($result->num_rows > 0) {
                     return $result;
+                }else{
+                    return false;
                 }
             }
         }

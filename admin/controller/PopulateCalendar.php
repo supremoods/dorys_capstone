@@ -17,16 +17,18 @@
 
             $events = $this->fetchEvents();
 
-            while($row = $events->fetch_assoc()){
-                array_push($data, array(
-                    'id' => $row['id'],
-                    'title' => $row['title'],
-                    'start' => $row['start'],
-                ));
+            if(!$events){
+                echo json_encode($data);    
+            }else{
+                while($row = $events->fetch_assoc()){
+                    array_push($data, array(
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'start' => $row['start'],
+                    ));
+                }
+                echo json_encode($data);
             }
-
-
-            echo json_encode($data);
         }
     }
 
