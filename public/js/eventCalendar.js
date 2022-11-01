@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }).then((result) => {
                                     // if the user select a service then show the start time and end time availabilities
                                     if(result.value){
+                                        console.log(info.dateStr);
                                         Swal.fire({
                                             title: 'Please wait...',
                                             html: 'We are processing your request',

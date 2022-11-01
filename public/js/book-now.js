@@ -7,7 +7,11 @@ const cancelBooking = document.querySelector(".cancel-book-btn");
 const bookNowForm = document.getElementById("booking-form");
 const transactForm = document.getElementById("transact-form");
 
-const OccupiedTimeContainer = document.querySelector(".occupied-time-container");
+let boolean = false;
+
+const OccupiedTimeContainer = document.querySelector(
+  ".occupied-time-container"
+);
 
 cancelBooking.addEventListener("click", () => {
   window.location.href = "/";
@@ -32,7 +36,7 @@ const loadBackgroundImage = (e) => {
     .then((data) => {
       if (data.status === "success") {
         const ammenities = data.ammenities;
-        console.log(ammenities);
+
         const root = document.querySelector(":root");
 
         // change the background image of the form
@@ -51,7 +55,6 @@ loadBackgroundImage();
 const ammenitiesSelection = document.getElementById("ammenities-selection");
 
 ammenitiesSelection.addEventListener("change", (e) => {
-
   loadOccupiedTime();
 
   // fetch the ammenities
@@ -72,7 +75,6 @@ ammenitiesSelection.addEventListener("change", (e) => {
         );
         const root = document.querySelector(":root");
 
-        console.log(index);
         // change the background image of the form
         root.style.setProperty(
           `--bg-image`,
@@ -140,30 +142,10 @@ function getHoursDiff(startDate, endDate) {
   );
 }
 
-function dateFormat(inputDate, format) {
-  //parse the input date
-  const date = new Date(inputDate);
-
-  //extract the parts of the date
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-
-  //replace the month
-  format = format.replace("MM", month.toString().padStart(2, "0"));
-
-  //replace the year
-  if (format.indexOf("yyyy") > -1) {
-    format = format.replace("yyyy", year.toString());
-  } else if (format.indexOf("yy") > -1) {
-    format = format.replace("yy", year.toString().substr(2, 2));
-  }
-
-  //replace the day
-  format = format.replace("dd", day.toString().padStart(2, "0"));
-
-  return format;
-}
+checkinDate.addEventListener("change", (e) => {
+  checkDateifEmpty(checkinDate.value, checkoutDate.value);
+  loadOccupiedTime();
+});
 
 checkoutDate.addEventListener("change", (e) => {
   checkDateifEmpty(checkinDate.value, checkoutDate.value);
@@ -171,10 +153,9 @@ checkoutDate.addEventListener("change", (e) => {
 
 bookNowForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
+  if(boolean){
   const formData = new FormData(bookNowForm);
 
-  console.log(Object.fromEntries(formData));
   fetch("/controller/client/BookNow.php", {
     method: "POST",
     headers: {
@@ -204,48 +185,34 @@ bookNowForm.addEventListener("submit", (e) => {
         });
       }
     });
-});
-
- const checkinElem = document.querySelector("#checkin-date");
-const checkoutElem = document.querySelector("#checkout-date");
-
-// disable past dates in checkin datetimepicker
-
-checkinElem.addEventListener("change", (e) => {
-  loadOccupiedTime();
-
-  const checkinDate = new Date(e.target.value);
-  const checkoutDate = new Date(checkoutElem.value);
-
-  if (checkoutDate < checkinDate) {
-    checkoutElem.value = "";
+  }else{
+    Swal.fire({
+          title: "Failed!",
+          text: "Date or Time is already booked",
+          icon: "error",
+          confirmButtonText: "Okay",
+        });
   }
-
-  checkoutElem.min = e.target.value;
 });
-
-// disable past dates in checkout datetimepicker
-checkoutElem.addEventListener("change", (e) => {
-  const checkinDate = new Date(checkinElem.value);
-  const checkoutDate = new Date(e.target.value);
-  if (checkoutDate < checkinDate) {
-    checkinElem.value = "";
-  }
-  checkinElem.max = e.target.value;
-});
-
-checkDateifEmpty(checkinDate.value, checkoutDate.value);
 
 const loadOccupiedTime = () => {
+  if (checkinDate.value != "") {
+    const date = new Date(checkinDate.value).toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
 
-  if(checkinDate.value != ""){
+    const dateArray = date.split("/");
+    const formattedDate = `${dateArray[2]}-${dateArray[0]}-${dateArray[1]}`;
+
     fetch("/controller/client/fetchOccupiedTime.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        date: new Date(checkinDate.value).toISOString().split("T")[0],
+        date: formattedDate,
         ammenity: ammenitiesSelection.value,
       }),
     })
@@ -257,7 +224,8 @@ const loadOccupiedTime = () => {
                 <div class="list-item">
                   This date is free for booking
                 </div>
-          `
+          `;
+          boolean = true; 
         } else {
           const occupiedTime = [];
           data.forEach((item) => {
@@ -271,32 +239,42 @@ const loadOccupiedTime = () => {
                   ${occupiedTime.map((item) => {
                     return `
                       <div class="list-item ${item.token}">
-                       <p> ${new Date(item.start).toLocaleTimeString()} - ${new Date(item.end).toLocaleTimeString()}</p>
-                      </div>
-                  `
-                    })}
+                       <p>${new Date(
+                         item.start
+                       ).toLocaleTimeString()} - ${new Date(
+                      item.end
+                    ).toLocaleTimeString()}</p>
+                      </div>`;
+                  })}
           `;
           occupiedTime.forEach((item) => {
             const time = new Date(checkinDate.value).getTime();
             const startTime = new Date(item.start).getTime();
             const endTime = new Date(item.end).getTime();
 
-            if(time > startTime && time < endTime){
-             document.querySelector(`.${item.token}`).style.color = "red";
-            }else{
+            if (time > startTime && time < endTime) {
+              document.querySelector(`.${item.token}`).style.color = "red";
+              console.log("occupied");
+
+              boolean = false;
+            } else {
               document.querySelector(`.${item.token}`).style.color = "black";
+              console.log("free");
+
+              boolean = true;
             }
-          })
+          });
         }
       });
-  }else{
+  } else {
     OccupiedTimeContainer.innerHTML = `
     <div class="list-item">
       Please select a date first
     </div>
-`
+    `;
+    boolean = false;
   }
 };
 
-
+checkDateifEmpty(checkinDate.value, checkoutDate.value);
 loadOccupiedTime();
