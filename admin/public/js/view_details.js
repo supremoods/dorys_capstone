@@ -35,12 +35,27 @@ const loadProfile = async () => {
     if(data.status === 'success'){
         // convert the data to an array
         const clients = Object.values(data.reservation);
-
+        let actionBtns = '';
         //clear the table
         table.clear();
 
         // loop through the array and append the data to the table
         clients.forEach((client, index) => {
+            if(client.status === 'pending'){
+                actionBtns = `
+                <button type="button" class="confirm-transact action-btn" onclick="confirmTransactionFunc(this.dataset.reservation_token)" title="Confirm" data-toggle="tooltip" data-reservation_token ="${client.reservation_token}">Confirm</button>
+                <button type="button" class="cancel-transact action-btn" onclick="cancelTransactionFunc(this.dataset.reservation_token)" title="Cancel" data-toggle="tooltip" data-reservation_token ="${client.reservation_token}">Decline</button>
+                `;
+            }else if(client.status === 'cancelled'){
+                actionBtns = `
+                <button type="button" class="confirm-transact action-btn" onclick="undoTransactionFunc(this.dataset.reservation_token)" title="Revert" data-toggle="tooltip" data-reservation_token ="${client.reservation_token}">Revert</button>
+                <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${client.reservation_token}">Delete</button>
+                `
+            }else if(client.status === 'confirmed'){
+                actionBtns = `
+                <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${client.reservation_token}">Delete</button>
+                `
+            }
             table.row.add([
                 index,
                 client.name,
@@ -51,8 +66,11 @@ const loadProfile = async () => {
                 client.settlement_fee,
                 client.status,
                 `<p class="view-msg" onclick="viewMessage(this.dataset.msg)" data-msg="${client.message}">View Message</p>`,
-                `<button type="button" id="confirm-transact" onclick="confirmTransactionFunc(this.dataset.reservation_token)" title="Confirm" data-toggle="tooltip" data-reservation_token ="${client.reservation_token}"><i class="fa fa-check"></i></button>
-                <button type="button" id="cancel-transact" onclick="cancelTransactionFunc(this.dataset.reservation_token)" title="Cancel" data-toggle="tooltip" data-reservation_token ="${client.reservation_token}"><i class="fa fa-times"></i></button>`
+                `
+                <div class="action-btns">
+                    ${actionBtns}
+                </div>
+                `
             ]).draw(false);
         })
     }else{
@@ -71,4 +89,119 @@ const viewMessage = (msg) => {
         icon: 'info',
         confirmButtonText: 'Ok'
     })
+}
+
+
+
+const confirmTransactionFunc = async (token) => {
+    const response = await fetch('/admin/controller/ConfirmTransaction.php',{
+        method: 'POST',
+        body: JSON.stringify({
+            token: token
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const data = await response.json();
+
+
+    if(data.status === 'success'){
+        Swal.fire({
+            title: 'Success',
+            text: data.message,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            loadProfile()
+        })
+    }else{
+        console.log(data.status);
+    }
+}
+
+const cancelTransactionFunc = async (token) => {
+    const res = await fetch('/admin/controller/CancelTransaction.php',{
+        method: 'POST',
+        body: JSON.stringify({
+            token: token
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
+
+    const data = await res.json();
+    console.log(data.status);
+
+    if(data.status === "success"){
+        Swal.fire({
+            title: 'Success',
+            text: data.message,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            loadProfile()
+        })
+    }else{
+        console.log(data.status);
+    }
+}
+
+const undoTransactionFunc = async (token) => {
+    const res = await fetch('/admin/controller/UndoTransaction.php',{
+        method: 'POST',
+        body: JSON.stringify({
+            token: token
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
+
+    const data = await res.json();
+
+    if(data.status === 'success'){
+        Swal.fire({
+            title: 'Success',
+            text: data.message,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            loadProfile()
+        })
+    }else{
+        console.log(data.status);
+    }
+}
+
+const deleteTransactionFunc = async (token) => {
+    const res = await fetch('/admin/controller/DeleteTransaction.php',{
+        method: 'POST',
+        body: JSON.stringify({
+            token: token
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
+
+    const data = await res.json();
+
+    if(data.status === 'success'){
+        Swal.fire({
+            title: 'Success',
+            text: data.message,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        }).then(() => {
+            loadProfile()
+        })
+    }else{
+        console.log(data.status);
+    }
 }

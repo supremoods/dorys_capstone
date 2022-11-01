@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ammenity-rates">Set Rates</label>
-                        <input type="number" name="ammenity-rates" id="ammenity-rates" placeholder="Ammenity Name" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  required>
+                        <input type="number" name="ammenity-rates" id="ammenity-rates" placeholder="Ammenity Rates" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  required>
                     </div>
                     <div class="form-group action-btn">
                         <button type="button" class="cancel-btn">Cancel</button>

@@ -72,6 +72,26 @@
 }
 
 
+.action-btn{
+    height: 30px;
+    cursor: pointer;
+    padding: 0 2em;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.action-btn.view-profile{
+    background: #ffb000;
+}
+
+.action-btn.confirm-transact{
+    background: #fdfdfd;
+}
+
+.action-btn.cancel-transact{
+    background: #ff0000;
+    color: #fdfdfd;
+}
 .sr-only {
     position: absolute;
     width: 1px;

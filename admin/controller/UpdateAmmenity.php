@@ -20,7 +20,7 @@
 
     $token = $decode['token'];
     $ammenityName = $decode['name'];
-    $ammenityDesc = $decode['description'];
+    $ammenityDesc = trim($decode['description']);
     $ammenityRate = $decode['rate'];
 
     $updateAmmenity->updateAmmenity($token, $ammenityName, $ammenityDesc, $ammenityRate);

@@ -4,12 +4,13 @@ const maintenanceModeBtn = document.getElementById('maintenance-mode-btn');
 const editContactInfoBtn = document.getElementById('edit-contact-btn');
 
 addAnnouncementBtn.addEventListener('click', () => {
+    const ann = document.getElementById('announcement-content').innerHTML
     Swal.fire({
-        title: 'Add Announcement',
+        title: `${ann === 'No announcement' ? 'Add' : 'Update'} Announcement`,  
         html: `
             <div class="form-group">
                 <label for="announcement-content">Content</label>
-                <textarea class="form-control" id="announcement-content" rows="3"></textarea>
+                <textarea class="form-control" id="announcement-content" rows="3">${ann === 'No announcement' ? '' : ann}</textarea>
             </div>
         `,
         showCancelButton: true,
@@ -254,9 +255,11 @@ const loadAnnouncement = () => {
         }).then((data) => {
             if (data.status === 'success') {
                 clearAnnouncement.style.display = 'block';  
+                addAnnouncementBtn.innerHTML = 'Update Announcement';
                 document.getElementById('announcement-content').innerHTML = data.announcement.message;
             }else{
                 clearAnnouncement.style.display = 'none';
+                addAnnouncementBtn.innerHTML = 'Add Announcement';
                 document.getElementById('announcement-content').innerHTML = 'No announcement';
             }
         }).catch((error) => {

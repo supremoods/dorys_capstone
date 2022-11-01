@@ -10,10 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         height:650,
         events:'/controller/client/PopulateCalendar.php',
-
         eventClick: (info) =>{
             info.jsEvent.preventDefault();
-
             info.el.style.borderColor = 'red';
             if(info.event.title === 'Unavailable'){
                 Swal.fire({
@@ -22,18 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     icon: 'warning',
                     confirmButtonText: 'Ok'
                 })
-                
             }else{
                 Swal.fire({
                     title: info.event.title,
                     text: "reserved",
                 })
             } 
-
         },
         dateClick: (info) => {
             info.jsEvent.preventDefault();
-            
             // check if the date is in the past
             if(info.dateStr < new Date().toISOString().split('T')[0]){
                 Swal.fire({
@@ -233,11 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             }
         }
-
     });
-
     calendar.render();
-
 });
 
 const checkDatesBtn = document.getElementById('check-dates-btn');

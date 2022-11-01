@@ -54,8 +54,8 @@
                         </div>
 
                         <div class="box-content">
-                            <span class="big"><?=$mode?></span>
-                            Maintenance Mode
+                            <span class="big">Settings</span>
+                            Manage Settings
                         </div>
                     </div>
                 </section>

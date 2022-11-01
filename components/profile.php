@@ -80,7 +80,7 @@ $client = $fetchClient->fetchClientDetails($_SESSION['user_token']);
                                                                                                                                 ?> disabled>
                         </div>
                         <div class="profile-settings__form-group">
-                            <label for="address-line-2" class="profile-settings__form-label">Address Line 2</label>
+                            <label for="address-line-2" class="profile-settings__form-label">Address Line 2 <i>(optional)</i> </label>
                             <input type="text" name="address-line-2" id="address-line-2" class="profile-settings__form-input" <?php
                                                                                                                                 if (is_null($client['address'])) {
                                                                                                                                     echo "placeholder='Enter your address'";
