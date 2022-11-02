@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2022 at 05:17 AM
+-- Generation Time: Nov 02, 2022 at 02:29 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -58,7 +58,7 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `admin_id`, `message`) VALUES
-(7, '8de42f70f3bc82f1962b96cada', 'asdasdasm askjsajklsaklj sasakljksajklasd');
+(9, '8de42f70f3bc82f1962b96cada', 'asdasdasdasda');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `client` (
 INSERT INTO `client` (`id`, `user_token`, `fullname`, `email`, `address`, `number`, `password`, `avatar`, `status`) VALUES
 (2, '6e59879b29a54e43', 'John Lappay', 'lappay.john@gmail.com', 'Phase 3 Blk 3, Lot 20, Tanigue St. Kaunlaran Village, Caloocan City', '0992114073', '$2y$10$mpFfEVmzf4NkG4svMRjpEuHCxuc5LSgNFBG4p17.G7Ax8TqMK6pEi', 'oreo.png', 'inactive'),
 (9, '635193d692d0d', 'John Doe', 'john.doe@gmail.com', 'this is a sample address/this is a sample address 2', '09972114073', '$2y$10$whIypU4JdWT3tHhTG.vMn.41GGFWuG.hyyGasbHa.ZY0XkSBney/a', '273575017_437110681498089_4936485817346125140_n.png', 'active'),
-(15, '635aa86ac7fe2', 'Jerico Victoria', 'jerico.victoria@gmail.com', 'Los Santos City/', '09972114073', '$2y$10$HJ0gNkwM/.PbppwLGZGhUOglhN.eJBluTIOH2vQDbMY14yL4uu9IS', 'a.jpg', 'inactive');
+(15, '635aa86ac7fe2', 'Jerico Victoria', 'jerico.victoria@gmail.com', 'Los Santos City/GTA Mafia', '09972114073', '$2y$10$HJ0gNkwM/.PbppwLGZGhUOglhN.eJBluTIOH2vQDbMY14yL4uu9IS', 'a.jpg', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -154,7 +154,18 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (100, 'f6e32802d19be239', '635193d692d0d', '2022-10-28 11:46:09', '2022-10-29 12:11:30'),
 (101, '615a2b6f94935e56', '635193d692d0d', '2022-10-29 01:25:33', NULL),
 (102, '70b36a8f8b08bef5', '635193d692d0d', '2022-10-29 05:32:05', NULL),
-(103, 'c64e93dab629cd1c', '635193d692d0d', '2022-10-31 01:07:40', NULL);
+(103, 'c64e93dab629cd1c', '635193d692d0d', '2022-10-31 01:07:40', NULL),
+(104, '3af0d8c845efd588', '635193d692d0d', '2022-10-31 08:19:03', NULL),
+(105, 'd3aacc39120fc881', '635193d692d0d', '2022-10-31 09:21:29', '2022-11-02 01:00:31'),
+(106, 'f30cf970e84dc466', '635193d692d0d', '2022-11-01 01:53:15', NULL),
+(107, 'e8f6643e75c2931a', '635193d692d0d', '2022-11-01 11:25:29', '2022-11-01 11:36:32'),
+(108, 'fc299ee21c77b844', '635193d692d0d', '2022-11-01 11:26:25', NULL),
+(109, '58fd1bef61d1c0f8', '635aa86ac7fe2', '2022-11-01 11:36:54', NULL),
+(110, '5838e5018b9a81e8', '635aa86ac7fe2', '2022-11-02 01:00:47', '2022-11-02 01:30:30'),
+(111, 'e049a37373064f7f', '635aa86ac7fe2', '2022-11-02 01:32:10', '2022-11-02 01:46:51'),
+(112, '7f301dec2eb991ab', '635193d692d0d', '2022-11-02 01:47:09', '2022-11-02 01:49:55'),
+(113, 'e04b475acde5e502', '6e59879b29a54e43', '2022-11-02 01:50:12', '2022-11-02 02:05:15'),
+(114, '94ca6fcbaaad80a7', '635193d692d0d', '2022-11-02 03:03:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -200,8 +211,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `start`) VALUES
-(3, 'Unavailable', '2022-11-07 00:00:00'),
-(5, 'Unavailable', '2022-11-24 00:00:00');
+(12, 'Unavailable', '2022-11-09 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -222,7 +232,8 @@ CREATE TABLE `queries` (
 --
 
 INSERT INTO `queries` (`id`, `email`, `phone`, `message`, `timeStamp`) VALUES
-(30, 'jerico.victoria@gmail.com', '09972114073', 'sdsdssss', '2022-10-29');
+(30, 'jerico.victoria@gmail.com', '09972114073', 'sdsdssss', '2022-10-29'),
+(31, 'jerico.victoria@gmail.com', '09972114073', 'asdasd askjdahsdasbd asjkajskdjkhasda', '2022-11-01');
 
 -- --------------------------------------------------------
 
@@ -241,11 +252,15 @@ CREATE TABLE `request_reservation` (
 --
 
 INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`) VALUES
-(28, '3d33ff16f6211482', 'pending'),
-(35, '863949e37315dc90', 'confirmed'),
+(28, '3d33ff16f6211482', 'confirmed'),
 (36, 'bbb7343e45296717', 'pending'),
 (37, '26beb1ef360c8be9', 'pending'),
-(38, '8d7f611900f3d26d', 'pending');
+(38, '8d7f611900f3d26d', 'pending'),
+(39, '3f87f1768191ea87', 'pending'),
+(42, 'ac193607f235ed25', 'pending'),
+(44, 'f70f02711b815d85', 'pending'),
+(46, '0488b0b915a065b9', 'pending'),
+(47, 'ead340a096465d16', 'pending');
 
 -- --------------------------------------------------------
 
@@ -271,10 +286,14 @@ CREATE TABLE `reservation` (
 
 INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_token`, `start_datetime`, `end_datetime`, `mode_of_payment`, `settlement_fee`, `message`) VALUES
 (30, '6e59879b29a54e43', '916c696fa61a769c', '3d33ff16f6211482', '2022-10-27 08:44:00', '2022-10-27 18:25:00', 'cash', 2000, 'asdasdlkajnn asasas daskjasd  askjbnasdasdaasdasjkbasd'),
-(37, '635193d692d0d', '916c696fa61a769c', '863949e37315dc90', '2022-10-26 04:57:00', '2022-10-26 16:57:00', 'cash', 6000, 'asdasdsdasd'),
 (38, '635193d692d0d', '459daba73a28dd8b', 'bbb7343e45296717', '2022-10-26 05:00:00', '2022-10-26 17:00:00', 'cash', 6000, 'dfsdfsdfsdfsdf'),
 (39, '635193d692d0d', '459daba73a28dd8b', '26beb1ef360c8be9', '2022-10-27 05:00:00', '2022-10-27 17:00:00', 'cash', 6000, 'asdasdasda'),
-(40, '635aa86ac7fe2', 'ef18c21ade651dc7', '8d7f611900f3d26d', '2022-11-04 08:36:00', '2022-11-04 14:36:00', 'cash', 1200, 'sdgddsfdfsdfdfs sdfdsdfdfssdfsdfsdf');
+(40, '635aa86ac7fe2', 'ef18c21ade651dc7', '8d7f611900f3d26d', '2022-11-04 08:36:00', '2022-11-04 14:36:00', 'cash', 1200, 'sdgddsfdfsdfdfs sdfdsdfdfssdfsdfsdf'),
+(41, '635193d692d0d', '459daba73a28dd8b', '3f87f1768191ea87', '2022-11-04 16:00:00', '2022-11-04 19:00:00', 'cash', 600, 'asdasdasdasd'),
+(44, '635193d692d0d', 'f375ebf2b8154017', 'ac193607f235ed25', '2022-11-04 16:55:00', '2022-11-04 19:57:00', 'cash', 600, ''),
+(46, '635aa86ac7fe2', 'ef18c21ade651dc7', 'f70f02711b815d85', '2022-11-04 16:25:00', '2022-11-04 19:26:00', 'cash', 600, 'ffgddfgfdgdfgfgddfgfdg'),
+(48, '635aa86ac7fe2', 'ef18c21ade651dc7', '0488b0b915a065b9', '2022-11-04 20:00:00', '2022-11-04 23:00:00', 'cash', 600, 'asdasd  ashsahs hshsd shh'),
+(49, '635aa86ac7fe2', '916c696fa61a769c', 'ead340a096465d16', '2022-11-03 12:43:00', '2022-11-03 19:43:00', 'cash', 1400, 'sasdasda asdasdasd');
 
 -- --------------------------------------------------------
 
@@ -297,7 +316,7 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `services_token`, `name`, `features`, `description`, `images`, `price`) VALUES
-(42, '459daba73a28dd8b', 'VIP', 'fully air conditioned,videoke,bbq grill,water dispenser,food warmer', 'Capacity: 12 persons', 'slide1.jpg', '500'),
+(42, '459daba73a28dd8b', 'VIP', 'fully air conditioned,videoke,bbq grill,water dispenser,food warmer', 'Capacity: 12 persons\n\n- Airconditioned', 'slide1.jpg', '500'),
 (43, 'f375ebf2b8154017', 'Alfresco', 'videoke,bbq grill,water dispenser,food warmer', 'Capacity: 30 persons', 'slide2.jpg', '500'),
 (44, '916c696fa61a769c', 'Gazebo', 'videoke,water dispenser,food warmer', 'Capacity: 8 persons', 'slide5.jpg', '200'),
 (60, 'ef18c21ade651dc7', 'Test', NULL, 'asdasdasdasdasd', '30739787_1588591967926106_7638881661316235264_n.jpg', '200');
@@ -423,7 +442,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `client`
@@ -435,7 +454,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -447,31 +466,31 @@ ALTER TABLE `contact_details`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `queries`
 --
 ALTER TABLE `queries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `request_reservation`
 --
 ALTER TABLE `request_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `services_gallery`
