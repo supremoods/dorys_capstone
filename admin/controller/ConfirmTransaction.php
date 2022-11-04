@@ -4,6 +4,9 @@
     class ConfirmTransaction extends SqlAdminQuery{
         public function confirm($reservation_token){
             if($this->updateRequestReservation("confirmed", $reservation_token)){
+                
+                // 
+
                 echo json_encode(array('status' => 'success'));
             }            
         }

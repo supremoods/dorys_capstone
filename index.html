@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="textMessage()">click</button>
+    <script>
+        function textMessage(){
+            fetch('https://textbelt.com/text', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                phone: '+639972114073',
+                message: 'Hello world',
+                key: '249cd51019d3a608d1173e80a6aec1357f5941d6rpwjYBbIeiFCKiqiXBfdIXddg_test',
+            }),
+            }).then(response => {
+            return response.json();
+            }).then(data => {
+            console.log(data);
+            });
+        }
+    </script>
+</body>
+</html>

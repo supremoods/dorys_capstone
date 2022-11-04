@@ -162,6 +162,7 @@ const confirmTransactionFunc = async (token) => {
 
 
     if(data.status === 'success'){
+        console.log(data);
         Swal.fire({
             title: 'Success',
             text: data.message,
