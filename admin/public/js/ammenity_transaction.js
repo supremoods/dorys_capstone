@@ -35,7 +35,7 @@ const loadAmmenityTransaction = async (token) => {
         transactions.forEach((transaction, index) => {
             if(transaction.status === 'pending'){
                 actionBtns = `
-                <button type="button" class="confirm-transact action-btn" onclick="confirmTransactionFunc(this.dataset.reservation_token)" title="Confirm" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Confirm</button>
+                <button type="button" class="confirm-transact action-btn" onclick="confirmTransactionFunc(this.dataset.reservation_token, this.dataset.user_token)" title="Confirm" data-toggle="tooltip" data-user_token="${transaction.user_token}" data-reservation_token ="${transaction.reservation_token}">Confirm</button>
                 <button type="button" class="cancel-transact action-btn" onclick="cancelTransactionFunc(this.dataset.reservation_token)" title="Cancel" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Decline</button>
                 `;
             }else if(transaction.status === 'cancelled'){
@@ -74,6 +74,8 @@ const loadAmmenityTransaction = async (token) => {
             ]).draw(false);
         })
     }else{
+        table.clear();
+        table.draw();
         console.log(data.status);
     }
 }
@@ -147,11 +149,11 @@ const viewProfile = async (token) => {
 
 }
 
-const confirmTransactionFunc = async (token) => {
+const confirmTransactionFunc = async (reservationToken, user_token) => {
     const response = await fetch('/admin/controller/ConfirmTransaction.php',{
         method: 'POST',
         body: JSON.stringify({
-            token: token
+            token: reservationToken
         }),
         headers: {
             'Content-Type': 'application/json'
@@ -159,7 +161,6 @@ const confirmTransactionFunc = async (token) => {
     })
 
     const data = await response.json();
-
 
     if(data.status === 'success'){
         console.log(data);
@@ -170,7 +171,42 @@ const confirmTransactionFunc = async (token) => {
             confirmButtonText: 'Ok'
         }).then(() => {
             const token = document.querySelector('.ammenity-trans-list').getAttribute('data-ammenity');
+            fetch('/admin/controller/SMSFetchInfo.php',{
+                method: 'POST',
+                body: JSON.stringify({
+                    token: reservationToken,
+                    user_token: user_token
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then(data => {
+                if(data.status === 'success'){
+                    console.log(data);
+                    const info = data.info;
+                    console.log(info[0].api_key);
+                    const message = `Hi ${info.fullname}, your reservation for ${info.name} has been confirmed. Thank you for choosing us!`;
+                    fetch('https://textbelt.com/text', {
+                        method: 'post',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            phone: `+63${parseInt(info.number)}`,
+                            message: message,
+                            key: info[0].api_key
+                        }),
+                        }).then(response => {
+                        return response.json();
+                        }).then(data => {
+                        console.log(data);
+                        });
+                }else{
+                    console.log(data.status);
+                }
+            })
+
             loadAmmenityTransaction(token);
+
         })
     }else{
         console.log(data.status);

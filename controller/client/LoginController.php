@@ -6,7 +6,7 @@
 
         public function loginCLientAccount(
             $email,
-            $password,
+            $password
         ){
             
                if($this->loginClient(

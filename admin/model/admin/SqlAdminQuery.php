@@ -246,7 +246,7 @@ class SqlAdminQuery extends ConfigDB
         $service_name,
         $service_description,
         $service_images,
-        $service_price,
+        $service_price
     ) {
 
         $sql = "INSERT INTO services (
@@ -384,6 +384,8 @@ class SqlAdminQuery extends ConfigDB
             // if the query is successful, return true
             if ($result->num_rows > 0) {
                 return $result;
+            }else{
+                return false;
             }
         }
     }
@@ -721,5 +723,33 @@ class SqlAdminQuery extends ConfigDB
                 return false;
             }
         }
+    }
+
+    public function trackClientReservation($token, $reservation_token){
+        $sql = "SELECT client.fullname, 
+        client.number, 
+        reservation.reservation_token, 
+        reservation.payment_type,
+        reservation.paid_amount,
+        reservation.settlement_fee,
+        services.name 
+        FROM client
+        INNER JOIN reservation ON client.user_token = reservation.user_token
+        INNER JOIN services ON services.services_token = reservation.service_token
+        WHERE client.user_token = '$token' AND reservation.reservation_token = '$reservation_token'";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row;
+            } else {
+                // if the query is not successful, return false
+                return false;
+            }
+        }
+
     }
 }

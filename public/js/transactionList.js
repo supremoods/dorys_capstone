@@ -46,11 +46,14 @@ const loadTransactions = async () => {
                 table.row.add([
                     transaction.reservation_token,
                     transaction.name,
-                    transaction.start_datetime,
-                    transaction.end_datetime,
+                    new Date(transaction.start_datetime).toLocaleString(),
+                    new Date(transaction.end_datetime).toLocaleString(),
                     transaction.mode_of_payment,
                     `₱ ${transaction.price}`,
                     `₱ ${transaction.settlement_fee}`,
+                    transaction.gcash_ref_num,
+                    transaction.payment_type,
+                    transaction.paid_amount,
                     transaction.status,
                     `<button type="button" id="edit-transact" onclick="editTransactionFunc(this.dataset.reservation_token)" title="Edit" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}"><i class="fa fa-pencil"></i></button>
                     <button  type="button" id="delete-transact" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}"><i class="fa  fa-trash-o"></i></button>`

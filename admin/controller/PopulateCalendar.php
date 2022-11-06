@@ -5,30 +5,51 @@
     class PopulateCalendar extends SqlAdminQuery{
         public function populate(){
             $result = $this->fetchAllReservation();
+
             $data = array();
-            while($row = $result->fetch_assoc()){
-                array_push($data, array(
-                    'id' => $row['reservation_token'],
-                    'title' => $row['name'],
-                    'start' => $row['start_datetime'],
-                    'end' => $row['end_datetime']
-                ));
-            }
 
-            $events = $this->fetchEvents();
+            if(!$result){
+                $events = $this->fetchEvents();
 
-            if(!$events){
-                echo json_encode($data);    
+                if(!$events){
+                    echo json_encode($data);    
+                }else{
+                    while($row = $events->fetch_assoc()){
+                        array_push($data, array(
+                            'id' => $row['id'],
+                            'title' => $row['title'],
+                            'start' => $row['start'],
+                        ));
+                    }
+                    echo json_encode($data);
+                }
             }else{
-                while($row = $events->fetch_assoc()){
+                while($row = $result->fetch_assoc()){
                     array_push($data, array(
-                        'id' => $row['id'],
-                        'title' => $row['title'],
-                        'start' => $row['start'],
+                        'id' => $row['reservation_token'],
+                        'title' => $row['name'],
+                        'start' => $row['start_datetime'],
+                        'end' => $row['end_datetime']
                     ));
                 }
-                echo json_encode($data);
+    
+                $events = $this->fetchEvents();
+    
+                if(!$events){
+                    echo json_encode($data);    
+                }else{
+                    while($row = $events->fetch_assoc()){
+                        array_push($data, array(
+                            'id' => $row['id'],
+                            'title' => $row['title'],
+                            'start' => $row['start'],
+                        ));
+                    }
+                    echo json_encode($data);
+                }
+                
             }
+           
         }
     }
 

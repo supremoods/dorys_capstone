@@ -279,6 +279,8 @@
                 // if the query is successful, return true
                 if ($result->num_rows > 0) {
                     return $result;
+                }else{
+                    return false;   
                 }
             }
 
@@ -292,7 +294,11 @@
                         reservation.mode_of_payment, 
                         services.price, 
                         reservation.settlement_fee, 
-                        request_reservation.status
+                        request_reservation.status,
+                        reservation.gcash_ref_num,
+                        reservation.payment_type,
+                        reservation.paid_amount
+
                     FROM reservation 
                     LEFT JOIN request_reservation ON 
                         reservation.reservation_token = request_reservation.reservation_token 
@@ -333,7 +339,10 @@
                         reservation.settlement_fee, 
                         request_reservation.status,
                         services.images,
-                        reservation.message
+                        reservation.message,
+                        reservation.gcash_ref_num,
+                        reservation.payment_type,
+                        reservation.paid_amount
                     FROM reservation 
                     LEFT JOIN request_reservation ON 
                         reservation.reservation_token = request_reservation.reservation_token 
@@ -354,17 +363,22 @@
         $mode_of_payment,
         $total_amount,
         $message,
-        $service_token){
+        $service_token,
+        $refNum,
+        $payment_type,
+        $paid_amount){
 
             // remove the peso sign from the total amount and convert it to float
-            $total_amount = floatval(str_replace('₱', '', $total_amount));
             $sql = "UPDATE reservation SET 
             start_datetime = '$start_datetime',
             end_datetime = '$end_datetime',
             mode_of_payment = '$mode_of_payment',
             settlement_fee = '$total_amount',
             message = '$message',
-            service_token = '$service_token'
+            service_token = '$service_token',
+            gcash_ref_num = '$refNum',
+            payment_type = '$payment_type',
+            paid_amount = '$paid_amount'
             WHERE reservation_token = '$reservation_token'";
 
             $result = $this->dbConnection()->query($sql);
@@ -391,7 +405,10 @@
             $end_datetime,
             $mode_of_payment,
             $total_amount,
-            $message){
+            $message,
+            $refNum,
+            $payment_type,
+            $paid_amount){
 
             $sql = "INSERT INTO reservation (
                 user_token,
@@ -401,7 +418,10 @@
                 end_datetime,
                 mode_of_payment,
                 settlement_fee,
-                message
+                message,
+                gcash_ref_num,
+                payment_type,
+                paid_amount
             ) VALUES (
                 '$user_token',
                 '$service_token',
@@ -410,7 +430,10 @@
                 '$end_datetime',
                 '$mode_of_payment',
                 '$total_amount',
-                '$message'
+                '$message',
+                '$refNum',
+                '$payment_type',
+                '$paid_amount'
             )";
                 
             $result = $this->dbConnection()->query($sql);
@@ -423,7 +446,6 @@
                     return false;
                 }
             } else {
-                // if the query is not successful, return false
                 return false;
             }
 

@@ -36,7 +36,9 @@
     gap: 10px;
     flex-direction: column;
 }
-
+.select-hours{
+    width: auto;
+}
 .elem-item label{
     font-size: 1em;
     font-weight: 600;
@@ -121,14 +123,39 @@
     justify-content: flex-start;
     background: #f5f5f5;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    min-height: 400px; 
     overflow: hidden;
     padding: 2em;
     flex-direction: column;
     gap:1em;
 }
 
+.t-a-cond{
+    flex-direction: row;
+}
 
+.t-a-cond input{
+    width: auto;
+}
+
+.t-a-cond label{
+    font-size: 1em;
+    font-weight: 400;
+    color: #3f3f3f;
+}
+
+.t-a-cond label a{
+    color: #f49b16;
+    text-decoration: underline;
+}
+
+.t-c-context{
+    text-align: start;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word; 
+}
 @supports (display: grid) {
     .gallery {
         display: grid;
@@ -150,6 +177,15 @@
     .container {
         display: block;
         background: linear-gradient(90deg, #FFD8CB 0%, #F9D29D 50% 100%);
+    }
 
+    .transact-form {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .transact-form .elem-group{
+        flex-wrap: wrap;
+        width: 100%;
     }
 }

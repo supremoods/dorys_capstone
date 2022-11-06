@@ -64,6 +64,7 @@ bullets.forEach((bullet) => {
 
 // navbar
 try {
+  const bookNow =  document.getElementById("book-now");
   const btn_login = document.querySelector(".login");
   const btn_register = document.querySelector(".register");
   const body = document.querySelector("body");
@@ -83,6 +84,13 @@ try {
     inner_wrapper.classList.remove("active");
   });
 
+  bookNow.addEventListener("click", () => {
+    body.classList.toggle("show");
+    main.classList.add("show","sign-up-mode");
+    header_bottom.classList.remove("active");
+    inner_wrapper.classList.remove("active");
+  });
+
   btn_register.addEventListener("click", () => {
     body.classList.toggle("show");
     main.classList.add("show","sign-up-mode");
@@ -91,6 +99,14 @@ try {
   });
 
 } catch (error) {
+  console.log(error);
+}
+
+const regModal = () =>{
+  body.classList.toggle("show");
+  main.classList.add("show","sign-up-mode");
+  header_bottom.classList.remove("active");
+  inner_wrapper.classList.remove("active");
 }
 
 const contactForm = document.getElementById("contact-form");

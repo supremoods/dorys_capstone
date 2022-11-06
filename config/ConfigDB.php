@@ -3,7 +3,7 @@
         // Properties
         public $host = "localhost";
         public $user = "root";
-        public $pass = "root";
+        public $pass = "";
         public $db = "dors_db";
         public $conn;
 

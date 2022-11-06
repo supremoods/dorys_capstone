@@ -1,3 +1,4 @@
+
 <?php
 
     require_once($_SERVER['DOCUMENT_ROOT'] . '/model/client/SqlClientQuery.php');
@@ -10,6 +11,9 @@
             $mode_of_payment,
             $total_amount,
             $message,
+            $refNum,
+            $payment_type,
+            $paid_amount
             ){
                 session_start();
                 $user_token = $_SESSION['user_token'];
@@ -22,7 +26,10 @@
                     $end_datetime,
                     $mode_of_payment,
                     $total_amount,
-                    $message
+                    $message,
+                    $refNum,
+                    $payment_type,
+                    $paid_amount
                     )){
                         echo json_encode(array('status' => 'success'));
                     }else{
@@ -46,20 +53,29 @@
     $mode_of_payment = $decode['mode-of-payment'];
     $total_amount = $decode['total-rate'];
     $message = $decode['client_message'];
+    $refNum = $decode['reference_number'];
+    $payment_type = $decode['payment-type'];
+
+
 
     $bookNow = new BookNow();
 
  // remove the peso sign from the total amount
     $total_amount = str_replace('₱', '', $total_amount);  
-
+    if($payment_type == 'Downpayment'){
+        $paid_amount = $total_amount * 0.3;
+    }else{
+        $paid_amount = $total_amount;
+    }
     $bookNow->bookNow($service_token, 
                     $start_datetime,
                     $end_datetime,
                     $mode_of_payment,
                     $total_amount,
-                    $message
+                    $message,
+                    $refNum,
+                    $payment_type,
+                    $paid_amount
                 );
-
-
 
 ?>

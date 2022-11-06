@@ -106,7 +106,6 @@ const confirmTransactionFunc = async (token) => {
 
     const data = await response.json();
 
-
     if(data.status === 'success'){
         Swal.fire({
             title: 'Success',
@@ -114,6 +113,41 @@ const confirmTransactionFunc = async (token) => {
             icon: 'success',
             confirmButtonText: 'Ok'
         }).then(() => {
+            const profileCard = document.querySelector('.profile-card');
+            const user_token = profileCard.getAttribute('data-token');
+            fetch('/admin/controller/SMSFetchInfo.php',{
+                method: 'POST',
+                body: JSON.stringify({
+                    token: token,
+                    user_token: user_token
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then(data => {
+                if(data.status === 'success'){
+                    console.log(data);
+                    const info = data.info;
+                    console.log(info[0].api_key);
+                    const message = `Hi ${info.fullname}, your reservation for ${info.name} has been confirmed. Thank you for choosing us!`;
+                    fetch('https://textbelt.com/text', {
+                        method: 'post',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            phone: `+63${parseInt(info.number)}`,
+                            message: message,
+                            key: info[0].api_key
+                        }),
+                        }).then(response => {
+                        return response.json();
+                        }).then(data => {
+                        console.log(data);
+                        });
+                }else{
+                    console.log(data.status);
+                }
+            })
             loadProfile()
         })
     }else{

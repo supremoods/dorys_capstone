@@ -10,7 +10,10 @@
             $mode_of_payment,
             $total_amount,
             $message,
-            $service_token
+            $service_token,
+            $refNum,
+            $payment_type,
+            $paid_amount
             ){
                 if($this->UpdateTransactionDetails(
                     $reservation_token,
@@ -19,7 +22,10 @@
                     $mode_of_payment,
                     $total_amount,
                     $message,
-                    $service_token
+                    $service_token,
+                    $refNum,
+                    $payment_type,
+                    $paid_amount
                     )){
                         echo json_encode(array('status' => 'success'));
                     }else{
@@ -28,17 +34,29 @@
             }
     }
 
-    $input=file_get_contents("php://input");
-    $decode=json_decode($input,true);
+
+
+    $total_amount = $_POST['total-rate'];
+    $payment_type = $_POST['payment-type'];
+
+    $total_amount = str_replace('₱', '', $total_amount);  
+    if($payment_type == 'Downpayment'){
+        $paid_amount = $total_amount * 0.3;
+    }else{
+        $paid_amount = $total_amount;
+    }
 
     $updateTransaction = new UpdateTransaction();
-    $updateTransaction->updateTransact($decode['reservation_token'], 
-                                    $decode['start_datetime'],
-                                    $decode['end_datetime'],
-                                    $decode['mode-of-payment'],
-                                    $decode['total-rate'],
-                                    $decode['message'],
-                                    $decode['service_token']
+    $updateTransaction->updateTransact($_POST['reservation_token'], 
+                                    $_POST['start_datetime'],
+                                    $_POST['end_datetime'],
+                                    $_POST['mode-of-payment'],
+                                    $total_amount,
+                                    $_POST['client_message'],
+                                    $_POST['service_token'],
+                                    $_POST['reference_number'],
+                                    $_POST['payment-type'],
+                                    $paid_amount
                                 );    
 
 ?>
