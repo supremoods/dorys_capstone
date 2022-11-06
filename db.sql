@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2022 at 02:29 AM
+-- Generation Time: Nov 07, 2022 at 12:32 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -165,7 +165,9 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (111, 'e049a37373064f7f', '635aa86ac7fe2', '2022-11-02 01:32:10', '2022-11-02 01:46:51'),
 (112, '7f301dec2eb991ab', '635193d692d0d', '2022-11-02 01:47:09', '2022-11-02 01:49:55'),
 (113, 'e04b475acde5e502', '6e59879b29a54e43', '2022-11-02 01:50:12', '2022-11-02 02:05:15'),
-(114, '94ca6fcbaaad80a7', '635193d692d0d', '2022-11-02 03:03:11', NULL);
+(114, '94ca6fcbaaad80a7', '635193d692d0d', '2022-11-02 03:03:11', NULL),
+(115, 'f976b74d1ba0384d', '635193d692d0d', '2022-11-05 05:05:03', '2022-11-05 11:48:53'),
+(116, '75dfe322c4dd0dd2', '635193d692d0d', '2022-11-06 12:14:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -252,15 +254,11 @@ CREATE TABLE `request_reservation` (
 --
 
 INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`) VALUES
-(28, '3d33ff16f6211482', 'confirmed'),
-(36, 'bbb7343e45296717', 'pending'),
-(37, '26beb1ef360c8be9', 'pending'),
-(38, '8d7f611900f3d26d', 'pending'),
-(39, '3f87f1768191ea87', 'pending'),
-(42, 'ac193607f235ed25', 'pending'),
-(44, 'f70f02711b815d85', 'pending'),
-(46, '0488b0b915a065b9', 'pending'),
-(47, 'ead340a096465d16', 'pending');
+(49, '86deefcb58f68ea9', 'confirmed'),
+(52, 'a82336906dce5f4b', 'pending'),
+(53, '57b757cf92a64140', 'pending'),
+(54, 'fd337ace03ddc127', 'confirmed'),
+(55, '9bde598ce2e3acac', 'pending');
 
 -- --------------------------------------------------------
 
@@ -277,23 +275,21 @@ CREATE TABLE `reservation` (
   `end_datetime` datetime NOT NULL,
   `mode_of_payment` varchar(255) NOT NULL,
   `settlement_fee` double NOT NULL,
-  `message` longtext DEFAULT NULL
+  `message` longtext DEFAULT NULL,
+  `gcash_ref_num` varchar(255) NOT NULL,
+  `payment_type` varchar(255) NOT NULL,
+  `paid_amount` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reservation`
 --
 
-INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_token`, `start_datetime`, `end_datetime`, `mode_of_payment`, `settlement_fee`, `message`) VALUES
-(30, '6e59879b29a54e43', '916c696fa61a769c', '3d33ff16f6211482', '2022-10-27 08:44:00', '2022-10-27 18:25:00', 'cash', 2000, 'asdasdlkajnn asasas daskjasd  askjbnasdasdaasdasjkbasd'),
-(38, '635193d692d0d', '459daba73a28dd8b', 'bbb7343e45296717', '2022-10-26 05:00:00', '2022-10-26 17:00:00', 'cash', 6000, 'dfsdfsdfsdfsdf'),
-(39, '635193d692d0d', '459daba73a28dd8b', '26beb1ef360c8be9', '2022-10-27 05:00:00', '2022-10-27 17:00:00', 'cash', 6000, 'asdasdasda'),
-(40, '635aa86ac7fe2', 'ef18c21ade651dc7', '8d7f611900f3d26d', '2022-11-04 08:36:00', '2022-11-04 14:36:00', 'cash', 1200, 'sdgddsfdfsdfdfs sdfdsdfdfssdfsdfsdf'),
-(41, '635193d692d0d', '459daba73a28dd8b', '3f87f1768191ea87', '2022-11-04 16:00:00', '2022-11-04 19:00:00', 'cash', 600, 'asdasdasdasd'),
-(44, '635193d692d0d', 'f375ebf2b8154017', 'ac193607f235ed25', '2022-11-04 16:55:00', '2022-11-04 19:57:00', 'cash', 600, ''),
-(46, '635aa86ac7fe2', 'ef18c21ade651dc7', 'f70f02711b815d85', '2022-11-04 16:25:00', '2022-11-04 19:26:00', 'cash', 600, 'ffgddfgfdgdfgfgddfgfdg'),
-(48, '635aa86ac7fe2', 'ef18c21ade651dc7', '0488b0b915a065b9', '2022-11-04 20:00:00', '2022-11-04 23:00:00', 'cash', 600, 'asdasd  ashsahs hshsd shh'),
-(49, '635aa86ac7fe2', '916c696fa61a769c', 'ead340a096465d16', '2022-11-03 12:43:00', '2022-11-03 19:43:00', 'cash', 1400, 'sasdasda asdasdasd');
+INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_token`, `start_datetime`, `end_datetime`, `mode_of_payment`, `settlement_fee`, `message`, `gcash_ref_num`, `payment_type`, `paid_amount`) VALUES
+(51, '635193d692d0d', '459daba73a28dd8b', '86deefcb58f68ea9', '2022-11-11 15:00:00', '2022-11-11 20:00:00', 'gcash', 2500, 'asdssasdas', '3444234 33331 1111', 'Downpayment', 750),
+(55, '635193d692d0d', '916c696fa61a769c', '57b757cf92a64140', '2022-11-14 08:00:00', '2022-11-14 16:00:00', 'gcash', 1600, 'sdsdd', '2222 333 1111', 'Downpayment', 480),
+(56, '635193d692d0d', '459daba73a28dd8b', 'fd337ace03ddc127', '2022-11-14 13:00:00', '2022-11-14 19:00:00', 'gcash', 3000, 'sdasdasdas', '2333232 222 1112233', 'Downpayment', 900),
+(57, '635193d692d0d', 'f375ebf2b8154017', '9bde598ce2e3acac', '2022-11-11 10:00:00', '2022-11-11 13:00:00', 'gcash', 1500, 'sss', '2323223 11111 222', 'Downpayment', 450);
 
 -- --------------------------------------------------------
 
@@ -454,7 +450,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -478,13 +474,13 @@ ALTER TABLE `queries`
 -- AUTO_INCREMENT for table `request_reservation`
 --
 ALTER TABLE `request_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `services`
