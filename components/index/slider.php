@@ -4,6 +4,8 @@
 
     $fetchAmmenities = $ammenities->FetchAmmenities();
 
+  
+
 ?>
 <div class="slider-cover">
     <div class="media-icons">

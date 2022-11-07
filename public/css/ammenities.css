@@ -182,6 +182,18 @@
 .blog-card:hover .details {
     left: 0%;
 }
+.alert-verified{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1em;
+}
+
+.alert-verified a{
+    cursor: pointer;
+    color: rgb(250 172 56);
+}
 
 @media (min-width: 640px) {
     .blog-card {

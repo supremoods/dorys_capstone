@@ -21,7 +21,7 @@
 
 .event-calendar.active{
     opacity: 1;
-    z-index: 777;
+    z-index: 999;
 }
 
 .elem-item .unavailable{
@@ -81,4 +81,10 @@
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1000px){
+    .event-calendar .wrapper{
+        min-width: 100%;
+    }
 }

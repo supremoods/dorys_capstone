@@ -8,7 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
-        height: 650,
+        contentHeight: 600,
+        windowResize: function(arg) {
+            console.log("resize");
+            calendar.changeView('timeGridWeek');
+
+
+        },
+        aspectRatio: 5,
         events: '/controller/client/PopulateCalendar.php',
         eventClick: (info) => {
             info.jsEvent.preventDefault();
@@ -391,6 +398,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     calendar.render();
 });
+
+// add the responsive classes after page initialization
+window.onload = function () {
+    $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
+};
+
+// add the responsive classes when navigating with calendar buttons
+$(document).on('click', '.fc-button', function(e) {
+    $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
+});
+
 const tempTime = [];
 const checkDatesBtn = document.getElementById('check-dates-btn');
 
@@ -534,8 +552,6 @@ const formatAMPM = (date) => {
 const selecHoursTime = (date) => {
     selectTime(date);
 }
-
-
 
 const dateFormater = (date) => {
     const year = date.getFullYear();

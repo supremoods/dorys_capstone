@@ -9,6 +9,8 @@ if ($maintenanceMode['mode'] == "Enabled") {
     header('Location: /maintenance');
     exit();
 }
+$fetchClientDetails = new SqlClientQuery();
+
 ?>
 <header class="site-header">
    <div class="header-top">
@@ -41,9 +43,17 @@ if ($maintenanceMode['mode'] == "Enabled") {
                </div>
             </div>
             <?php
+            
                 if (isset($_SESSION['session_token'])) {
+                  $clientDetails = $fetchClientDetails->fetchClientDetails($_SESSION['user_token']);
+                     
+                  if(empty($clientDetails['number']) && empty($clientDetails['address'])){
+                     $notVerified = true;
+                  }else{
+                     $notVerified = false;
+                  }
             ?>
-            <a href="/pages/ammenities.php" class="button-book-now">Book now</a>
+            <a href="<?=$notVerified?"javascript:checkIfAccountIsVerified()":"/pages/ammenities.php"?>" class="button-book-now">Book now</a>
             <?php
                 } else {
             ?>
@@ -54,6 +64,8 @@ if ($maintenanceMode['mode'] == "Enabled") {
          </div>
       </div>
    </div>
+   <input type="text" value="<?=$clientDetails['user_token']?>" id="user-token" hidden/>
+
    <div class="header-bottom">
       <div class="wrapper">
          <div class="inner-wrapper">

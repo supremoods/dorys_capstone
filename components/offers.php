@@ -24,7 +24,17 @@ $fetchAmmenities = $ammenities->FetchAmmenities();
       <h2>Hourly Rate: ₱ <?=$row['price']?></h2>
       <p><?=$row['description']?></p>
       <p class="read-more">
+        <?php
+          if($notVerified){
+        ?>
+         <a href="javascript:checkIfAccountIsVerified()">Book Now</a>
+        <?php
+          }else{
+        ?>
         <a href="/pages/book-now.php?service_token=<?=$row['services_token']?>">Book Now</a>
+        <?php
+          }
+          ?>
       </p>
     </div>
   </div>

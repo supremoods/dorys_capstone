@@ -763,3 +763,16 @@ textarea.input-c-items {
 .breaker{
     margin: 10px 0;
 }
+
+.alert-verified{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1em;
+}
+
+.alert-verified a{
+    cursor: pointer;
+    color: rgb(250 172 56);
+}
