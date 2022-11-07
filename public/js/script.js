@@ -12,7 +12,7 @@ var swiper2 = new Swiper(".bg-slider", {
   loop: true,
   spaceBetween: 0,
   thumbs: {
-      swiper: swiper,
+    swiper: swiper,
   },
   autoplay: {
     delay: 5000,
@@ -43,7 +43,7 @@ toggle_btn.forEach((btn) => {
   });
 });
 
-function moveSlider(){
+function moveSlider() {
   let index = this.dataset.value;
 
   let currentImage = document.querySelector(`.img-${index}`);
@@ -64,16 +64,16 @@ bullets.forEach((bullet) => {
 
 // navbar
 try {
-  const bookNow =  document.getElementById("book-now");
+  const bookNow = document.getElementById("book-now");
   const btn_login = document.querySelector(".login");
   const btn_register = document.querySelector(".register");
   const body = document.querySelector("body");
   const close_modal = document.querySelector(".close-modal");
 
   close_modal.addEventListener("click", () => {
-      body.classList.remove("show");
-      main.classList.remove("show");
-      toggle_icon.classList.remove("fa-times");
+    body.classList.remove("show");
+    main.classList.remove("show");
+    toggle_icon.classList.remove("fa-times");
   });
 
   btn_login.addEventListener("click", () => {
@@ -86,14 +86,14 @@ try {
 
   bookNow.addEventListener("click", () => {
     body.classList.toggle("show");
-    main.classList.add("show","sign-up-mode");
+    main.classList.add("show", "sign-up-mode");
     header_bottom.classList.remove("active");
     inner_wrapper.classList.remove("active");
   });
 
   btn_register.addEventListener("click", () => {
     body.classList.toggle("show");
-    main.classList.add("show","sign-up-mode");
+    main.classList.add("show", "sign-up-mode");
     header_bottom.classList.remove("active");
     inner_wrapper.classList.remove("active");
   });
@@ -102,9 +102,9 @@ try {
   console.log(error);
 }
 
-const regModal = () =>{
+const regModal = () => {
   body.classList.toggle("show");
-  main.classList.add("show","sign-up-mode");
+  main.classList.add("show", "sign-up-mode");
   header_bottom.classList.remove("active");
   inner_wrapper.classList.remove("active");
 }
@@ -116,59 +116,59 @@ contactForm.addEventListener('submit', async (e) => {
 
   const formData = new FormData(contactForm);
   try {
-        Swal.fire({
-            title: 'Please wait...',
-            html: 'We are processing your request',
-            allowOutsideClick: false,
-            showConfirmButton: false,
-            onBeforeOpen: () => {
-                Swal.showLoading()
-            },
-        });
-      const res = await fetch('/controller/client/ContactQueries.php', {
-          method: 'POST',
-          body: JSON.stringify(Object.fromEntries(formData)),
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      })
-
-      const data = await res.json();
-
-      const success = "https://cdn-icons-png.flaticon.com/512/190/190411.png";
-      const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
-
-      if (data.status === 'success') {
-        //hide loader in sweetalert
-        Swal.close();
-
-          Swal.fire({
-              title: "Success!",
-              text: "Your message has been sent.",
-              imageUrl: success,
-              imageWidth: 150,
-              imageHeight: 150,
-              imageAlt: "Success",
-          });
-
-          contactForm.reset();
-      } else {
-          Swal.close();
-          Swal.fire({
-              title: "Failed!",
-              text: "Your message has not been sent.",
-              imageUrl: failed,
-              imageWidth: 150,
-              imageHeight: 150,
-              imageAlt: "Failed",
-          });
-
-          contactForm.reset();
+    Swal.fire({
+      title: 'Please wait...',
+      html: 'We are processing your request',
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      onBeforeOpen: () => {
+        Swal.showLoading()
+      },
+    });
+    const res = await fetch('/controller/client/ContactQueries.php', {
+      method: 'POST',
+      body: JSON.stringify(Object.fromEntries(formData)),
+      headers: {
+        'Content-Type': 'application/json'
       }
+    })
+
+    const data = await res.json();
+
+    const success = "https://cdn-icons-png.flaticon.com/512/190/190411.png";
+    const failed = "https://cdn-icons-png.flaticon.com/512/458/458594.png";
+
+    if (data.status === 'success') {
+      //hide loader in sweetalert
+      Swal.close();
+
+      Swal.fire({
+        title: "Success!",
+        text: "Your message has been sent.",
+        imageUrl: success,
+        imageWidth: 150,
+        imageHeight: 150,
+        imageAlt: "Success",
+      });
+
+      contactForm.reset();
+    } else {
+      Swal.close();
+      Swal.fire({
+        title: "Failed!",
+        text: "Your message has not been sent.",
+        imageUrl: failed,
+        imageWidth: 150,
+        imageHeight: 150,
+        imageAlt: "Failed",
+      });
+
+      contactForm.reset();
+    }
 
   }
   catch (err) {
-      console.log(err);
+    console.log(err);
   }
 
 });
@@ -180,12 +180,12 @@ const bookNow = (service_token) => {
 
 const inputs = document.querySelectorAll(".input-c-items");
 
-function focusFunc(){
+function focusFunc() {
   let parent = this.parentNode;
   parent.classList.add("focus");
 }
 
-function blurFunc(){
+function blurFunc() {
   let parent = this.parentNode;
   if (this.value == "") {
     parent.classList.remove("focus");
@@ -219,39 +219,39 @@ const checkInputs = () => {
 const checkIfAccountIsVerified = async () => {
   const userToken = document.getElementById("user-token").value;
 
-  if(userToken !== ""){
-  const res = await fetch('/controller/client/CheckIfAccountIsVerified.php', {
+  if (userToken !== "") {
+    const res = await fetch('/controller/client/CheckIfAccountIsVerified.php', {
       method: 'POST',
       headers: {
-          'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         'user_token': userToken
       })
-  })
+    })
 
-  const data = await res.json();
+    const data = await res.json();
 
-  if (data.status === 'not_verified') {
-    // put link to verify account
-    Swal.fire({
-      title: 'Please verify your account',
-      icon: 'warning',
-      html: `
+    if (data.status === 'not_verified') {
+      // put link to verify account
+      Swal.fire({
+        title: 'Please verify your account',
+        icon: 'warning',
+        html: `
         <div class="alert-verified">
           <p>You need to complete your profile details before you can book a service</p>
           <p>Click <a class="link_profile" href="/pages/profile.php">here</a> to complete your profile</p>
         </div>
       `,
-      allowOutsideClick: false,
-      showConfirmButton: true,
-      confirmButtonText: 'Ok',
-      onBeforeOpen: () => {
+        allowOutsideClick: false,
+        showConfirmButton: true,
+        confirmButtonText: 'Ok',
+        onBeforeOpen: () => {
           Swal.showLoading()
-      },
-    });
+        },
+      });
+    }
   }
-}
 }
 
 checkIfAccountIsVerified();
