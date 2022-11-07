@@ -750,6 +750,54 @@ class SqlAdminQuery extends ConfigDB
                 return false;
             }
         }
+    }
 
+    public function insertGcashQrCode($image, $number, $name){
+        $sql = "INSERT INTO payment_details (gcash_qr, number, name) VALUES ('$image', '$number', '$name')";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result) {
+                return true;
+            } else {
+                // if the query is not successful, return false
+                return false;
+            }
+        }
+    }
+
+    public function fetchPaymentDetails(){
+        $sql = "SELECT * FROM payment_details";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                return $row;
+            } else {
+                // if the query is not successful, return false
+                return false;
+            }
+        }
+    }
+
+    public function updatePaymentDetails($id, $image, $number, $name){
+        $sql = "UPDATE payment_details SET gcash_qr = '$image', number = '$number', name = '$name' WHERE id = '$id'";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result) {
+                return true;
+            } else {
+                // if the query is not successful, return false
+                return false;
+            }
+        }
     }
 }

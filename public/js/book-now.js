@@ -359,12 +359,30 @@ ammenitiesSelection.addEventListener("change", (e) => {
     });
 });
 
-bookNowForm.addEventListener("submit", (e) => {
+bookNowForm.addEventListener("submit", async(e) => {
   e.preventDefault();
+  // fetch gcash details
+  Swal.fire({
+    title: "Loading...",
+    text: "Please wait while we process your payment",
+    allowOutsideClick: false,
+    showConfirmButton: false,
+  });
+  const response = await fetch('/controller/client/FetchGcashDetails.php');
+  const data = await response.json();
+
+  const res = data.res;
+  Swal.close();
   Swal.fire({
     title: "GCash",
-    text: "Please scan the QR code to pay",
-    imageUrl: "../public/images/qrCode/QR-2.jpg",
+    html: `
+      <p>Please scan the QR code below to pay the reservation fee. or you can pay through the number below.</p>
+      <div class="text-group">
+        <h1>${res.number}</h1>
+        <p>${res.name}</p>
+      </div>
+    `,
+    imageUrl: `../public/images/qrCode/${res.gcash_qr}`,
     input: "text",
     inputPlaceholder: "Please enter the reference number after payment",
     imageWidth: 400,
@@ -493,3 +511,7 @@ disablePastDates();
 loadBackgroundImage();
 populateTime();
 loadForm();
+
+
+
+

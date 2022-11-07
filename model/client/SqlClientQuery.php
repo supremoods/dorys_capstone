@@ -540,6 +540,23 @@
                 }
             }
         }
+        
+        public function fetchPaymentDetails(){
+            $sql = "SELECT * FROM payment_details";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
 
     }
 

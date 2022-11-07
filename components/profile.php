@@ -19,16 +19,12 @@ $client = $fetchClient->fetchClientDetails($_SESSION['user_token']);
                         </form>
                     </div>
                 </div>
-                
                 <div class="card-body">
                     <h2 class="name"><?=$client['fullname']?></h2>
                     <h4 class="prof-email"><?=$client['email']?></h4>
                     <a href="/controller/client/LogoutController.php">Logout</a>
                 </div>
-
             </div>
-
-
         </div>
         <div class="profile-settings">
             <div class="profile-settings__header">

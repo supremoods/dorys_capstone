@@ -8,15 +8,17 @@
     <title>Dashboard | Manage Gcash Details</title>
     <link rel="icon" href="/public/images/logo/dorys_logo.png" type="image/png" sizes="16x16">
     <?php include $_SERVER['DOCUMENT_ROOT'].'/admin/links/header/header_links.php'; ?>
+    <link rel="stylesheet" href="/admin/public/css/gcash.css">
 </head>
 
 <body>
     <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/sidebar.php'; ?>
 
-    
+    <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/components/gcash.php'; ?>
     
     <?php include  $_SERVER['DOCUMENT_ROOT'].'/admin/links/footer/footer_links.php'; ?>
     <script src="/admin/public/js/script.js"></script>
+    <script src="/admin/public/js/gcash.js"></script>
 </body>
 
 </html>
