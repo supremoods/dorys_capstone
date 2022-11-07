@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 12:34 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 07, 2022 at 04:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -84,9 +84,9 @@ CREATE TABLE `client` (
 
 INSERT INTO `client` (`id`, `user_token`, `fullname`, `email`, `address`, `number`, `password`, `avatar`, `status`) VALUES
 (2, '6e59879b29a54e43', 'John Lappay', 'lappay.john@gmail.com', 'Phase 3 Blk 3, Lot 20, Tanigue St. Kaunlaran Village, Caloocan City', '0992114073', '$2y$10$mpFfEVmzf4NkG4svMRjpEuHCxuc5LSgNFBG4p17.G7Ax8TqMK6pEi', 'oreo.png', 'inactive'),
-(9, '635193d692d0d', 'John Doe', 'john.doe@gmail.com', 'this is a sample address/this is a sample address 2', '09972114073', '$2y$10$whIypU4JdWT3tHhTG.vMn.41GGFWuG.hyyGasbHa.ZY0XkSBney/a', '273575017_437110681498089_4936485817346125140_n.png', 'inactive'),
+(9, '635193d692d0d', 'John Doe', 'john.doe@gmail.com', 'this is a sample address/this is a sample address 2', '09972114073', '$2y$10$whIypU4JdWT3tHhTG.vMn.41GGFWuG.hyyGasbHa.ZY0XkSBney/a', '273575017_437110681498089_4936485817346125140_n.png', 'active'),
 (15, '635aa86ac7fe2', 'Jerico Victoria', 'jerico.victoria@gmail.com', 'Los Santos City/GTA Mafia', '09972114073', '$2y$10$HJ0gNkwM/.PbppwLGZGhUOglhN.eJBluTIOH2vQDbMY14yL4uu9IS', 'a.jpg', 'inactive'),
-(16, '6368d334c2edd', 'Nam Do San', 'namDoSan@gmail.com', NULL, NULL, '$2y$10$OxHOjuLA/sgka/eERTdDxuKlg903P.399OlOcFiFgzYTCslzA.mBW', NULL, 'active');
+(16, '6368d334c2edd', 'Nam Do San', 'namDoSan@gmail.com', NULL, NULL, '$2y$10$OxHOjuLA/sgka/eERTdDxuKlg903P.399OlOcFiFgzYTCslzA.mBW', NULL, 'inactive');
 
 -- --------------------------------------------------------
 
@@ -172,7 +172,8 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (117, '6da9b658a9f6f7b6', '6368d334c2edd', '2022-11-07 05:43:27', '2022-11-07 06:32:26'),
 (118, 'a2097e786751c57b', '6368d334c2edd', '2022-11-07 06:34:07', '2022-11-07 06:34:44'),
 (119, '18db430f4fc20e14', '635193d692d0d', '2022-11-07 06:34:55', '2022-11-07 06:34:59'),
-(120, '9941a5fa1b9e97f0', '6368d334c2edd', '2022-11-07 06:35:16', NULL);
+(120, '9941a5fa1b9e97f0', '6368d334c2edd', '2022-11-07 06:35:16', NULL),
+(121, '4a33b15dbdb2ba53', '635193d692d0d', '2022-11-07 10:12:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -232,6 +233,13 @@ CREATE TABLE `payment_details` (
   `number` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment_details`
+--
+
+INSERT INTO `payment_details` (`id`, `gcash_qr`, `number`, `name`) VALUES
+(2, 'gcashqr.png', '09954667564', 'nobody');
 
 -- --------------------------------------------------------
 
@@ -407,6 +415,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payment_details`
+--
+ALTER TABLE `payment_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `queries`
 --
 ALTER TABLE `queries`
@@ -468,7 +482,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -481,6 +495,12 @@ ALTER TABLE `contact_details`
 --
 ALTER TABLE `events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `payment_details`
+--
+ALTER TABLE `payment_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `queries`
