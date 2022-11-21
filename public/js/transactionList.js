@@ -51,10 +51,26 @@ const loadTransactions = async () => {
                 const diffTime = Math.abs(date2 - date1);
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-                if(diffDays > 3){
+                if(diffDays >= 3){
                     return false;
                 }else{
                     return true;
+                }
+            }
+
+            // check iif date is past within now
+            const checkDateWithinNow = (date) => {
+
+                const today = new Date();
+
+                const date1 = new Date(date);
+                const date2 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+
+                if(date1 < date2){
+                    return true;
+                }else{
+                    return false;
                 }
             }
 
@@ -66,12 +82,13 @@ const loadTransactions = async () => {
                     new Date(transaction.start_datetime).toLocaleString(),
                     new Date(transaction.end_datetime).toLocaleString(),
                     transaction.mode_of_payment,
-                    `₱ ${transaction.price}`,
-                    `₱ ${transaction.settlement_fee}`,
+                    `₱ ${transaction.price}.00`,
+                    `₱ ${transaction.settlement_fee}.00`,
+                    `₱ ${30/100 * transaction.settlement_fee}.00`,
+                    `₱ ${transaction.settlement_fee - (30/100 * transaction.settlement_fee)}.00`,
                     transaction.gcash_ref_num,
                     transaction.payment_type,
-                    transaction.paid_amount,
-                    transaction.status,
+                    `${(checkDateWithinNow(new Date(transaction.start_datetime).toLocaleString()) && (transaction.status=='pending' || transaction.status=='cancelled')) ? 'Expired': transaction.status}`,
                     transaction.date_created,
                     `
                     ${checkDate(transaction.date_created) ? '<button type="button" id="edit-transact" onclick="editTransactionFunc(this.dataset.reservation_token)" title="Edit" data-toggle="tooltip" data-reservation_token ='+ transaction.reservation_token +'><i class="fa fa-pencil"></i></button>' : ''}

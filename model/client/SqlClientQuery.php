@@ -563,6 +563,21 @@
             }
         }
 
+        public function checkEmailExist($email){
+            $sql = "SELECT * FROM client WHERE email = '$email'";
+
+            $result = $this->dbConnection()->query($sql);
+
+            if ($result) {
+                // if the query is successful, return true
+                if ($result->num_rows > 0) {
+                    return true;
+                } else {
+                    // if the query is not successful, return false
+                    return false;
+                }
+            }
+        }
     }
 
 

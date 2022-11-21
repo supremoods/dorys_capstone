@@ -33,16 +33,45 @@ const loadAmmenityTransaction = async (token) => {
 
         table.clear();
         transactions.forEach((transaction, index) => {
+            const checkDateWithinNow = (date) => {
+
+                const today = new Date();
+
+                const date1 = new Date(date);
+                const date2 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+
+                console.log( transaction.reservation_token);
+                if(date1 < date2){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+
             if(transaction.status === 'pending'){
-                actionBtns = `
-                <button type="button" class="confirm-transact action-btn" onclick="confirmTransactionFunc(this.dataset.reservation_token, this.dataset.user_token)" title="Confirm" data-toggle="tooltip" data-user_token="${transaction.user_token}" data-reservation_token ="${transaction.reservation_token}">Confirm</button>
-                <button type="button" class="cancel-transact action-btn" onclick="cancelTransactionFunc(this.dataset.reservation_token)" title="Cancel" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Decline</button>
-                `;
+                if((checkDateWithinNow(new Date(transaction.start_datetime).toLocaleString()) && transaction.status=='pending')){
+                    actionBtns = `
+                    <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Delete</button>
+                    `
+                }else{
+                    actionBtns = `
+                    <button type="button" class="confirm-transact action-btn" onclick="confirmTransactionFunc(this.dataset.reservation_token, this.dataset.user_token)" title="Confirm" data-toggle="tooltip" data-user_token="${transaction.user_token}" data-reservation_token ="${transaction.reservation_token}">Confirm</button>
+                    <button type="button" class="cancel-transact action-btn" onclick="cancelTransactionFunc(this.dataset.reservation_token)" title="Cancel" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Decline</button>
+                    `;
+                }
             }else if(transaction.status === 'cancelled'){
-                actionBtns = `
-                <button type="button" class="confirm-transact action-btn" onclick="undoTransactionFunc(this.dataset.reservation_token)" title="Revert" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Revert</button>
-                <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Delete</button>
-                `
+                if((checkDateWithinNow(new Date(transaction.start_datetime).toLocaleString()) && transaction.status=='cancelled')){
+                    actionBtns = `
+                    <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Delete</button>
+                    `
+                }
+                else{
+                    actionBtns = `
+                    <button type="button" class="confirm-transact action-btn" onclick="undoTransactionFunc(this.dataset.reservation_token)" title="Revert" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Revert</button>
+                    <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Delete</button>
+                    `
+                }
             }else if(transaction.status === 'confirmed'){
                 actionBtns = `
                 <button type="button" class="cancel-transact action-btn" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}">Delete</button>
@@ -54,8 +83,10 @@ const loadAmmenityTransaction = async (token) => {
                 transaction.start_datetime,
                 transaction.end_datetime,
                 transaction.mode_of_payment,
-                transaction.settlement_fee,
-                transaction.status,
+                `₱ ${transaction.settlement_fee}.00`,
+                `₱ ${30/100 * transaction.settlement_fee}.00`,
+                `₱ ${transaction.settlement_fee - (30/100 * transaction.settlement_fee)}.00`,
+                `${(checkDateWithinNow(new Date(transaction.start_datetime).toLocaleString()) && (transaction.status=='pending' || transaction.status=='cancelled')) ? 'Expired': transaction.status}`,
                 `
                 <div class="action-btns">
                     <button class="view-msg" onclick="viewMessage(this.dataset.msg)" data-msg="${transaction.message}">View Message</button>
@@ -69,7 +100,6 @@ const loadAmmenityTransaction = async (token) => {
                 `,
                 transaction.gcash_ref_num,
                 transaction.payment_type,
-     
                 `
                 <div class="action-btns">
                     ${actionBtns}

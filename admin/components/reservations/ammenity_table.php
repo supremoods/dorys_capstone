@@ -27,11 +27,14 @@
                         <td>Event End</td>
                         <td>Mode of Payment</td>
                         <td>Total Rate</td>
+                        <td>Paid Amount</td>
+                        <td>Balance</td>
                         <td>Status</td>
                         <td>Message</td>
                         <td>Profile</td>
                         <td>Gcash Ref. Num</td>
                         <td>Payment Type</td>
+
                         <td>Action</td>
                     </tr>
                 </thead>

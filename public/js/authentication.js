@@ -46,6 +46,18 @@ signUpForm.addEventListener('submit', async (e) => {
 
                 main.classList.toggle("sign-up-mode");
                 signUpForm.reset();
+            }else if(data.status === 'email-exist'){
+                Swal.close();
+
+                Swal.fire({
+                    title: "Failed!",
+                    text: "Email already exist",
+                    imageUrl: failed,
+                    imageWidth: 150,
+                    imageHeight: 150,
+                    imageAlt: "Failed",
+                });
+
             }else{
 
                 Swal.close();

@@ -2,9 +2,9 @@
    class ConfigDB{
         // Properties
         public $host = "localhost";
-        public $user = "u376903371_dorys";
-        public $pass = "@SupremoodAdmin25";
-        public $db = "u376903371_dorys_db";
+        public $user = "root";
+        public $pass = "";
+        public $db = "dors_db";
         public $conn;
 
         // Constructor

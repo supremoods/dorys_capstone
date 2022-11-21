@@ -13,9 +13,10 @@
                     <td>Mode of Payment</td>
                     <td>Hourly Rate</td>
                     <td>Total Rate</td>
+                    <td>Paid Amount</td>
+                    <td>Balance</td>
                     <td>Gcash Ref Num</td>
                     <td>Payment Type</td>
-                    <td>Paid Amount</td>
                     <td>Status</td>
                     <td>Date Requested</td>
                     <td>Action</td>

@@ -8,26 +8,42 @@
             $email,
             $password
         ){
-            $user_token = uniqid();
-            $result = $this->insertClientAccount(
-                $user_token,
-                $full_name,
-                $email,
-                $password
-            );
+            if($this->checkEmail($email)){
+                echo json_encode(array('status' => 'email-exist'));
+            }else{
+                $user_token = uniqid();
+                $result = $this->insertClientAccount(
+                    $user_token,
+                    $full_name,
+                    $email,
+                    $password
+                );
 
+                if ($result) {
+                    // if the query is successful, return true
+                    echo json_encode( array(
+                        'status' => 'success',
+                        'message' => 'Account created successfully'
+                    ));
+                } else {
+                    // if the query is not successful, return false
+                    echo json_encode( array(
+                        'status' => 'error',
+                        'message' => 'Account not created'
+                    )); 
+                }
+            }
+        }
+
+        // check if email is existing
+        public function checkEmail($email){
+            $result = $this->checkEmailExist($email);
             if ($result) {
                 // if the query is successful, return true
-                echo json_encode( array(
-                    'status' => 'success',
-                    'message' => 'Account created successfully'
-                ));
+                return true;
             } else {
                 // if the query is not successful, return false
-                echo json_encode( array(
-                    'status' => 'error',
-                    'message' => 'Account not created'
-                )); 
+                return false;
             }
         }
     }
@@ -47,5 +63,7 @@
         $email,
         $password
     );
+
+
 
 ?>

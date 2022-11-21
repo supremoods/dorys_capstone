@@ -71,6 +71,8 @@
                             <td>Mode of Paymennt</td>
                             <td>Hourly Rate</td>
                             <td>Total Rate</td>
+                            <td>Paid Amount</td>
+                            <td>Balance</td>
                             <td>Status</td>
                             <td>Gcash Ref. Num</td>
                             <td>Payment Type</td>
