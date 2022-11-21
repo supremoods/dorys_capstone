@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 04:03 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 21, 2022 at 09:39 AM
+-- Server version: 10.5.16-MariaDB-cll-lve
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dors_db`
+-- Database: `u376903371_dorys_db`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `admin_id`, `username`, `password`) VALUES
-(1, '8de42f70f3bc82f1962b96cada', 'admin', 'admin');
+(1, '8de42f70f3bc82f1962b96cada', 'admin', '@dorysAdmin');
 
 -- --------------------------------------------------------
 
@@ -58,7 +58,7 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `admin_id`, `message`) VALUES
-(9, '8de42f70f3bc82f1962b96cada', 'asdasdasdasda');
+(9, '8de42f70f3bc82f1962b96cada', 'DWadsadsadjakl');
 
 -- --------------------------------------------------------
 
@@ -84,9 +84,13 @@ CREATE TABLE `client` (
 
 INSERT INTO `client` (`id`, `user_token`, `fullname`, `email`, `address`, `number`, `password`, `avatar`, `status`) VALUES
 (2, '6e59879b29a54e43', 'John Lappay', 'lappay.john@gmail.com', 'Phase 3 Blk 3, Lot 20, Tanigue St. Kaunlaran Village, Caloocan City', '0992114073', '$2y$10$mpFfEVmzf4NkG4svMRjpEuHCxuc5LSgNFBG4p17.G7Ax8TqMK6pEi', 'oreo.png', 'inactive'),
-(9, '635193d692d0d', 'John Doe', 'john.doe@gmail.com', 'this is a sample address/this is a sample address 2', '09972114073', '$2y$10$whIypU4JdWT3tHhTG.vMn.41GGFWuG.hyyGasbHa.ZY0XkSBney/a', '273575017_437110681498089_4936485817346125140_n.png', 'active'),
-(15, '635aa86ac7fe2', 'Jerico Victoria', 'jerico.victoria@gmail.com', 'Los Santos City/GTA Mafia', '09972114073', '$2y$10$HJ0gNkwM/.PbppwLGZGhUOglhN.eJBluTIOH2vQDbMY14yL4uu9IS', 'a.jpg', 'inactive'),
-(16, '6368d334c2edd', 'Nam Do San', 'namDoSan@gmail.com', NULL, NULL, '$2y$10$OxHOjuLA/sgka/eERTdDxuKlg903P.399OlOcFiFgzYTCslzA.mBW', NULL, 'inactive');
+(16, '6368d334c2edd', 'Nam Do San', 'namDoSan@gmail.com', NULL, NULL, '$2y$10$OxHOjuLA/sgka/eERTdDxuKlg903P.399OlOcFiFgzYTCslzA.mBW', NULL, 'inactive'),
+(18, '6369ec85056e7', 'Simon Dave D. Talon', 'talonsero14@gmail.com', 'Malabon City/', '09998529009', '$2y$10$DGKCHEEcbIgKS6T.u.tb0uDHAsPYbkjo1k5uSnMTym6Z/.aNsJEva', NULL, 'inactive'),
+(20, '636cb9572c3f8', 'tricia', 'triciapaz19@gmail.com', 'Basta City/', '09291314949', '$2y$10$BDRdDEIMtl01uAJ5jDdDc.45L2PxmgYrZ9nWFLvubsdshJAXz75iu', NULL, 'inactive'),
+(21, '636ce19342872', 'Jerome Villajos', 'jeromevillajos12@gmail.com', 'Purok  6 Hernandez St. Catmon, Malabon City./', '09297575119', '$2y$10$ocfBOCaDPy7Jxrg5n5O35OhvvQ7QWDZgbOlzZepGHJfYfzNjdKyB.', NULL, 'active'),
+(24, '6374f1263e714', 'Simon Dave D. Talon', 'talonsero14@gmail.com', 'Malabanias/', '0918 351 8409', '$2y$10$4a2Gp7fcyjkh8.CEov8GLeCxoOMJJ998ld50KhdvLOlxWJx8Z0Nkm', NULL, 'inactive'),
+(25, '6375c997ccd3a', 'serra', 'serra@gmail.com', NULL, NULL, '$2y$10$OtePHWD84UItsNG9b.jtJOeq7t676o7ZS7EXBOS2v0Jyv9RS4vJ1K', NULL, 'inactive'),
+(26, '6375c9ba1f96e', 'rondina', 'reymond09@gmail.com', 'swadasdada/', '09297575119', '$2y$10$NHx1sOMbP41PZzNxjii8uufB8fStfqmqnPU67ZLf0MTMe2KvkGEku', NULL, 'active');
 
 -- --------------------------------------------------------
 
@@ -173,7 +177,69 @@ INSERT INTO `client_log_history` (`id`, `session_id`, `user_token`, `log_in_stam
 (118, 'a2097e786751c57b', '6368d334c2edd', '2022-11-07 06:34:07', '2022-11-07 06:34:44'),
 (119, '18db430f4fc20e14', '635193d692d0d', '2022-11-07 06:34:55', '2022-11-07 06:34:59'),
 (120, '9941a5fa1b9e97f0', '6368d334c2edd', '2022-11-07 06:35:16', NULL),
-(121, '4a33b15dbdb2ba53', '635193d692d0d', '2022-11-07 10:12:31', NULL);
+(121, '4a33b15dbdb2ba53', '635193d692d0d', '2022-11-07 10:12:31', NULL),
+(122, '6ec769e238e9f2e8', '6368d334c2edd', '2022-11-07 11:16:30', '2022-11-07 11:34:55'),
+(123, '57fa976969adc49c', '6368d334c2edd', '2022-11-08 12:06:30', '2022-11-08 12:08:07'),
+(124, '82772e488da1306b', '6368d334c2edd', '2022-11-08 10:36:26', '2022-11-08 10:37:15'),
+(125, '5320d708ee1a0761', '635193d692d0d', '2022-11-08 10:37:29', '2022-11-08 10:49:01'),
+(126, '414257ba2e7410f0', '6369c3c7e17e8', '2022-11-08 10:49:47', '2022-11-08 11:02:35'),
+(127, '5d0152d827495e28', '6369c3c7e17e8', '2022-11-08 11:51:35', NULL),
+(128, 'df84c44214329e91', '635193d692d0d', '2022-11-08 01:32:34', '2022-11-08 01:35:39'),
+(129, '13f02a1431ee9746', '6369c3c7e17e8', '2022-11-08 01:34:37', '2022-11-08 01:38:28'),
+(130, '9ebfe04f489412dd', '6368d334c2edd', '2022-11-08 01:35:59', '2022-11-08 01:36:30'),
+(131, '658e35b3ba248e46', '6369ec85056e7', '2022-11-08 01:43:42', '2022-11-08 02:43:37'),
+(132, '0c1a9950f999863a', '6e59879b29a54e43', '2022-11-08 02:19:22', NULL),
+(133, '1541a874f6d65e85', '6369c3c7e17e8', '2022-11-08 02:48:50', '2022-11-08 02:57:59'),
+(134, '3cfbf750464c667a', '6369c3c7e17e8', '2022-11-08 07:58:58', NULL),
+(135, '7c9df0912ded1690', '6369c3c7e17e8', '2022-11-08 07:58:58', '2022-11-08 08:54:48'),
+(136, '4d9f2a1c80a382eb', '6369c3c7e17e8', '2022-11-09 07:38:44', '2022-11-09 07:40:59'),
+(137, '4ca52d1289f901ed', '636cb9572c3f8', '2022-11-10 04:42:27', '2022-11-10 04:53:53'),
+(138, '9e0f0f67497d51c6', '6369ec85056e7', '2022-11-10 04:53:14', '2022-11-10 05:38:56'),
+(139, '07910bd99b6b10de', '6369c3c7e17e8', '2022-11-10 06:39:31', '2022-11-10 07:11:45'),
+(140, '02534b0fc9de2034', '6369c3c7e17e8', '2022-11-10 07:32:25', '2022-11-10 07:32:50'),
+(141, '1021b1320f085dce', '636ce19342872', '2022-11-10 07:33:48', '2022-11-10 09:08:09'),
+(142, '1f94bb34ea866e26', '63724a61e12f8', '2022-11-14 10:02:24', NULL),
+(143, '9a34bd5c59e43ce6', '6e59879b29a54e43', '2022-11-14 11:09:39', '2022-11-14 11:35:30'),
+(144, '31f8c10c691622f1', '636ce19342872', '2022-11-14 11:38:12', NULL),
+(145, 'f229d36641264abc', '636ce19342872', '2022-11-15 07:53:53', '2022-11-15 07:54:47'),
+(146, 'ba14b83d87ae4043', '636ce19342872', '2022-11-15 07:55:36', NULL),
+(147, '9014ba7983d4fa4e', '636ce19342872', '2022-11-15 10:57:30', NULL),
+(148, '9779822221eb74b5', '636ce19342872', '2022-11-15 11:01:23', NULL),
+(149, 'a4e2ea425d72cc4e', '636ce19342872', '2022-11-15 11:34:38', NULL),
+(150, '749b5c27d1180d82', '636ce19342872', '2022-11-15 09:49:57', NULL),
+(151, '49479fdcc85b28d9', '636ce19342872', '2022-11-15 10:33:21', '2022-11-15 10:47:35'),
+(152, '98b31cda5bf21de4', '636ce19342872', '2022-11-15 10:52:45', NULL),
+(153, 'fb1aca4441637cef', '636ce19342872', '2022-11-15 10:58:00', NULL),
+(154, '1888d21741023528', '636ce19342872', '2022-11-15 10:59:08', NULL),
+(155, 'b0546a3d699d9d2d', '636ce19342872', '2022-11-15 11:00:12', NULL),
+(156, 'c4dee7018ff828ca', '636ce19342872', '2022-11-16 10:40:29', '2022-11-16 10:43:35'),
+(157, '0b5be6a29fb5c92e', '636ce19342872', '2022-11-16 02:47:32', NULL),
+(158, 'e536ba4cda68c22a', '636ce19342872', '2022-11-16 06:42:30', NULL),
+(159, '4a8b4c3dd985b750', '6374ee497b509', '2022-11-16 10:06:21', '2022-11-16 10:17:27'),
+(160, '457d332dffa8eaba', '636ce19342872', '2022-11-16 10:07:38', NULL),
+(161, 'c15b5f6fc2fa9f5f', '636ce19342872', '2022-11-16 10:07:40', NULL),
+(162, '32a1783db84ca3bf', '636ce19342872', '2022-11-16 10:12:42', NULL),
+(163, '10eff0639764588a', '636ce19342872', '2022-11-16 10:14:00', NULL),
+(164, 'ac08c8942929a8e9', '6374f1263e714', '2022-11-16 10:18:17', '2022-11-16 11:06:21'),
+(165, '278c88cb88da606f', '636ce19342872', '2022-11-16 10:36:24', NULL),
+(166, 'ba58d3851c279723', '6374f1263e714', '2022-11-17 08:06:16', NULL),
+(167, '09bb5525240158fc', '636ce19342872', '2022-11-17 10:16:02', NULL),
+(168, 'c34e9de679460db9', '636ce19342872', '2022-11-17 10:16:02', NULL),
+(169, '6d50a5e3a71cdb64', '636ce19342872', '2022-11-17 10:17:19', NULL),
+(170, 'bb56ae4847d2b0d2', '636ce19342872', '2022-11-17 10:17:19', '2022-11-17 10:32:12'),
+(171, 'e2f97251e1e1d3e5', '636ce19342872', '2022-11-17 10:32:24', '2022-11-17 10:34:36'),
+(172, 'fe41cf8ca53c06b7', '6374f1263e714', '2022-11-17 10:32:31', NULL),
+(173, 'c1c910ed5c388551', '636ce19342872', '2022-11-17 10:35:15', '2022-11-17 10:35:32'),
+(174, '03edb12a0eed42d5', '6374f1263e714', '2022-11-17 10:36:18', '2022-11-17 10:38:23'),
+(175, '6f0c41d7bba77222', '636ce19342872', '2022-11-17 10:38:55', '2022-11-17 10:40:00'),
+(176, '6d10e6119efe6d9d', '6369ec85056e7', '2022-11-17 10:41:33', '2022-11-17 10:43:48'),
+(177, '047ea1dacce8a7c2', '636ce19342872', '2022-11-17 10:48:20', NULL),
+(178, 'eeecd7fb093fe9a7', '636ce19342872', '2022-11-17 10:48:21', '2022-11-17 10:53:59'),
+(179, 'e786c11059cb15ae', '636ce19342872', '2022-11-17 01:41:17', '2022-11-17 01:41:28'),
+(180, '54297f5188c61073', '6375c9ba1f96e', '2022-11-17 01:42:26', NULL),
+(181, '0fb6b28ab2e6f958', '636ce19342872', '2022-11-18 07:19:25', NULL),
+(182, '909f9936035d4381', '636ce19342872', '2022-11-20 12:50:56', NULL),
+(183, '7d2bc8b28f6349c1', '636ce19342872', '2022-11-21 09:53:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -219,7 +285,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `start`) VALUES
-(12, 'Unavailable', '2022-11-09 00:00:00');
+(12, 'Unavailable', '2022-11-09 00:00:00'),
+(13, 'Unavailable', '2022-11-16 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -239,7 +306,7 @@ CREATE TABLE `payment_details` (
 --
 
 INSERT INTO `payment_details` (`id`, `gcash_qr`, `number`, `name`) VALUES
-(2, 'gcashqr.png', '09954667564', 'nobody');
+(2, 'GCash-MyQR-08112022140545.PNG.jpg', '09297575119', 'J****E V*L**J*S');
 
 -- --------------------------------------------------------
 
@@ -261,7 +328,8 @@ CREATE TABLE `queries` (
 
 INSERT INTO `queries` (`id`, `email`, `phone`, `message`, `timeStamp`) VALUES
 (30, 'jerico.victoria@gmail.com', '09972114073', 'sdsdssss', '2022-10-29'),
-(31, 'jerico.victoria@gmail.com', '09972114073', 'asdasd askjdahsdasbd asjkajskdjkhasda', '2022-11-01');
+(31, 'jerico.victoria@gmail.com', '09972114073', 'asdasd askjdahsdasbd asjkajskdjkhasda', '2022-11-01'),
+(32, 'talonsero14@gmail.com', '09998529009', 'dkdasjdioajdsal', '2022-11-08');
 
 -- --------------------------------------------------------
 
@@ -272,19 +340,31 @@ INSERT INTO `queries` (`id`, `email`, `phone`, `message`, `timeStamp`) VALUES
 CREATE TABLE `request_reservation` (
   `id` int(11) NOT NULL,
   `reservation_token` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `date_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `request_reservation`
 --
 
-INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`) VALUES
-(49, '86deefcb58f68ea9', 'confirmed'),
-(52, 'a82336906dce5f4b', 'pending'),
-(53, '57b757cf92a64140', 'pending'),
-(54, 'fd337ace03ddc127', 'confirmed'),
-(55, '9bde598ce2e3acac', 'pending');
+INSERT INTO `request_reservation` (`id`, `reservation_token`, `status`, `date_created`) VALUES
+(49, '86deefcb58f68ea9', 'confirmed', '2022-11-14 15:34:35'),
+(52, 'a82336906dce5f4b', 'pending', '2022-11-14 15:34:35'),
+(53, '57b757cf92a64140', 'pending', '2022-11-14 15:34:35'),
+(54, 'fd337ace03ddc127', 'confirmed', '2022-11-14 15:34:35'),
+(55, '9bde598ce2e3acac', 'cancelled', '2022-11-14 15:34:35'),
+(56, 'e2fa2cc5a96479f3', 'pending', '2022-11-14 15:34:35'),
+(58, '734682aac95d3952', 'confirmed', '2022-11-14 15:34:35'),
+(60, '47ca465fd81f1263', 'pending', '2022-11-14 15:34:35'),
+(62, 'b5b061d3ffb43ecc', 'confirmed', '2022-11-14 15:34:35'),
+(63, '1c0827997ccea611', 'pending', '2022-11-14 15:34:35'),
+(64, 'd635c8c907bc1131', 'pending', '2022-11-07 15:34:35'),
+(66, '481a4837e3828b02', 'pending', '2022-11-15 03:21:25'),
+(67, 'aa3a315cc82a2a80', 'confirmed', '2022-11-16 14:10:12'),
+(69, '0c5b125e49adcd3f', 'confirmed', '2022-11-17 00:10:37'),
+(70, '2e4c296226851107', 'pending', '2022-11-17 02:42:34'),
+(71, '1fa13a6c88cc0f1b', 'confirmed', '2022-11-17 05:44:23');
 
 -- --------------------------------------------------------
 
@@ -315,7 +395,18 @@ INSERT INTO `reservation` (`id`, `user_token`, `service_token`, `reservation_tok
 (51, '635193d692d0d', '459daba73a28dd8b', '86deefcb58f68ea9', '2022-11-11 15:00:00', '2022-11-11 20:00:00', 'gcash', 2500, 'asdssasdas', '3444234 33331 1111', 'Downpayment', 750),
 (55, '635193d692d0d', '916c696fa61a769c', '57b757cf92a64140', '2022-11-14 08:00:00', '2022-11-14 16:00:00', 'gcash', 1600, 'sdsdd', '2222 333 1111', 'Downpayment', 480),
 (56, '635193d692d0d', '459daba73a28dd8b', 'fd337ace03ddc127', '2022-11-14 13:00:00', '2022-11-14 19:00:00', 'gcash', 3000, 'sdasdasdas', '2333232 222 1112233', 'Downpayment', 900),
-(57, '635193d692d0d', 'f375ebf2b8154017', '9bde598ce2e3acac', '2022-11-11 10:00:00', '2022-11-11 13:00:00', 'gcash', 1500, 'sss', '2323223 11111 222', 'Downpayment', 450);
+(57, '635193d692d0d', 'f375ebf2b8154017', '9bde598ce2e3acac', '2022-11-11 10:00:00', '2022-11-11 13:00:00', 'gcash', 1500, 'sss', '2323223 11111 222', 'Downpayment', 450),
+(58, '635193d692d0d', 'f375ebf2b8154017', 'e2fa2cc5a96479f3', '2022-11-11 14:00:00', '2022-11-11 22:00:00', 'gcash', 4000, 'dfsdsfdfd', '877222', 'Downpayment', 1200),
+(60, '6369ec85056e7', 'f375ebf2b8154017', '734682aac95d3952', '2022-11-11 05:00:00', '2022-11-11 08:00:00', 'gcash', 1500, 'dsadasdwadasda', '218932182924', 'Downpayment', 450),
+(62, '6369ec85056e7', 'f375ebf2b8154017', '47ca465fd81f1263', '2022-11-10 07:00:00', '2022-11-10 09:00:00', 'gcash', 1000, 'dwadsadsa', '7006 650 644106', 'Downpayment', 300),
+(64, '636cb9572c3f8', '916c696fa61a769c', 'b5b061d3ffb43ecc', '2022-11-10 00:00:00', '2022-11-10 01:00:00', 'gcash', 200, 'libre po ba?', '2918312483701385', 'Downpayment', 60),
+(65, '6369ec85056e7', '459daba73a28dd8b', '1c0827997ccea611', '2022-11-11 10:00:00', '2022-11-11 13:00:00', 'gcash', 1500, '', '31241312312', 'Downpayment', 450),
+(66, '636ce19342872', '459daba73a28dd8b', 'd635c8c907bc1131', '2022-11-12 07:00:00', '2022-11-12 14:00:00', 'gcash', 3500, '', '2000193988', 'Downpayment', 1050),
+(68, '636ce19342872', '459daba73a28dd8b', '481a4837e3828b02', '2022-11-23 08:00:00', '2022-11-23 12:00:00', 'gcash', 2000, '', '423264332423', 'Downpayment', 600),
+(69, '6374ee497b509', '459daba73a28dd8b', 'aa3a315cc82a2a80', '2022-11-17 13:00:00', '2022-11-17 16:00:00', 'gcash', 1500, '', '', 'Downpayment', 450),
+(71, '6374f1263e714', '916c696fa61a769c', '0c5b125e49adcd3f', '2022-11-30 13:00:00', '2022-11-30 15:00:00', 'gcash', 400, '', '', 'Downpayment', 120),
+(72, '6369ec85056e7', '459daba73a28dd8b', '2e4c296226851107', '2022-11-20 08:00:00', '2022-11-20 10:00:00', 'gcash', 1000, '', '', 'Downpayment', 300),
+(73, '6375c9ba1f96e', 'f375ebf2b8154017', '1fa13a6c88cc0f1b', '2022-11-20 06:00:00', '2022-11-20 09:00:00', 'gcash', 1500, '', '2093289328392', 'Downpayment', 450);
 
 -- --------------------------------------------------------
 
@@ -338,10 +429,9 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`id`, `services_token`, `name`, `features`, `description`, `images`, `price`) VALUES
-(42, '459daba73a28dd8b', 'VIP', 'fully air conditioned,videoke,bbq grill,water dispenser,food warmer', 'Capacity: 12 persons\n\n- Airconditioned', 'slide1.jpg', '500'),
-(43, 'f375ebf2b8154017', 'Alfresco', 'videoke,bbq grill,water dispenser,food warmer', 'Capacity: 30 persons', 'slide2.jpg', '500'),
-(44, '916c696fa61a769c', 'Gazebo', 'videoke,water dispenser,food warmer', 'Capacity: 8 persons', 'slide5.jpg', '200'),
-(60, 'ef18c21ade651dc7', 'Test', NULL, 'asdasdasdasdasd', '30739787_1588591967926106_7638881661316235264_n.jpg', '200');
+(42, '459daba73a28dd8b', 'VIP', 'fully air conditioned,videoke,bbq grill,water dispenser,food warmer', 'Capacity: 12 persons\n\n- FULLY AIR CONDITIONED\n- VIDEOKE / 65 INCH TV\n- BARBECUE GRILL\n- WATER DISPENSER\n- FOOD WARMER', 'slide1.jpg,5.jpg,4.jpg,3.jpg', '500'),
+(43, 'f375ebf2b8154017', 'Alfresco', 'videoke,bbq grill,water dispenser,food warmer', 'Capacity: 30 persons\n\n- VIDEOKE\n- BARBECUE GRILL\n- WATER DISPENSER \n- FOOD WARMER', 'slide2.jpg', '500'),
+(44, '916c696fa61a769c', 'Gazebo', 'videoke,water dispenser,food warmer', 'Capacity: 8 persons\n\n- VIDEOKE \n- BARBECUE GRILL \n- WATER DISPENSER', 'slide5.jpg', '200');
 
 -- --------------------------------------------------------
 
@@ -476,13 +566,13 @@ ALTER TABLE `announcement`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `client_log_history`
 --
 ALTER TABLE `client_log_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -494,7 +584,7 @@ ALTER TABLE `contact_details`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `payment_details`
@@ -506,25 +596,25 @@ ALTER TABLE `payment_details`
 -- AUTO_INCREMENT for table `queries`
 --
 ALTER TABLE `queries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `request_reservation`
 --
 ALTER TABLE `request_reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `services_gallery`
