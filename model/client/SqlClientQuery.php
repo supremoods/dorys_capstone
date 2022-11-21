@@ -295,6 +295,7 @@
                         services.price, 
                         reservation.settlement_fee, 
                         request_reservation.status,
+                        request_reservation.date_created,
                         reservation.gcash_ref_num,
                         reservation.payment_type,
                         reservation.paid_amount
@@ -338,11 +339,13 @@
                         services.price,
                         reservation.settlement_fee, 
                         request_reservation.status,
+                        request_reservation.date_created,
                         services.images,
                         reservation.message,
                         reservation.gcash_ref_num,
                         reservation.payment_type,
                         reservation.paid_amount
+
                     FROM reservation 
                     LEFT JOIN request_reservation ON 
                         reservation.reservation_token = request_reservation.reservation_token 
@@ -454,10 +457,12 @@
         public function insertReservationStatus($reservation_token){
             $sql = "INSERT INTO request_reservation (
                 reservation_token,
-                status
+                status,
+                date_created
             ) VALUES (
                 '$reservation_token',
-                'pending'
+                'pending',
+                NOW()
             )";
                 
             $result = $this->dbConnection()->query($sql);

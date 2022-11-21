@@ -129,7 +129,10 @@ class SqlAdminQuery extends ConfigDB
                         reservation.settlement_fee, 
                         request_reservation.status,
                         services.images,
-                        reservation.message
+                        reservation.message,
+                        reservation.gcash_ref_num,
+                        reservation.payment_type,
+                        reservation.paid_amount
                     FROM reservation 
                     LEFT JOIN request_reservation ON 
                         reservation.reservation_token = request_reservation.reservation_token 
@@ -157,7 +160,10 @@ class SqlAdminQuery extends ConfigDB
                         request_reservation.status,
                         services.images,
                         reservation.message,
-                        reservation.user_token
+                        reservation.user_token,
+                        reservation.gcash_ref_num,
+                        reservation.payment_type,
+                        reservation.paid_amount
                     FROM reservation 
                     LEFT JOIN request_reservation ON 
                         reservation.reservation_token = request_reservation.reservation_token 
@@ -787,6 +793,22 @@ class SqlAdminQuery extends ConfigDB
 
     public function updatePaymentDetails($id, $image, $number, $name){
         $sql = "UPDATE payment_details SET gcash_qr = '$image', number = '$number', name = '$name' WHERE id = '$id'";
+
+        $result = $this->dbConnection()->query($sql);
+
+        if ($result) {
+            // if the query is successful, return true
+            if ($result) {
+                return true;
+            } else {
+                // if the query is not successful, return false
+                return false;
+            }
+        }
+    }
+
+    public function updatePaymentDetailsWithoutImage($id, $number, $name){
+        $sql = "UPDATE payment_details SET number = '$number', name = '$name' WHERE id = '$id'";
 
         $result = $this->dbConnection()->query($sql);
 

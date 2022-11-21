@@ -140,3 +140,17 @@ const closeAlert = () => {
     modalAlert.innerHTML = "";
     modalAlert.classList.remove('active');
 }
+
+
+const inputName = document.getElementById('input-name');
+
+
+
+inputName.addEventListener('keypress', (e) => {
+    const regex = new RegExp("^[a-zA-Z ]+$");
+    const key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+        event.preventDefault();
+        return false;
+    }
+})

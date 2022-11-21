@@ -99,7 +99,7 @@ try {
   });
 
 } catch (error) {
-  console.log(error);
+ // do nothing
 }
 
 const regModal = () => {

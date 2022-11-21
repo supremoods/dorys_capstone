@@ -40,7 +40,6 @@ gcashForm.addEventListener('submit', async (e) => {
             icon: 'success',
             confirmButtonText: 'Ok'
         });
-        loadGcashForm();
     } else {
         Swal.close();
         console.log(data);

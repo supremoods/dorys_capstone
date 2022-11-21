@@ -30,6 +30,8 @@
                         <td>Status</td>
                         <td>Message</td>
                         <td>Profile</td>
+                        <td>Gcash Ref. Num</td>
+                        <td>Payment Type</td>
                         <td>Action</td>
                     </tr>
                 </thead>

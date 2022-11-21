@@ -114,6 +114,14 @@ selectTime.addEventListener("change", (e) => {
           }
           searched = true;
           return;
+        }else{
+                // do nothing
+                console.log("sdsd")
+          for (let i = 1; i <= 24; i++) {
+            selectHours.innerHTML += `<option value="${i}">${i}</option>`;
+          }
+          searched = true;
+          return;  
         }
       }
     });

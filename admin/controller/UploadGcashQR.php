@@ -2,7 +2,7 @@
    require_once($_SERVER['DOCUMENT_ROOT'].'/admin/model/admin/SqlAdminQuery.php');
    
    class UploadGcashQR extends SqlAdminQuery{
-       public function uploadQR($image, $number, $name){
+       public function uploadQRWithImage($image, $number, $name){
 
          $fetchGcashDetails = $this->fetchPaymentDetails();
 
@@ -42,6 +42,15 @@
          }
            
        }
+
+       public function uploadQRWithoutImage($number, $name){
+         $fetchGcashDetails = $this->fetchPaymentDetails();
+            if($this->updatePaymentDetailsWithoutImage($fetchGcashDetails['id'], $number, $name)){
+               echo json_encode(array("status" => 'success'));
+            }else{
+               echo json_encode(array("status" => 'failed'));
+            }
+       }
    }
 
    $image = $_FILES['gcash-qr']['name'];
@@ -50,6 +59,9 @@
 
    $upload_qr = new UploadGcashQR();
 
-   $upload_qr->uploadQR($image, $number, $name);
-
+   if($image != ''){
+      $upload_qr->uploadQRWithImage($image, $number, $name);
+   }else{
+      $upload_qr->uploadQRWithoutImage($number, $name);
+   }
 ?>

@@ -61,11 +61,15 @@ const loadAmmenityTransaction = async (token) => {
                     <button class="view-msg" onclick="viewMessage(this.dataset.msg)" data-msg="${transaction.message}">View Message</button>
                 </div>
                 `,
+                    
                 `
                 <div class="action-btns">
                     <button type="button" class="view-profile action-btn" onclick="viewProfile(this.dataset.user_token)" title="View Profile" data-toggle="tooltip" data-user_token ="${transaction.user_token}"><i class="fa fa-user"></i></button>
                 </div>
                 `,
+                transaction.gcash_ref_num,
+                transaction.payment_type,
+     
                 `
                 <div class="action-btns">
                     ${actionBtns}

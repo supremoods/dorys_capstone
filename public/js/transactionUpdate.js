@@ -534,7 +534,8 @@ updateForm.addEventListener("submit", (e) => {
                 if (data.status === "success") {
                     Swal.fire({
                         title: "Success!",
-                        text: "Reservation updated successfully",
+                        text: "Reservation updated successfully ",
+                        text: "Note: Please keep in mind that any remaining balance from your downpayment will be deducted from your total payment.",
                         icon: "success",
                         confirmButtonText: "Okay",
                     }).then(() => {

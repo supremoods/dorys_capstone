@@ -41,6 +41,23 @@ const loadTransactions = async () => {
             //clear the table
             table.clear();
 
+            // check if date is past 3 days
+            const checkDate = (date) => {
+                const today = new Date();
+
+                const date1 = new Date(date);
+                const date2 = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+                const diffTime = Math.abs(date2 - date1);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if(diffDays > 3){
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+
             // loop through the array and append the data to the table
             transactions.forEach((transaction) => {
                 table.row.add([
@@ -55,7 +72,9 @@ const loadTransactions = async () => {
                     transaction.payment_type,
                     transaction.paid_amount,
                     transaction.status,
-                    `<button type="button" id="edit-transact" onclick="editTransactionFunc(this.dataset.reservation_token)" title="Edit" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}"><i class="fa fa-pencil"></i></button>
+                    transaction.date_created,
+                    `
+                    ${checkDate(transaction.date_created) ? '<button type="button" id="edit-transact" onclick="editTransactionFunc(this.dataset.reservation_token)" title="Edit" data-toggle="tooltip" data-reservation_token ='+ transaction.reservation_token +'><i class="fa fa-pencil"></i></button>' : ''}
                     <button  type="button" id="delete-transact" onclick="deleteTransactionFunc(this.dataset.reservation_token)" title="Delete" data-toggle="tooltip" data-reservation_token ="${transaction.reservation_token}"><i class="fa  fa-trash-o"></i></button>`
                 ]).draw(false);
             })

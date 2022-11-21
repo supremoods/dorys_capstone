@@ -17,6 +17,7 @@
                     <td>Payment Type</td>
                     <td>Paid Amount</td>
                     <td>Status</td>
+                    <td>Date Requested</td>
                     <td>Action</td>
                 </tr>
             </thead>

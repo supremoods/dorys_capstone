@@ -5,7 +5,7 @@ $fetchAmmenities = $ammenities->FetchAmmenities();
 
 ?>
   <div class="header-title">
-    <h1>Ammenities</h1>
+    <h1>Amenities</h1>
   </div>
 <div class="offers-container">
 

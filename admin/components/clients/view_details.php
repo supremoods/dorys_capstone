@@ -72,6 +72,8 @@
                             <td>Hourly Rate</td>
                             <td>Total Rate</td>
                             <td>Status</td>
+                            <td>Gcash Ref. Num</td>
+                            <td>Payment Type</td>
                             <td>Message</td>
                             <td>Action</td>
                         </tr>

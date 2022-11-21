@@ -410,17 +410,19 @@ $(document).on('click', '.fc-button', function(e) {
 });
 
 const tempTime = [];
-const checkDatesBtn = document.getElementById('check-dates-btn');
-
-checkDatesBtn.addEventListener('click', () => {
-
-    const calendarEl = document.querySelector('.event-calendar');
-    calendarEl.classList.toggle('active');
-
-    document.querySelector('body').classList.toggle('show');
-
-});
-
+try{
+    const checkDatesBtn = document.getElementById('check-dates-btn');
+    checkDatesBtn.addEventListener('click', () => {
+    
+        const calendarEl = document.querySelector('.event-calendar');
+        calendarEl.classList.toggle('active');
+    
+        document.querySelector('body').classList.toggle('show');
+    
+    });
+}catch(err){
+    //do nothing
+}
 // escape key events
 
 document.addEventListener('keydown', (e) => {

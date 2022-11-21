@@ -65,6 +65,8 @@ const loadProfile = async () => {
                 client.price,
                 client.settlement_fee,
                 client.status,
+                client.gcash_ref_num,
+                client.payment_type,
                 `<p class="view-msg" onclick="viewMessage(this.dataset.msg)" data-msg="${client.message}">View Message</p>`,
                 `
                 <div class="action-btns">
